@@ -1,0 +1,26 @@
+20230626
+
+1.오리엔테이션
+-프로그래밍이란?
+:언어를 이용해서 프로그램을 만드는 행위
+
+2.Java 프로그램이란?
+-OS 독립적 언어(=플랫폼독립적언어, 컴파일된 프로그램이 가상머신을 통해 여러 OS에서 실행 가능)
+
+3.Java 환경 설정
+-https:// www.oracle.com에서 다운로드
+:JDK(Java Development Kit) 자바 개발 키트
+:IDE(Integrated Development Environment); 통합 개발 툴(편집기) ex. 메모장, eclipse, IntelliJ
+
+4.Java 환경변수 설정(이클립스 IDE 설치 )
+-https://www.eclipse.org에서 다운로드
+:내PC 오른쪽 마우스 – 속성 - 고급시스템설정 - 환경변수
+:시스템변수 새로만들기-변수이름: JAVA_HOME  
+ 변수값 : JDK설치된 폴더(C:\Program Files\Java\jdk-1.8)
+:Path에 추가할 내용 ; %JAVA_HOME%\bin
+
+5.Github 설정
+-http://www.github.com 에 가입하기
+
+
+

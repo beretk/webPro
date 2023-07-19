@@ -1,0 +1,21 @@
+20230712
+
+<API-2>
+
+1.Math : 수학적 계산에 사용되는 클래스
+-System.out.println(" 소숫점에서 반올림, 올림, 버림");
+ ("9.12의 올림 : "+Math.ceil(9.12));/("9.69의 반올림 : "+Math.round(9.69));/("9.69 버림 : "+Math.floor(9.69));
+-System.out.println("소숫점 한자리에서 반올림, 올림, 버림");
+ ("9.12의 올림 : "+Math.ceil(9.12*10)/10);/("9.69의 반올림 : "+Math.round(9.69*10)/10.0);/("9.69 버림 : "+Math.floor(9.69*10)/10); 
+-System.out.println("십의 자리에서 반올림, 올림, 버림");
+ ("11의 올림 : "+Math.ceil(11/10.0)*10);/("19의 반올림 : "+Math.round(19/10.0)*10);/("19 버림 : "+Math.floor(19/10.0)*10);
+
+2.Math.random : double 타입의 임의의 수 발생
+
+3. Object클래스의 메소드
+-public String toString() : 객체의 문자열 반환...반드시 오버라이드
+-public String boolean(Object obj)
+-public String hashCode() : 객체를 식별하는 정수값(해쉬코드)반환...다량의 데이터 검색 & 저장 핵심 기범
+
+*equals() : 오버라이딩 할수 있음
+
