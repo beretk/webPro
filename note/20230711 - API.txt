@@ -1,0 +1,28 @@
+20230711
+
+<API-1>
+
+1.API(Application Programming Interface)
+-누군가가 만들어 놓은 기능들
+-JAVA에는 약 3,000개 정도의 클래스가 있다
+
+2.String(문자열에 관련된 대표적인 클래스)
+-String 은 객체 자료형
+:String의 경우만 객체데이터지만, 기초데이터 처럼 사용가능
+
+3.String의 주요 메소드(기능들)
+-String concat(String str) : 저장된 문자열과 str문자열 결합
+-String length(int begin) : 문자열의 길이
+-String toUpperCase() : 대문자로  
+-String toLowerCase() : 소문자로  
+-char charAt(int index) : index 위치의 문자를 반환
+-int indexOf(char ch) : 첫번째 ch문자의 위치를 반환
+-int lastIndexOf(char ch) : 마지막 ch문자의 위치를 반환
+-boolean equals(String str) : 지정된문자열과 str문자열이 같은지 비교
+-boolean equalslgnoreCase(String str) : 대소문자구분없이 지정된문자열과 str문자열이 같은지 비교
+-String trim() : 문자열 앞뒤 공백제거
+-String replace(char old, char new) : 문자열 내의 old문자를 new문자로 반환
+
+4.String의 문제점
+-메모리 과소비
+:초기화된 데이터에 변화 생기면,기존것 버리고 새로운 메모리 이용
