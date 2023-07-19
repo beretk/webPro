@@ -17,21 +17,28 @@ public class Ex01_FileInputStream {
 				if(i == -1) {
 					break;//파일의 끝이면 break;
 				}
-				System.out.print((char)i);
+				System.out.print((char)i + "(" + i + ")");
 			}
 			System.out.println("\n = = = DONE = = = ");
 			//3. 닫는다
-		}catch (FileNotFoundException e) {
-			System.out.println("예외 메세지(파일을 못 찾음) : " + e.getMessage());
 		}catch (IOException e) {
-			System.out.println("예외 메세지(못 읽음) : " + e.getMessage());
+			System.out.println("예외 메세지(파일을 못 찾았거나,못 읽음) : " + e.getMessage());
 		}finally {
 			try {
-				if(is!=null) is.close();//3. 파일을 닫는다
+				if(is!=null) is.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+
+//		}finally {
+//			try {
+//				if(is!=null) is.close();//3. 파일을 닫는다
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	}
 }
