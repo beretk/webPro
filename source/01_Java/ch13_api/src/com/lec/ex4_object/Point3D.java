@@ -8,13 +8,22 @@ public class Point3D {
 		this.y = y;
 		this.z = z;		
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 	@Override
 	public boolean equals(Object obj) {
 		if(obj!=null && getClass() == obj.getClass()) {
 			Point3D other = (Point3D)obj;
 			return x==other.x && y==other.y && z==other.z;
 		}
+<<<<<<< HEAD
 		return false;		
+=======
+		return false;
+		
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 	}
 	@Override
 	public String toString() {

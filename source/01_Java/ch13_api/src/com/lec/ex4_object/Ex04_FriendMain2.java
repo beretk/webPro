@@ -1,7 +1,11 @@
 package com.lec.ex4_object;
 // 사는 지역(주소앞2자리) 검색
 // 전화번호 뒷4자리 검색
+<<<<<<< HEAD
 import java.util.Date;
+=======
+import java.sql.Date;
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.BitSet;

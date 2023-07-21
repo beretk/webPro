@@ -2,8 +2,12 @@ package com.lec.condition;
 // if vs. switch
 public class Ex03_switch {
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		int num = 4
 				;
+=======
+		int num = 3;
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 		// switch(정수형이나 문자형이나 문자열만 가능)
 		switch(num) {
 		case 1:

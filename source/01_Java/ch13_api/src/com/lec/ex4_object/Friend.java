@@ -19,6 +19,10 @@ public class Friend {
 	
 	@Override
 	public String toString() {
+<<<<<<< HEAD
+=======
+//		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
 		return "이름:" +name +"\n주소:" + address + "\n핸드폰:" + tel + "\n생일:" + sdf.format(birthday) + "\n";
 	}

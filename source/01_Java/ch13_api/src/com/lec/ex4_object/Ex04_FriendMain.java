@@ -1,7 +1,13 @@
 package com.lec.ex4_object;
 // 생일(MM-dd)검색
+<<<<<<< HEAD
 import java.util.Date;
 import java.text.SimpleDateFormat;
+=======
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.BitSet;
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -20,8 +26,12 @@ public class Ex04_FriendMain {
 		Scanner scanner = new Scanner(System.in);
 		//검색할 생일 입력(07-22) => 배열 검색(0번째 인덱스부터 생일중에 MM-dd만 추출한 정보를 비교후 같으면 출력)
 		while(true) {
+<<<<<<< HEAD
 			// 못 찾았다를 초기화
 			boolean searchOk = false;
+=======
+			boolean searchOk = false; // 못 찾았다를 초기화
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 			System.out.print("검색할 생일을 MM-dd로 입력 (단, 종료를 원하시면 x를 입력하시오) : ");
 			String searchWord = scanner.next(); //07-22
 			if(searchWord.equalsIgnoreCase("x")) break;
@@ -39,8 +49,13 @@ public class Ex04_FriendMain {
 			}//if
 		} 
 	}
+<<<<<<< HEAD
  
 }
+=======
+} 
+
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 
 
 

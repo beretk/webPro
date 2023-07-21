@@ -12,11 +12,19 @@ public class Ex04_if_hakjum {
 			System.out.println("A");
 		}else if(score>=80 && score <90) {
 			System.out.println("B");
+<<<<<<< HEAD
 		}else if(score>=70 && score <80) {
 			System.out.println("C");
 		}else if(score>=60 && score <70) {
 			System.out.println("D");
 		}else if(score>=0 && score <60) {
+=======
+		}else if(score>=80 && score <80) {
+			System.out.println("C");
+		}else if(score>=80 && score <70) {
+			System.out.println("D");
+		}else if(score>=80 && score <60) {
+>>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 			System.out.println("F");
 		}else {
 			System.out.println("유효하지 않는 점수입니다");
