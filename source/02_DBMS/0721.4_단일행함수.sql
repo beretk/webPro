@@ -17,7 +17,7 @@ SELECT FLOOR(34.5678*100)/100 FROM DUAL; -- 소수점 두번째 자리에서 내림(버림)
 SELECT TRUNC(34.5678,2) FROM DUAL; -- 소수점 두번째 자리에서 내림(버림)
 SELECT TRUNC(34.5678) FROM DUAL; --소수점에서 내림(버림)
 SELECT TRUNC(34.5678, -1) FROM DUAL; -- 1의 자리에서 내림(버림)
-    ex. EMP테이블에서 이름, 급여(십의 자리 내림)
+    -- ex. EMP테이블에서 이름, 급여(십의 자리 내림)
     SELECT ENAME, TRUNC(SAL, -2), SAL FROM EMP;
 SELECT ROUND(34.5678) FROM DUAL; -- 소수점에서 반올림(35)
 SELECT ROUND(34.5678, 2) FROM DUAL; -- 소수점 두번째 자리에서 반올림(34.57)
@@ -38,7 +38,7 @@ SELECT INITCAP('WELCOME TO ORACLE') FROM DUAL; -- 어절 단위로 나눠서 첫 문자만 �
 SELECT INITCAP('welcome to oracle') FROM DUAL;
 SELECT UPPER('ABCabc') FROM DUAL; -- 대문자로
 SELECT LOWER('ABCabc') FROM DUAL; -- 소문자로
-    ex. 이름이 Scott인 직원의 모든 필드
+    -- ex. 이름이 Scott인 직원의 모든 필드
     SELECT * FROM EMP WHERE UPPER(ENAME)='SCOTT';
     SELECT * FROM EMP WHERE INITCAP(ENAME)='Scott';
     SELECT * FROM EMP WHERE LOWER(ENAME)='Scott';
@@ -135,7 +135,7 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD'; -- 날짜설정 원상 복구
 SELECT * FROM EMP;
 -- (2) 날짜계산 : 오라클 타입(날짜, 숫자, 문자) 중 날짜와 숫자는 연산가능
 ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD HH24:MI:SS';
-SELET SYSDATE-1 어제이시간, SYSDATE, SYSDATE+1 내일이시간 FROM DUAL;
+-- SELET SYSDATE-1 어제이시간, SYSDATE, SYSDATE+1 내일이시간 FROM DUAL;
 ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD'; -- 날짜설정 원상 복구
     -- ex. 반납예정일
     SELECT SYSDATE+14 FROM DUAL;
@@ -153,7 +153,7 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD'; -- 날짜설정 원상 복구
         FROM EMP;
         
 -- (3) MONTHS_BETWEEN(시점1, 서점2) : 두 시점간의 개월수(시점1이 나중시점)
-    ex. 이름, 입사일, 근무월수
+    -- ex. 이름, 입사일, 근무월수
     SELECT ENAME, HIREDATE, TRUNC(MONTHS_BETWEEN(SYSDATE, HIREDATE)) MONTH FROM EMP;
     -- ex. 이름, 입사한 이후 회사에서 받은 월급 및 상여금(월급은 한달에 한번, 상여금 1년2번)
     SELECT ENAME,
@@ -329,20 +329,6 @@ SELECT EMPNO, ENAME, JOB, TO_CHAR(SAL, '$99,999') FROM EMP
     
 SELECT * FROM EMP;
 INSERT INTO EMP VALUES(8000,'홍길동', NULL,NULL,SYSDATE, 100000, NULL, 40); -- 에러
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     
     
 

@@ -1,0 +1,22 @@
+20230725
+
+<그룹함수>
+
+1. 그룹함수 : SUM, AVG, MIN, MAX, COUNT, STDDEV(표준편차), VARIANCE(분산)
+-그룹함수들 실습
+:SELECT ROUND(AVG(SAL), 2) FROM EMP;
+:SELECT AVG(SAL), SUM(SAL)/COUNT(SAL) FROM EMP;
+:SELECT SUM(COMM) FROM EMP; -- 평균:2200/14=157.142857~  2200/4=550
+:SELECT SUM(COMM), COUNT(COMM), AVG(COMM) FROM EMP; -- 모든 그룹함수는 NULL값을 제외하고 연산
+:SELECT COUNT(*) FROM EMP; -- EMP 테이블의 행수
+* MIN, MAX, COUNT는 숫자형,문자형, 날짜형 모두 가능
+
+2. GROUP BY 절
+-그룹함수를 쓰되 어떤 컬럼 값을 기준으로 그룹함수를 적용할 경우 GROUP BY 절 뒤에 해당 컬럼을 기술함
+ex.SELECT DEPTNO, MAX(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO ORDER BY DEPTNO;
+* GROUP BY 절에서는 필드의 별칭을 사용없음(ORDER BY절에서는 필드의 별칭 사용가능)
+
+3. HAVING절 
+-그룹함수의 결과를 제한할때(필드의 조건을 사용하여 결과를 제한할 때는 WHERE절)
+
+4.ROLLUP : 그룹함수 결과의 집계값 생성
