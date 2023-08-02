@@ -11,7 +11,3 @@ public class Ex07while {
 		}//for
 	}//main
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470

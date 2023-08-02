@@ -10,11 +10,7 @@ public class Ex01 {
 		System.out.printf("%d %c %d = %d\n", n1, '*', n2, result);
 		result = n1 / n2;
 		System.out.printf("%d %c %d = %d\n", n1, '/', n2, result);
-<<<<<<< HEAD
 		resultDouble = (double)n1 / n2;
-=======
-		resultDouble = n1 / n2;
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 		result = n1 / n2;
 		System.out.printf("%d %c %d = %f\n", n1, '/', n2, resultDouble);
 		result = n1 % n2;

@@ -3,10 +3,6 @@ package com.lec.loopQuiz;
 import java.util.Scanner;
 
 public class Homework1 {
-<<<<<<< HEAD
-	
-=======
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 public static void main(String[] args) {
 	Scanner scanner = new Scanner(System.in);
 	while(true) {

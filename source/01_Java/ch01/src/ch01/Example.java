@@ -7,7 +7,7 @@ public class Example {
 		
 		if (score>=90)
 			System.out.println("점수가 100~90입니다");
-			System.out.println("");
+			System.out.println("");			
 		
 	}
 }

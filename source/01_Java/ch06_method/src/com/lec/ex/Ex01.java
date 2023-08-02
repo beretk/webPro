@@ -3,28 +3,6 @@ package com.lec.ex;
 public class Ex01 {
 	public static void main(String[] args) {
 		int tot = 0;
-<<<<<<< HEAD
-		for(int i=1; i<=10 ; i++) {
-			tot += i;
-		}
-		System.out.println("1~10까지 정수의 합은 " + tot);
-		System.out.println( tot%2==0 ? "짝수입니다" : "홀수입니다");
-		//
-		tot = 0;
-		for(int i=11; i<=100 ; i++) {
-			tot += i;
-		}
-		System.out.println("11~100까지 정수의 합은 " + tot);
-		System.out.println( tot%2==0 ? "짝수입니다" : "홀수입니다");
-		//
-		tot = 0;
-		for(int i=1; i<=100 ; i++) {
-			tot += i;
-		}
-		System.out.println("1~100까지 정수의 합은 " + tot);
-	}
-}
-=======
 		for(int i=1 ; i<=10 ; i++) {
 			tot += i;
 		}
@@ -41,4 +19,3 @@ public class Ex01 {
 		//
 	}
 }
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470

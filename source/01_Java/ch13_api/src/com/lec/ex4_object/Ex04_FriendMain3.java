@@ -1,12 +1,7 @@
 package com.lec.ex4_object;
-<<<<<<< HEAD
-// 전화번호 뒷4자리 검색
-import java.util.Date;
-=======
 // 사는 지역(주소앞2자리) 검색
 // 전화번호 뒷4자리 검색
 import java.sql.Date;
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.BitSet;
@@ -44,11 +39,7 @@ public class Ex04_FriendMain3 {
 				}//if
 			}//for ; 제어문 참조하기
 			if(!searchOk) { //해당 생일의 친구를 못 찾음
-<<<<<<< HEAD
-				System.out.println("해당 전화번호 뒷4자리인 친구는 없습니다");
-=======
 				System.out.println("해당 지역의 친구는 없습니다");
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 			}//if
 		} 
 	}

@@ -1,11 +1,7 @@
 package com.lec.conditionQuiz;
 
 import java.util.Scanner;
-<<<<<<< HEAD
-//가위바위보 게임
-=======
 
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 public class Quiz4 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -20,33 +16,6 @@ public class Quiz4 {
 		}
 		System.out.println("당신은 " + youStr + ", 컴퓨터는 " + computerStr);
 		// 당신이 이겼습니다 || 컴퓨터가 이겼습니다 || 비겼습니다 출력 
-<<<<<<< HEAD
-		if(you == 0) {
-			if (computer==0) {
-				System.out.println("비겼습니다");
-			}else if(computer==1) {
-				System.out.println("컴퓨터가 이겼습니다 ㅠㅠ");
-			}else {
-				System.out.println("★ 당신이 이겼습니다 ★");
-			}
-		}else if (you == 1) {
-			if(computer==0) {
-				System.out.println("★ 당신이 이겼습니다 ★");
-			}else if(computer==1) {
-				System.out.println("비겼습니다");
-			}else {
-				System.out.println("컴퓨터가 이겼습니다 ㅠㅠ");
-			}
-		}else if (you==2) {
-			if(computer==0) {
-				System.out.println("컴퓨터가 이겼습니다 ㅠㅠ");
-			}else if(computer==1) {
-				System.out.println("★ 당신이 이겼습니다 ★");
-			}else {
-				System.out.println("비겼습니다");
-			}
-		} // 결과
-=======
 		if( (you+2)%3 == computer) {
 			System.out.println("★ 당신이 이겼습니다 ★");
 		}else if (you == computer) {
@@ -54,7 +23,6 @@ public class Quiz4 {
 		}else {
 			System.out.println("컴퓨터가 이겼습니다 ㅠㅠ");
 		}
->>>>>>> 0b47f9e84250083b42de6f891cc87299b01e7470
 		scanner.close();
 	}
 }
