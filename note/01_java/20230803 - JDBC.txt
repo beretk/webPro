@@ -1,0 +1,19 @@
+20230803
+
+<JDBC>
+1. 데이터베이스개요
+-테이블은 컬럼(속성, 필드)과 로우(엔티티)로 이루어져있고 서로 연관된 데이터들이 표처럼 구성되어 있다.
+
+2. JDBC(Java Database Connectivity) 프로그래밍 개념
+-JDBC(Java Database Connectivity) 
+: 자바 패키지의 일부로 자바 프로그램이 데이터 베이스와 연결되어 데이터를 주고 받을 수 있게 해 주는 
+  프로그래밍 인터페이스이다. 자바 데이터베이스 프로그래밍 API라고 할 수 있다.  
+
+3. JDBC 드라이버 
+-오라클 드라이버 또는 MySQL 드라이버를 자바가 설치되어 있는 C:\Program Files\Java\jre1.8\lib\ext 폴더에 다음의 두 파일을 복사한다.
+: ojdbc6.JAR (C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib)
+: mysql-connector-java-8.0.31.jar (C:\Program Files (x86)\MySQL\Connector J 8.0)
+
+4. Java 8에서 방법 
+: 이클립스에서 Windows 메뉴 – preferences – Java – Installed JREs – edit – Add External JARs을 통해 
+  두개의 jar를 등록 후 finish (취소: Restore Default 클릭)
