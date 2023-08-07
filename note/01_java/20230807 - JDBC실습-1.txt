@@ -1,0 +1,27 @@
+20230807
+
+<JDBC실습-연예인성적표>
+
+
+1. exERD 이클립스 plugin
+-http://exerd.com/update/exerd/3.x/ (업데이트 사이트 URL을 복사)
+1)이클립스의 메뉴에서 Help > Install New Software를 선택.
+2)복사한 주소를, Work with: 안에 붙여 넣고 Add를 누릅니다.
+3)"Contact all update sites..." 체크 옵션을 제거 합니다.
+4)목록에 eXERD Modeler가 나타나면 선택 후, Next를 눌러 설치합니다.
+
+2. 연예인성적표 작성 실습
+1) exERD를 사용한 테이블 설계
+2) sqldeveloper를 이용한 sql문 작성
+-- 프로그램에 쓸 query
+-- 1번 기능. PNAME, JNAME, KOR, ENG, MAT입력받아 PERSON 테이블에 INSERT
+-- 2번 기능. JNAME입력받아, RANK, PNAME(PNO), JNAME, KOR, ENG, MAT, SUM출력
+-- 3번 기능. RANK, PNAME(PNO), JNAME, KOR, ENG, MAT, SUM출력
+3) 이클립스 프로그램 작성
+
+3. 프로그램 작성 순서
+1. 요구사항 확립후 exERD(DB설계)
+2. 테이블(시퀀스) 생성,dummy data
+3. 프로그램에서 쓸 query작성
+4. Dto, Dao 구현 (test포함)
+5. 비즈니스로직 구현
