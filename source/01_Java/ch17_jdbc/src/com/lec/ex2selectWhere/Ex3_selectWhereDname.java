@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-//사용자로부터 부서명을 입력받아 해당 부서정보를 출력(Ex1참조) : SELECT * FROM DEPT WHERE DNAME='ACCOUNTING'
+// 사용자로부터 부서명을 입력받아 해당 부서정보를 출력(Ex1참조) : SELECT * FROM DEPT WHERE DNAME='SALES'
 public class Ex3_selectWhereDname {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -16,9 +16,9 @@ public class Ex3_selectWhereDname {
 		Statement  stmt = null;
 		ResultSet  rs   = null;
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("원하는 부서명은? ");
+		System.out.println("원하는 부서명은 ?");
 		String dname = scanner.next();
-		String sql = "SELECT * FROM DEPT WHERE DNAME='"+dname +"'";
+		String sql = "SELECT * FROM DEPT WHERE DNAME='" + dname + "'";
 		sql = String.format("SELECT * FROM DEPT WHERE DNAME=UPPER('%s')", dname);
 		try {
 			Class.forName(driver);
@@ -26,22 +26,40 @@ public class Ex3_selectWhereDname {
 			stmt = conn.createStatement();
 			rs   = stmt.executeQuery(sql);
 			if(rs.next()) {
+//				int deptno   = rs.getInt("deptno");
+//				String dname1 = rs.getString("dname");
+//				String loc   = rs.getString("loc");
 				System.out.println("부서번호 : " + rs.getInt("deptno"));
-				System.out.println("부서명 : " + rs.getString("dname"));
+//				System.out.println("부 서 명 : " + dname1);
+				System.out.println("부 서 명 : " + rs.getString("dname"));
 				System.out.println("부서위치 : " + rs.getString("loc"));
 			}else {
 				System.out.println("해당 부서명은 존재하지 않습니다");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		}finally {
+		} finally { // 7. DB연결해제
 			try {
-				if(rs!=null)rs.close();
+				if(rs!=null) rs.close();
 				if(stmt!=null)stmt.close();
 				if(conn!=null)conn.close();
-			} catch (SQLException e) {
+			}catch(SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		} // try-catch-finally
 	} // main
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

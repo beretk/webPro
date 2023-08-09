@@ -1,15 +1,16 @@
 package com.lec.ex2person_dtoDao;
-//1번기능 insert : 이름, 직업명, 국, 영, 수
-//2, 3번기능 select : rank, 이름, 직업명, 국, 영, 수, 합 
+// 1번기능 insert : 이름, 직업명, 국, 영, 수
+// 2, 3번 기능 select : rank, 이름, 직업명, 국, 영, 수, 합
 public class PersonDto {
-	private int     rank;
+	private int rank;
 	private String pname;
 	private String jname;
 	private int      kor;
 	private int      eng;
 	private int      mat;
 	private int      sum;
-	// 입력용 : 이름(홍길동), 직업명, 국, 영, 수
+	// 입력용 : 이름, 직업명, 국, 영, 수
+
 	public PersonDto(String pname, String jname, int kor, int eng, int mat) {
 		this.pname = pname;
 		this.jname = jname;
@@ -17,7 +18,7 @@ public class PersonDto {
 		this.eng = eng;
 		this.mat = mat;
 	}
-	// 출력용 : rank, 이름(홍길동(2)), 직업명, 국, 영, 수, 합 
+	// 출력용 : rank, 이름(홍길동(2)), 직업명, 국, 영, 수, 합
 	public PersonDto(int rank, String pname, String jname, int kor, int eng, int mat, int sum) {
 		this.rank = rank;
 		this.pname = pname;
@@ -29,8 +30,8 @@ public class PersonDto {
 	}
 	@Override
 	public String toString() {
-		return rank + "등\t" + pname + "\t" + jname + "\t" + kor + "\t" + eng
-				+ "\t" + mat + "\t" + sum;
+		return rank + "등\t" + pname + "\t " + jname + "\t" + kor+ "\t" + eng + "\t"
+				+ mat + "\t" + sum ;
 	}
 	// setter & getter
 	public int getRank() {
@@ -76,3 +77,25 @@ public class PersonDto {
 		this.sum = sum;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

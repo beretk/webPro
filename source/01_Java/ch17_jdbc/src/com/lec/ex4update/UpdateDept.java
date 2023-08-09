@@ -2,53 +2,51 @@ package com.lec.ex4update;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-//사용자에게 수정할 부서번호와 부서명, 근무지를 입력받아 update 전송
+// 사용자에게 수정할 부서번호와 부서명, 근무지를 입력받아 update 전송
 public class UpdateDept {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url    = "jdbc:oracle:thin:@localhost:1521:xe";
 		Connection conn = null;
 		Statement  stmt = null;
-		ResultSet  rs   = null;
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("수정할 부서번호는 ?");
+		int deptno = scanner.nextInt();
+		// 부서번호의 유무 확인
+		System.out.println("수정할 부서명은 ?");
+		String dname = scanner.next();
+		System.out.println("수정할 위치는 ?");
+		String loc = scanner.next();
+		//String updateSQL = "UPDATE DEPT SET DNAME='"+dname+"', LOC='"+loc+"' WHERE DEPTNO="+ deptno;
+		String sql = String.format("UPDATE DEPT SET DNAME='%s', LOC='%s' WHERE DEPTNO=%d",
+														dname,   loc,      deptno);
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			stmt = conn.createStatement();
-			System.out.print("수정할 부서번호는 ?");
-			int deptno = scanner.nextInt();
-			String selectSQL = "SELECT * FROM DEPT WHERE DEPTNO="+deptno;
-			rs = stmt.executeQuery(selectSQL);
-			if(rs.next()) { // 존재하는 부서번호이므로 수정 진행
-				System.out.print("수정할 부서명은 ?");
-				String dname = scanner.next();
-				System.out.print("수정할 위치는 ?");
-				String loc = scanner.next();
-				//String updateSQL = "UPDATE DEPT SET DNAME='"+dname+"', LOC='"+loc+"' WHERE DEPTNO="+deptno;
-				String updateSQL = String.format("UPDATE DEPT SET DNAME='%s', LOC='%s' WHERE DEPTNO=%d",
-													dname, loc, deptno);
-				int result = stmt.executeUpdate(updateSQL);
-				if(result>0) {
-					System.out.println(deptno+"번 부서 수정 성공");
-				}
-			}else {
-				System.out.println(deptno + "번 부서는 유효한 부서번호가 아닙니다");
-			}
-		} catch (Exception e) {
+			int result = stmt.executeUpdate(sql);
+			System.out.println(result>0 ? deptno+ "번 부서 수정성공" : deptno+ "번 부서가 없어서 수정 실패");
+			
+		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(stmt!=null) stmt.close();
-				if(conn!=null) conn.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
+				if(stmt !=null) stmt.close();
+				if(conn !=null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 		}
 	}
 }
+
+
+
+
+

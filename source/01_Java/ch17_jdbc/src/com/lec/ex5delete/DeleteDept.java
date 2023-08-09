@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Scanner;
 
-//삭제하고자 하는 부서번호를 입력받아 delete
+// 삭제하고자 하는 부서번호를 입력받아 delete
 public class DeleteDept {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -28,13 +28,16 @@ public class DeleteDept {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		}finally {
+		} finally {
 			try {
-				if(conn!=null)conn.close();
 				if(stmt!=null)stmt.close();
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				if(conn!=null)conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
-		} //try-catch-finally
+		}
 	}
 }
+
+
+
