@@ -1,0 +1,38 @@
+20230810
+
+<HTML-II>
+1.form태그
+-action : 입력 데이터의 전달 위치를 지정
+-method: 입력 데이터의 전달 방식을 선택 
+-get : url에 포함되어 전송(query String 형식)
+-button : 버튼을 생성
+-checkbox : 체크박스을 생성
+-file : 파일 입력 양식을 생성
+-hidden : 보이지 않게 합니다.
+-image : 이미지 형태를 생성
+-password : 비밀번호 입력 양식을 생성
+-radio : 라디오 버튼을 생성
+-reset : 초기화 버튼을 생성
+-submit : 제출 버튼을 생성
+-text : 글자 입력 양식을 생성
+-autofocus : 포커스 자동 설정
+-placeholder : 각 필드에 대한 입력 형식 힌트제공
+-required : 필수 입력 필드
+-min, max : 숫자의 범위를 설정
+-pattern : 조건을 사용한 일반식 표시
+-사용자 인터페이스를 높이기 위한 label이용
+-Readonly hidden disabled
+
+2.공간분할태그(레이아웃태그)
+-div : block 형식으로 공간을 분할 . 하나의 블록형식의 태그므로 개행포함 ex)p, ul안의 li
+-span : inline 형식으로 공간을 분할
+
+3.div를 이용한 레이아웃
+
+4.시멘틱을 이용한 레이아웃
+-header : 해더
+-nav : 내비게이션
+-aside : 사이드에 위치하는 공간
+-section : 여러 중심 내용을 감싸는 공간
+-article : 글자가 많이 들어가는 부분
+-footer : 꼬리말
