@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style> 
+        *{ /*전체선택자:페이지 초기화 용도, 전체 페이지 디자인을 초기화*/
+           margin:0;/*밖여백 위 우 하 좌*/
+           padding:0;/*안여백 위 우 하 좌*/
+           color:saddlebrown;
+        }
+        header, nav, section, footer{
+            border:1px solid gray;
+            width:500px;/*가로사이즈(블록형태에서 width를 지정하지 않으면 부모의 width를 다 씀*/
+            margin:2px auto; /*좌우 여백을 자동으로 나눔*/
+        }
+        nav ul{/*수평으로 하고 픈 태그의 부모단*/
+            overflow:hidden;
+        }
+        nav ul li{/*block 타입의 태그를 수평으로*/
+            float:left;
+            list-style:none;
+            margin:10px 26px;
+        }
+        section{/*float:lefe 속성을 clear. 부모단에서 overflow:hidden을 했으면 생략가능*/
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>00 주식회사</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>회사소개</li><li>서비스 소개</li><li>고객센터</li><li>공지사항</li>
+        </ul>
+    </nav>
+     <section>
+        <p>
+                무덤 아직 했던 속의 어머님, 별 듯합니다. 벌써 노루, 별 그리고 하나에 딴은 위에도 경, 다하지 거외다. 나는 슬퍼하는 지나가는 파란 이름을 오는 거외다. 한 파란 헤는 별 써 별빛이 멀듯이, 속의 시와 있습니다.
+        </p>
+     </section>
+    <footer>
+        <p>서울시 서대문구 신촌로 114, 2F(대현동, 은하빌딩)</p>
+    </footer>
+</body>
+</html>

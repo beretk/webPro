@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid gray;
+        }
+            #wrap > #header { /* 자손선택자 */
+                overflow: hidden;
+            }
+            #wrap #header .logo { /*후손선택자(자손선택자 포함) : space*/
+                float: left;
+                padding: 10px 30px 10px 150px; /* 상 우 하 좌*/
+            }
+            #wrap .title {
+                float: left;
+                padding: 20px 150px 10px 30px;
+            }
+        div p { /* 후손선택자(자손 포함) */
+            font-size: 20px;
+        }
+        div > p { /*자손선택자*/
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+            <div class="title">
+                <h2>OO 주식회사</h2>
+            </div>
+        </div> <!-- #header -->
+        <div id="content">
+            <p>
+                없이 하나에 이름과, 까닭입니다. 가난한 어머니 이름과, 묻힌 차 하나에 까닭입니다. 이름자 새워 나는 위에도 있습니다. 겨울이 가난한 이름과 아이들의 나의 라이너 옥 같이 듯합니다. 애기 소녀들의 북간도에 않은 벌레는 멀리 별을 어머니, 까닭입니다. 이런 북간도에 시인의 너무나 까닭입니다. 마리아 소학교 시와 어머니, 많은 지나고 된 이런 까닭이요, 있습니다. 많은 하나에 사랑과 별들을 않은 별 거외다. 못 시인의 오는 가을로 봄이 나의 우는 너무나 무엇인지 듯합니다. 언덕 위에 별 별 거외다.
+            </p>
+            <ul>
+                <li><p>계집애들의 많은 아름다운 잠, 별 있습니다. </p></li>
+                <li><p>계집애들의 많은 아름다운 잠, 별 있습니다. </p></li>
+                <li><p>계집애들의 많은 아름다운 잠, 별 있습니다. </p></li>
+            </ul>
+        </div> <!-- #content -->
+        <div id="footer">
+            <p>서울시 서대문구 대현동</p>
+        </div>
+    </div>
+</body>
+</html>
