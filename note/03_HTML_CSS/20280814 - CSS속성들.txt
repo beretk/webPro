@@ -1,0 +1,24 @@
+20230814
+
+<CSS속성들>
+
+1.CSS/CSS3 단위들 : em, %, px
+2.url()함수 : Background-img 속성의 속성값으로 많이 사용됨
+-background-image, 로컬 폰트 지정 
+3.display : 화면에 어떻게 보이는지를 설정하는 속성
+-inline, block, inline-block, none
+4.visibility 속성 : display 속성의 none속성값과 비교하여 이해합니다
+-visibility:hidden은 공간은 확보, 안보임
+-display:none은 공간도 사라짐
+5.opacity : 투명도를 조절하는 속성
+6.margin과 padding
+7.boxing-sizing : border를 box안으로
+8.border
+9.글자 관련된 속성들 : font-family(글꼴), font-size(크기), font-style(이탤릭체...), 
+		font-weight(진하게), line-height(행간격 조정용도나 세로축에 대한 정렬 용도), 
+		text-align(글자에 대한 정렬), text-decoration(간단한 글꼴 모양의 속성) 
+10.폰트(웹폰트, 로컬폰트, 시스템 폰트)
+-웹 폰트 : 인터넷만 연결되어 있다면, 다양한 폰트를 웹사이트 방문자에게 제공할 수 있도록 고안된 폰트
+ 웹사이트를 방문하는 순간, 웹 폰트를 다운받아 웹사이트를 구성 합니다.  (ex) http://fonts.google.com
+-로컬폰트 (무료다운: 구글이나 네이버 폰트, 그외 사이트)
+
