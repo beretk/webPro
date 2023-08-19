@@ -24,7 +24,7 @@
 -Readonly hidden disabled
 
 2.공간분할태그(레이아웃태그)
--div : block 형식으로 공간을 분할 . 하나의 블록형식의 태그므로 개행포함 ex)p, ul안의 li
+-div : block 형식으로 공간을 분할 . 하나의 블록형식의 태그이므로 개행포함 ex)p, ul안의 li
 -span : inline 형식으로 공간을 분할
 
 3.div를 이용한 레이아웃

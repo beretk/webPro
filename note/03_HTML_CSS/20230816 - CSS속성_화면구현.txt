@@ -1,0 +1,11 @@
+20230816
+
+<CSS속성들>
+
+1.float : position 속성과 함께 요소의 위치를 설정하기 위한 속성
+-left, right
+
+<화면구현연습>
+width, margin, padding, font-size, text align(lright, center), height, line-height, 
+font-weight, text-decoration, color, content(링크 선택자) 속성 등을 이용하여 화면구현 연습.
+
