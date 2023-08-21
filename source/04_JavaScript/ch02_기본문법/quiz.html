@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        let kor, eng;
+        do {
+            var korStr = prompt('국어 점수를 입력 하세요 :');
+            kor = Number(korStr);
+        } while (!korStr || isNaN(kor) || kor < 0 || kor > 100);
+       
+        do {
+            var engStr = prompt('영어 점수를 입력 하세요 :');
+            eng = Number(engStr);
+        } while (!engStr || isNaN(eng) || eng < 0 || eng > 100);
+        
+        var result = parseInt(kor) + parseInt(eng);
+        var average = result / 2;
+
+        document.write('국어 : ' + kor + '<br>');
+        document.write('영어 : ' + eng + '<br>');
+        document.write('평균 : ' + average + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
