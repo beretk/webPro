@@ -1,0 +1,20 @@
+20230823
+
+<JavaScript_함수>
+1.내부함수(목적: 충돌을 피하고자)
+-내부 함수 :함수내에 선언된 함수
+2.자기호출함수:함수의 충돌을 피하기 위한 방법(함수의 선언과 동시에 호출)
+-함수표현식을 이용한 자기호출함수
+-화살표 함수를 이용한 자기호출함수
+3.콜백함수
+-매개변수에 들어온 함수
+4.클로저함수
+-return된 함수
+5.타이머함수
+-setTimeout(function, millisecond) ; 일정시간 후 함수를 한번 실행
+-setInterval(function, millisecond) ; 일정시간마다 함수를 반복해서 실행
+-clearTimeout(id) ; setTimeout 중지
+-clearInterval(id); setInterval 중지
+6.인코딩/디코딩
+-인코딩해서 전송
+-받는측은 받은 데이터(인코딩된 데이터)를 디코딩해서 원본으로 해석
