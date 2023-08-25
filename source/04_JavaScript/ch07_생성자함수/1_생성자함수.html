@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*calss Student{
+            private String name;
+            public Student(String name){
+                this.name = name;
+            }
+        }
+        Student s = new Student("홍길동");
+        */
+        function Student(name, kor, mat, eng, sci){
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+            this.eng = eng;
+            this.sci = sci;
+            this.getSum = function(){
+                return this.kor + this.mat + this.eng + this.sci;
+            };
+            this.getAvg = function(){
+                return this.getSum() / 4;
+            };
+            this.toString = function(){
+                let output = '';
+                    for(let key in this){
+                        if(key !='getSum' && key != 'getAvg' && key != 'toString'){
+                            output += key + ":" + this[key] + '&nbsp;';
+                        }else if(key == 'getSum' || key == 'getAvg'){
+                            output += key.substring(3).toLowerCase() + ':' + this[key]() + ' &nbsp; ';
+                        }//if
+                    }//for
+                    return output;
+            }; // toString
+        } // 생성자 함수
+        // let s = new Student("홍길동",100,99,100,100);
+        // document.write(s + '<br>');
+        // document.write(s.constructor + '<br>'); //생성자 함수 
+        // document.write(alert); // 기본내장 함수의 소스는 못 보도록 막혀 있음
+        let students = [new Student("홍길동",99,98,97,99),
+                        new Student("박길동",89,88,97,90),
+                        new Student("윤길동",79,98,78,99),
+                        new Student("서길동",69,90,97,90),
+                        new Student("이길동",59,98,87,99),];
+        students.forEach(function(data, idx){
+            document.write(idx + '번째 : ' + students[idx] + '<br>');
+        });
+        document.write(students.length + '명');
+        students.pop();
+        document.write('<hr>삭제후<br>');
+        students.forEach(function(data, idx){
+            document.write(idx + '번째 : ' + students[idx] + '<br>');
+        });
+        document.write(students.length + '명');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

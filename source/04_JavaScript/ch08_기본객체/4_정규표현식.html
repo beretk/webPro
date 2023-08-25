@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--정규표현식(regex)
+        1. 참조(https://goo.gl/Hlntbd 위키백과)
+        2. 간략문법
+            \d(숫자와 매치,[0-9]=[0123456789] 와 동일)
+            \D(숫자가 아닌 것)
+            \w(영문자나 숫자,[a-zA-Z0-9]와 동일)
+            \W(영문자나 숫자가 아닌 문자)
+            .(\n을 제외한 문자 하나)
+            \.(.)
+            \-(-)
+            \[([)
+            \](])
+            {2,4} (2~4회 반복)
+            {m,n} (m~n회 반복, m<n)
+            + (1회 이상 반복)
+            * (0번 이상 반복)
+            ? (0번이나 1번 반복)
+            [가-힣] (한글)
+        3. 정규표현식 연습장 : https://regexr.com/, https://regexpal.com
+            ex1. 전화번호  [(]?[0-9]{2,3}[\-\.) ]?[0-9]{3,4}[\-\. ]?[0-9]{4}
+                    [(]?\d{2,3}[\-\.) ]?\d{3,4}[\-\. ]?\d{4}
+      ex2. 이메일  [a-zA-Z0-9]{2,}@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}
+                   \w{2,}@\w+(\.[a-zA-Z]+){1,2}
+      ex3. 주민번호 [0-9]{6}-[1-4][0-9]{6}
+      ex4. ip주소 (([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}
+            ([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])
+        -->
+    <script>
+        var str = 'abcd!abcd';
+        // 패턴
+        var patternNum = /[0-9]/; // 숫자패턴
+        var patternEngUp = /[A-Z]/; // 대문자알파벳패턴
+        var patternEngLo = /[a-z]/; // 소문자알파벳패턴
+        var patternEng = /[a-zA-Z]/; // 알파벳패턴
+        var patternKor = /[가-힣ㄱ-하-ㅣ]/; // 한글패턴
+        // 특수문자:/[~'!@#$%^&*()_-+={}[]|:;"'<>,.?/]/;-는 \-
+        //          [는 \[, ]는 \], \는 \\, .은 \., /는 \/
+        var patternSpc = /[~`!@#$%^&*()_\-+={}\[\]|\\:;"'<>,.?\/]/; // 특수문자 패턴
+        document.write('str에 숫자포함 여부 : ' + patternNum.test(str) + '<br>');
+        document.write('str에 대문자포함 여부 : ' + patternEngUp.test(str) + '<br>');
+        document.write('str에 소문자포함 여부 : ' + patternEngLo.test(str) + '<br>');
+        document.write('str에 한글포함 여부 : ' + patternKor.test(str) + '<br>');
+        document.write('str에 특수문자포함 여부 : ' + patternSpc.test(str) + '<br>');
+        
+        var email1 = 'hong@hong.co.kr';
+        var email2 = 'hong@hong';
+        var patternEmail = /^\w{2,}@\w+(\.[a-zA-Z]+){1,2}$/;
+        // str.match(정규표현식) : 정규표현식패턴과 일치하지 않을 경우 , null return
+        //                          일치하면, str을 return
+        document.write('email1 : ' + email1.match(patternEmail) + '<br>');
+        document.write('email2 : ' + email2.match(patternEmail) + '<br>');
+        if(email1.match(patternEmail)){
+            document.write('email1은 메일 형식과 일치합니다');
+        }else{
+            document.write('email1은 메일 형식과 불일치합니다');
+        }
+        if(email2.match(patternEmail)){
+            document.write('email2은 메일 형식과 일치합니다');
+        }else{
+            document.write('email2은 메일 형식과 불일치합니다');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
