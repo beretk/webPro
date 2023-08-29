@@ -1,0 +1,30 @@
+20230828
+
+<JavaScript_기본객체>
+1.location 객체와 history 객체
+-브라우저의 주소 표시줄과 관련된 객체(location 객체는 페이지를 이동할 때 많이 사용한다.)
+다음 네가지 방법으로 페이지를 이동할 수 있으나 assign() 메서드와 다르게 replace()메서드는 뒤로 가기 버튼을 사용할 수 없다.
+:location = ‘http://hanb.co.kr’;
+:location.href = ‘http://hanb.co.kr’;
+:location.assign(‘http://hanb.co.kr’);
+:location.replace(‘http://hanb.co.kr’);
+
+<JavaScript_문서객체모델>
+-넓은 의미로 HTML 페이지를 인식하는 방식이고 좁은 의미로 document객체와 관련된 객체의 집합
+1. 문서객체 모델 용어: 태그, 문서객체, 노드
+-문서객체:태그를 자바스크립트에서 이용할수 있는 객체로 만든 것
+2.문서객체 생성
+ 방법1) 1.h1태그 생성 2.textNode 생성 3.textNode를 h1에 연결(추가) 4.h1을 body에 추가
+ 방법2) 1.img태그 생성 2.src속성변경 3.img를 body에 추가
+ 방법3) innerHTML을 이용
+3.문서객체 가져오기
+ 1)id이용
+ 2)class이용:Elements
+ 3)name이용
+ 4)tag이용
+ 5,6)선택자 이용
+-document.querySelector(선택자) ; 선택자로 가장 처음 선택되는 문서 객체를 가져온다
+-document.querySelectorAll(선택자); 선택자로 선택되는 문서 객체를 배열로 가져옵니다
+
+4.문서객체 제거하기
+-removeChild(child)

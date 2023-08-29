@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var img;
+        window.onload = function(){
+            img = document.querySelector('img');
+        };
+        function onbtn (){
+            img.setAttribute('src', 'img/but2.gif');
+        };
+        function offbtn(){
+            img.setAttribute('src', 'img/but1.gif');
+        };
+    </script>
+</head>
+<body>
+    <img src="img/but1.gif" alt="mouse up" onmousedown="onbtn()" onmouseup="offbtn()">
+</body>
+</html>

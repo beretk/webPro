@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    table {width:280px; height: 100px; margin: 10px auto;}
+  </style>
+  <script>
+    var color = ['red', 'orange', 'yellow', 'green','blue','navy', 'violet', 'white'];
+    window.onload = function(){
+      var tds = document.querySelectorAll('td'); 
+      for(let idx in tds){
+        tds[idx].style = 'background-color:' + color[idx];
+      }
+    }
+    function bgChange(n){
+      document.body.style.backgroundColor = color[n];
+    }
+  </script>
+</head>
+<body>
+  <h4>중간예제 1. 마우스를 올리면 바탕화면의 색상이 바꿔요</h4>
+  <table>
+    <tr onmouseout="bgChange(7)">
+      <td onmouseover="bgChange(0)"></td>
+      <td onmouseover="bgChange(1)"></td>
+      <td onmouseover="bgChange(2)"></td>
+      <td onmouseover="bgChange(3)"></td>
+      <td onmouseover="bgChange(4)"></td>
+      <td onmouseover="bgChange(5)"></td>
+      <td onmouseover="bgChange(6)"></td>
+    </tr>
+  </table>
+</body>
+</html>
