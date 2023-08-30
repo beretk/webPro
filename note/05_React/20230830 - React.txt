@@ -1,0 +1,24 @@
+20230830
+
+<React_개념>
+1.객체의 얕은 복사 vs 깊은 복사
+2.단순 객체 생성
+3.생성자 함수를 이용한 객체 생성
+4.class를 이용한 객체 생성
+-생성자 함수의 이름은 무조건 constructor
+5.class를 이용한 상속
+6.객체의 상속
+7.매개변수 초기화 값
+
+<React_환경설정>
+1.실습 준비
+ttps://reactjs.org/ 에서 Get Started -> Create a New React App의 learn how 클릭
+      Toolchains 사용 (https://github.com/facebook/create-react-app )
+-npm install –g create-react-app 명령어를 cmd관리자권한에서 실행 : 어디서나 global하게
+         create-react-app 가능(npm install tar@6 –g로 tar version을 업그레이드)
+-Create-react-app –V 로 버전 확인
+-npm(node pakage manager)과 npx의 차이는 npm은 한번 설치. 
+ Npx는 임시로 설치해서 사용하고 지운다. 
+2.개발환경 구축
+-소스 폴더를 만들어 그 폴더에서 cmd 창에서 create-react-app . 실행
+-폴더를 vs code에서 실행 : npm run start 또는 npm start 
