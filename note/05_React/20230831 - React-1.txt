@@ -1,0 +1,12 @@
+20230831
+
+<React_Component 생성>
+1.컴포넌트 생성
+-크롬 웹스토어에서 React Developer Tools 확장 프로그램 설치 : react 상의 컴포넌트를 볼 수 있음
+2.컴포넌트를 파일로 분리
+2.태그분리 하기
+-Props : 사용자 입장에서 compoent를 사용할 때 필요한 데이터
+-State : props값에 따라 내부에서 구현에 필요한 데이터
+*props나 state가 바뀌면 render가 다시 실행(화면이 다시 그려짐)
+-debugger; //잠깐 멈춰 모니터링 목적
+

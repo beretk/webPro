@@ -1,0 +1,26 @@
+20230901
+
+<React_CRUD>
+-C : Create
+-R : Read
+-U : Update
+-D : Delete
+
+-TOC에 뿌려질 this.state.contents가 바뀌지 않으면 TOC는 다시 render하지 않도록 ,
+ 업그레이드(shouldComponentUpdate 함수 이용) : 조그만 app의 경우 push나 concat의 차이를 느끼지 못할 수 있음.
+-app을 확장할 경우도 있으므로 push(원본수정)보다 concat(복제본 수정)을 사용 추천
+
+-배열은 from함수 이용하여 배열 복제
+ var a = [1,2];
+ var b = Array.from(a);
+ a === b;는 결과가 false
+
+-객체는 Object.assign 함수 이용하여 객체 복제
+ var a = {name:’홍’, age:20}
+ var b = Object.assign( {}, a); // a 객체 복제
+ b.name = ‘김’;
+ a, b
+ v ar c = Object.assign({address:’서울’}, a);
+
+-Update 구현 : Read 기능과 Create 기능 결합
+*(https://reactjs.org/docs/forms.html 참조)

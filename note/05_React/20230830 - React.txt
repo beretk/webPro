@@ -22,3 +22,5 @@
 2.개발환경 구축
 -소스 폴더를 만들어 그 폴더에서 cmd 창에서 create-react-app . 실행
 -폴더를 vs code에서 실행 : npm run start 또는 npm start 
+
+
