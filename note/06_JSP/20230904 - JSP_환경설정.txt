@@ -1,0 +1,27 @@
+20230904
+
+<JSP_환경설정>
+1.JEE설치
+*www.eclipse.org에서 Eclips IDE for EE Developers 다운로드
+-Java Resource-src 폴더: 서블릿과 자바 소스 파일이 위치해야 하는 디렉토리
+-WebContent 폴더: 서블릿과 자바 소스 파일을 제외한 모든 파일이 위치해야 하는 디렉토리
+-WebContent-META-INF 폴더: 리소스 설정에 관련된 파일(context.xml)이 위치
+-WebContent-WEB-INF 폴더: 웹 애플리케이션 설정에 관련된 파일(web.xml)이 위치
+-WebContent-WEB-INF-classes: 컴파일 된 서블릿 클래스나 자바 클래스들이 위치
+-WebContent-WEB-INF-lib: 참조해야 하는 라이브러리(jar) 파일들이 위치
+
+2.Tomcat설치
+*http://tomcat.apache.org에서 Tomcat 9.0.x zip 다운로드
+­
+3.Tomcat 환경 설정
+*이클립스 연동 : No server are available. Click this link to….. 이용하여 server 생성
+-Tomcat v9.0 Server at localhost [Stopped, Republish] 생성
+-Tomcat v9.0 Server at localhost [Stopped, Republish] 더블클릭
+-Server Locations  - use Tomcat (takes control to Tomcat installation)체크
+-Server Options – Publish module contexts to separate XML files도 체크
+-Server Options – Modules auto reload by default도 체크
+-Ports
+:http/1.1 Port number 8090
+*0~1023은 예약된 포트.1024~65535중 사용하지 않는 포트번호 지정
+*­Tomcat 서버 start
+­-서버 구동 확인  http://localhost:8090 or http://127.0.0.1:8090 
