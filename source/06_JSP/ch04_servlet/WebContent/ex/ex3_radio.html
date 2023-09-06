@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function() {
+			document.getElementsByTagName('form')[0].onsubmit = function(){
+				var agreeYes = document.querySelector('input[type="radio"]');
+				// var agreeYes = document.getElementsByName('agree')[0];
+				if(! agreeYes.checked){
+					alert('동의하셔야 진행 가능합니다');
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<fieldset>
+		<legend>약관</legend>
+			국무회의는 정부의 권한에 속하는 중요한 정책을 심의한다. 대통령은 국가의 독립·영토의 보전·국가의 계속성과 헌법을 수호할 책무를 진다. 
+	</fieldset>
+	<form action="../Ex2">
+		<p>
+			<input type="radio" name="agree" value="yes">동의합니다<br>
+			<input type="radio" name="agree" value="no" checked="checked">동의하지 않습니다
+		</p>
+		<input type="submit" value="다음">
+	</form>
+</body>
+</html>
