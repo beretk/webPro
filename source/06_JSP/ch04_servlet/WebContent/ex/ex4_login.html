@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script></script>
+</head>
+<body>
+	<form action="" method="get">
+		<h1>회원가입</h1>
+		<hr>
+		<table>
+			<tr><td>이름</td><td><input type="text" name="name"></td></tr>
+			<tr><td>아 이 디</td><td><input type="text" name="id" /></td></tr>
+		   <tr><td>비밀번호</td><td><input type="password" name="pw" /></td></tr>
+		   <tr><td>비밀번호확인</td><td><input type="password" name="pwchk" /></td></tr>
+		   <tr><td>생년월일</td><td><input type="date" name="date"></td></tr>
+		</table>
+		   <p>
+				취미 : <input type="checkbox" name="hoby" value="독서">독서
+					  <input type="checkbox" name="hoby" value="요리">요리
+					  <input type="checkbox" name="hoby" value="운동">운동
+					  <input type="checkbox" name="hoby" value="취침">취침
+		   </p>
+		   <p>
+				성별 : <input type="radio" name="gender" value="남자" checked="checked">남자
+					  <input type="radio" name="gender" value="여자">여자
+		   </p>
+		   <table>
+		   	<tr><td>이메일</td><td><input type="text" name="mail"></td></tr>		   
+		   	<p>
+		   		메일수신 : <select name="mail" multiple="multiple" size="3">
+		   					<option value="배송">광고</option>
+		   					<option value="배송">배송</option>
+		   					<option value="공지">공지</option>		   		
+		   				 </select>		   	
+		   </table>
+		   <th colspan="3">
+		      <input type="submit" value="가입하기" />
+		      <input type="submit" value="다시하기" />
+		      <input type="submit" value="뒤로가기" />
+		   </th>			
+		
+	</form>
+</body>
+</html>
