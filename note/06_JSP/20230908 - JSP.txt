@@ -1,9 +1,9 @@
 20230908
 
-*eclipse > Run > Run Configurations > Apache Tomcat > Tomcat v9.0 Server >
- Arguiments > 
- Program arguments에 "-Djava.net.preferIPv4Stack=true" 입력
- VM arguments:에 "-Djava.net.preferIPv4Stack=true" 입력
+ip번호(IPv6 - IPv4)
+★eclipse > Run > Run Configurations > Apache Tomcat > Tomcat v9.0 Server > Arguiments > 
+ -Program arguments에 "-Djava.net.preferIPv4Stack=true" 입력
+ -VM arguments:에 "-Djava.net.preferIPv4Stack=true" 입력
 
 1.내부 객체
 -request 객체 : 웹브라우저를 통해 서버에 어떤 정보를 요청하는 것을 request라 하며, 이러한 요청 정보는 request 내부객체가 관리한다. 
@@ -14,6 +14,7 @@
 <h2>세션 객체 : ★<%= request.getSession() %></h2>
 <h2>요청 URL : <%= request.getRequestURL() %></h2>
 <h2>요청 URI : ★<%= request.getRequestURI() %></h2>
+
 
 
 
