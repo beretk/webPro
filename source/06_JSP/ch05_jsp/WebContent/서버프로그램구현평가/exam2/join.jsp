@@ -6,46 +6,6 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="join.css" rel="stylesheet" type="text/css">
-	<script>
-	window.onload = function(){
-		document.querySelector('form').onsubmit = function(){
-			var pw = document.getElementById('pw');
-			var pwChk = document.getElementById('pwChk');
-			var patternEmail = /^[a-zA-Z0-9_\.]{2,}@\w+(\.[a-zA-Z]+){1,2}$/;// macth함수 사용
-			var email = document.getElementById('email');
-			var hobby = document.getElementsByName('hobby');
-			var mailSend = document.querySelector('select[name="mailSend"]');
-			var mailOption = mailSend.querySelectorAll('option');
-			if(pw.value != pwChk.value){
-				alert('비밀번호를 확인하세요');
-				pw.value = '';
-				pwChk.value = '';
-				pw.focus();
-				return false;
-			}else	if(email.value && !email.value.match(patternEmail)){
-	      alert('메일 형식을 확인하세요');
-	      email.focus();
-	      return false;
-	    }/*else if(!hobby[0].checked && !hobby[1].checked && !hobby[2].checked && !hobby[3].checked){
-	    	alert('취미를 억지로라도 한가지 이상 선택해 주세요');
-				return false;
-			}else if(!mailOption[0].selected && !mailOption[1].selected 
-				&& !mailOption[2].selected && !mailOption[3].selected ){
-				alert('메일수신을 한가지 이상 선택해 주세요');
-				return false;
-			}*/
-			/* 바로 위의 if문을 아래로 변경 가능() 
-			var mailOptionCnt = 0;
-			for(var i=0 ; i<mailOption.length ; i++){
-				mailOptionCnt += mailOption[i].selected;
-			}
-			if(!mailOptionCnt){
-				alert('메일수신을 한가지 이상 선택해 주세요');
-				return false;
-			} */
-		};
-	};
-	</script>
 </head>
 <body>
 	<div id="joinForm_wrap">
@@ -110,7 +70,7 @@
 						<select name="mailSend" multiple="multiple" class="mailSend">
 							<option value="광고">광고</option>
 							<option value="배송">배송</option>
-							<option value="공지" selected="selected">공지</option>
+							<option value="공지">공지</option>
 							<option value="문자">문자</option>
 						</select>
 					</td>
