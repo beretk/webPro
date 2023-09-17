@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 body { 
 	background-color: #FFF0B5; 
 	font-size: 9pt;
@@ -14,8 +14,4 @@ h2, b{text-align: center; color:red;}
 a { text-decoration: none; color:black}
 .left{text-align: left;}
 .paging {text-align: center;}
-input:not(.btn), textarea {
-	width: 90%;
-	outline:none;
-}
-p{text-align: center;}
+p {text-align:  center;}

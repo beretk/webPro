@@ -1,22 +1,22 @@
 -- [VII] DDL, DML, DCL
--- SQL = DDL(Å×ÀÌºí »ý¼º, Å×ÀÌºí »èÁ¦, Å×ÀÌºí ±¸Á¶ º¯°æ, Å×ÀÌºíÀÇ ¸ðµç µ¥ÀÌÅÍÁ¦°Å) + 
+-- SQL = DDL(í…Œì´ë¸” ìƒì„±, í…Œì´ë¸” ì‚­ì œ, í…Œì´ë¸” êµ¬ì¡° ë³€ê²½, í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ì œê±°) + 
 --       DML(SELECT, INSERT, UPDATE, DELETE) + 
---       DCL(»ç¿ëÀÚ°èÁ¤ »ý¼º, »ç¿ëÀÚ¿¡°Ô ±ÇÇÑºÎ¿©, ±ÇÇÑ¹ÚÅ», »ç¿ëÀÚ°èÁ¤ »èÁ¦, Æ®·£Á§¼Ç¸í·É¾î)
+--       DCL(ì‚¬ìš©ìžê³„ì • ìƒì„±, ì‚¬ìš©ìžì—ê²Œ ê¶Œí•œë¶€ì—¬, ê¶Œí•œë°•íƒˆ, ì‚¬ìš©ìžê³„ì • ì‚­ì œ, íŠ¸ëžœì ì…˜ëª…ë ¹ì–´)
 
--- ¡Ú¡Ú¡ÚDDL¡Ú¡Ú¡Ú
--- 1. Å×ÀÌºí »ý¼º(CREATE TABLE Å×ÀÌºí¸í ....) : Å×ÀÌºí ±¸Á¶¸¦ Á¤ÀÇ
+-- â˜…â˜…â˜…DDLâ˜…â˜…â˜…
+-- 1. í…Œì´ë¸” ìƒì„±(CREATE TABLE í…Œì´ë¸”ëª… ....) : í…Œì´ë¸” êµ¬ì¡°ë¥¼ ì •ì˜
 CREATE TABLE BOOK (
-    BOOKID    NUMBER(4), -- BOOKID ÇÊµåÀÇ Å¸ÀÔÀº ¼ýÀÚ4ÀÚ¸®
-    BOOKNAME  VARCHAR2(20), -- BOOKNAME ÇÊµåÀÇ Å¸ÀÔÀº ¹®ÀÚ 20BYTE ; ÃÖ´ë 4000BYTE ±îÁö °¡´É
-    PUBLISHER VARCHAR2(20), -- PUBLISHER ÇÊµåÀÇ Å¸ÀÔÀº ¹®ÀÚ 20BYTE
-    RDATE     DATE,         -- RDATE ÇÊµåÀÇ Å¸ÀÔÀº DATE
-    PRICE     NUMBER(7,2),  -- PRICE ÇÊµåÀÇ Å¸ÀÔÀº ¼ýÀÚ ÀüÃ¼ 7ÀÚ¸®. ¼Ò¼öÁ¡ÀÌÇÏ´Â 2ÀÚ¸®, ¼Ò¼öÁ¡¾Õ 5ÀÚ¸®
-    PRIMARY KEY(BOOKID)     -- Á¦¾àÁ¶°Ç : BOOKIDÇÊµå°¡ PRIMARY KEY(ÁÖÅ°) : UNIQUE, NOT NULL
+    BOOKID    NUMBER(4), -- BOOKID í•„ë“œì˜ íƒ€ìž…ì€ ìˆ«ìž4ìžë¦¬
+    BOOKNAME  VARCHAR2(20), -- BOOKNAME í•„ë“œì˜ íƒ€ìž…ì€ ë¬¸ìž 20BYTE ; ìµœëŒ€ 4000BYTE ê¹Œì§€ ê°€ëŠ¥
+    PUBLISHER VARCHAR2(20), -- PUBLISHER í•„ë“œì˜ íƒ€ìž…ì€ ë¬¸ìž 20BYTE
+    RDATE     DATE,         -- RDATE í•„ë“œì˜ íƒ€ìž…ì€ DATE
+    PRICE     NUMBER(7,2),  -- PRICE í•„ë“œì˜ íƒ€ìž…ì€ ìˆ«ìž ì „ì²´ 7ìžë¦¬. ì†Œìˆ˜ì ì´í•˜ëŠ” 2ìžë¦¬, ì†Œìˆ˜ì ì•ž 5ìžë¦¬
+    PRIMARY KEY(BOOKID)     -- ì œì•½ì¡°ê±´ : BOOKIDí•„ë“œê°€ PRIMARY KEY(ì£¼í‚¤) : UNIQUE, NOT NULL
 );
 SELECT * FROM BOOK;
 DESC BOOK;
 
-DROP TABLE BOOK; -- Å×ÀÌºí »èÁ¦
+DROP TABLE BOOK; -- í…Œì´ë¸” ì‚­ì œ
 CREATE TABLE BOOK(
     BOOKID    NUMBER(4) PRIMARY KEY,
     BOOKNAME  VARCHAR2(20), 
@@ -24,14 +24,14 @@ CREATE TABLE BOOK(
     RDATE     DATE,         
     PRICE     NUMBER(7,2)
 );
- -- DEPT01 : DEPTNO(¼ö2:PK),
+ -- DEPT01 : DEPTNO(ìˆ˜2:PK),
 CREATE TABLE DEPT01 (
     DEPTNO NUMBER(2) PRIMARY KEY,
     DNAME  VARCHAR2(14),
     LOC    VARCHAR2(13)
 );
     SELECT * FROM DEPT01;
-    -- EMP01 : EMPNO(¼ö4:PKÁÖÅ°), ENAME(¹®ÀÚ10), SAL(¼ö7,2), DEPTNO(¼ö2:FK¿Ü·¡Å°)
+    -- EMP01 : EMPNO(ìˆ˜4:PKì£¼í‚¤), ENAME(ë¬¸ìž10), SAL(ìˆ˜7,2), DEPTNO(ìˆ˜2:FKì™¸ëž˜í‚¤)
     CREATE TABLE EMP01(
      EMPNO NUMBER(4) PRIMARY KEY,
      ENAME VARCHAR2(10),
@@ -40,98 +40,98 @@ CREATE TABLE DEPT01 (
 );
     SELECT * FROM EMP01;
 
-    -- ¼­ºêÄõ¸®¸¦ ÀÌ¿ëÇÑ Å×ÀÌºí »ý¼º(BACKUP¿ëµµ·Î »ç¿ë)
+    -- ì„œë¸Œì¿¼ë¦¬ë¥¼ ì´ìš©í•œ í…Œì´ë¸” ìƒì„±(BACKUPìš©ë„ë¡œ ì‚¬ìš©)
         -- EMP02 == EMP
     CREATE TABLE EMP02
         AS
-        SELECT * FROM EMP; -- ¼­ºêÄõ¸® °á°ú·Î EMP02Å×ÀÌºí »ý¼ºÈÄ µ¥ÀÌÅÍ·Î µé¾î°¨(Á¦¾àÁ¶°Ç ¹ÌÆ÷ÇÔ)
+        SELECT * FROM EMP; -- ì„œë¸Œì¿¼ë¦¬ ê²°ê³¼ë¡œ EMP02í…Œì´ë¸” ìƒì„±í›„ ë°ì´í„°ë¡œ ë“¤ì–´ê°(ì œì•½ì¡°ê±´ ë¯¸í¬í•¨)
     SELECT * FROM EMP02;
-        -- EMP03 == EMPÀÇ Æ¯Á¤ ÇÊµå
+        -- EMP03 == EMPì˜ íŠ¹ì • í•„ë“œ
     CREATE TABLE EMP03
         AS
-        SELECT EMPNO, ENAME, DEPTNO FROM EMP; -- EMP Å×ÀÌºíÀÇ EMPNO, ENAME, DEPTNO¸¸ ÃßÃâÇÑ µ¥ÀÌÅÍ°¡ EMP03
+        SELECT EMPNO, ENAME, DEPTNO FROM EMP; -- EMP í…Œì´ë¸”ì˜ EMPNO, ENAME, DEPTNOë§Œ ì¶”ì¶œí•œ ë°ì´í„°ê°€ EMP03
     SELECT * FROM EMP03;
-        -- EMP04 == EMPÀÇ Æ¯Á¤Çà
+        -- EMP04 == EMPì˜ íŠ¹ì •í–‰
     CREATE TABLE EMP04
         AS
-        SELECT * FROM EMP WHERE DEPTNO=10; -- EMP¿¡¼­ 10¹ø ºÎ¼­ÀÇ µ¥ÀÌÅÍ¸¸ ÃßÃâÇØ¼­ EMP04
+        SELECT * FROM EMP WHERE DEPTNO=10; -- EMPì—ì„œ 10ë²ˆ ë¶€ì„œì˜ ë°ì´í„°ë§Œ ì¶”ì¶œí•´ì„œ EMP04
     SELECT * FROM EMP04;
-        -- EMP05 == EMPÀÇ ±¸Á¶¸¸ ÃßÃâ(µ¥ÀÌÅÍ ÃßÃâÇÏÁö ¾ÊÀ½)
+        -- EMP05 == EMPì˜ êµ¬ì¡°ë§Œ ì¶”ì¶œ(ë°ì´í„° ì¶”ì¶œí•˜ì§€ ì•ŠìŒ)
     CREATE TABLE EMP05
         AS
         SELECT * FROM EMP WHERE 1=0;
     SELECT * FROM EMP05;
-    SELECT ROWNUM, EMPNO, ENAME FROM EMP; -- ROWNUM : Å×ÀÌºí¿¡¼­ ÇàÀÇ ÀÐ¾îµéÀÎ ¼ø¼­
+    SELECT ROWNUM, EMPNO, ENAME FROM EMP; -- ROWNUM : í…Œì´ë¸”ì—ì„œ í–‰ì˜ ì½ì–´ë“¤ì¸ ìˆœì„œ
 
--- 2. Å×ÀÌºí ±¸Á¶º¯°æ ( ALTER TABLE Å×ÀÌºíÀÌ¸§ ADD || MODIFY || DROP ~)
--- (1)ÇÊµåÃß°¡(ADD)
-SELECT * FROM EMP03; -- EMPNO¼ýÀÚ4, ENAME(¹®ÀÚ10), DEPTNO(¼ýÀÚ2)
+-- 2. í…Œì´ë¸” êµ¬ì¡°ë³€ê²½ ( ALTER TABLE í…Œì´ë¸”ì´ë¦„ ADD || MODIFY || DROP ~)
+-- (1)í•„ë“œì¶”ê°€(ADD)
+SELECT * FROM EMP03; -- EMPNOìˆ«ìž4, ENAME(ë¬¸ìž10), DEPTNO(ìˆ«ìž2)
 ALTER TABLE EMP03 ADD (JOB VARCHAR2(20), SAL NUMBER(7));
-SELECT * FROM EMP03; -- Ãß°¡µÈ ÇÊµå´Â NULL µ¥ÀÌÅÍ·Î Ã¤¿öÁü
--- (2) ÇÊµå¼öÁ¤ (MODIFY)
-ALTER TABLE EMP03 MODIFY(EMPNO VARCHAR2(4)); -- ¼ýÀÚ µ¥ÀÌÅÍ°¡ µé¾îÀÖ´Â ¼ýÀÚ·Î¸¸ º¯°æ °¡´É(¼ýÀÚº¸´Ù Å« »çÀÌÁî·Î¸¸)
+SELECT * FROM EMP03; -- ì¶”ê°€ëœ í•„ë“œëŠ” NULL ë°ì´í„°ë¡œ ì±„ì›Œì§
+-- (2) í•„ë“œìˆ˜ì • (MODIFY)
+ALTER TABLE EMP03 MODIFY(EMPNO VARCHAR2(4)); -- ìˆ«ìž ë°ì´í„°ê°€ ë“¤ì–´ìžˆëŠ” ìˆ«ìžë¡œë§Œ ë³€ê²½ ê°€ëŠ¥(ìˆ«ìžë³´ë‹¤ í° ì‚¬ì´ì¦ˆë¡œë§Œ)
 ALTER TABLE EMP03 MODIFY(EMPNO NUMBER(5));
-ALTER TABLE EMP03 MODIFY(JOB NUMBER(5)); -- NULL ÇÊµå´Â ¸¶À½´ë·Î ¼öÁ¤ °¡´É
-SELECT MAX(LENGTH(ENAME)) FROM EMP03; -- EMP03ÀÇ ENAMEÀº 6±ÛÀÚ°¡ ÃÖÀå±æÀÌ
-ALTER TABLE EMP03 MODIFY(ENAME VARCHAR2(6)); -- ¹®ÀÚµ¥ÀÌÅÍ¸¦ ´Ã¸®°Å³ª ÁÙÀÌ´Âµ¥´Â ±âÁ¸ µ¥ÀÌÅÍ¿¡ µû¶ó °¡´É
--- (3) ÇÊµå »èÁ¦ (DROP)
-ALTER TABLE EMP03 DROP COLUMN JOB; -- JOB ÇÊµå »èÁ¦
+ALTER TABLE EMP03 MODIFY(JOB NUMBER(5)); -- NULL í•„ë“œëŠ” ë§ˆìŒëŒ€ë¡œ ìˆ˜ì • ê°€ëŠ¥
+SELECT MAX(LENGTH(ENAME)) FROM EMP03; -- EMP03ì˜ ENAMEì€ 6ê¸€ìžê°€ ìµœìž¥ê¸¸ì´
+ALTER TABLE EMP03 MODIFY(ENAME VARCHAR2(6)); -- ë¬¸ìžë°ì´í„°ë¥¼ ëŠ˜ë¦¬ê±°ë‚˜ ì¤„ì´ëŠ”ë°ëŠ” ê¸°ì¡´ ë°ì´í„°ì— ë”°ë¼ ê°€ëŠ¥
+-- (3) í•„ë“œ ì‚­ì œ (DROP)
+ALTER TABLE EMP03 DROP COLUMN JOB; -- JOB í•„ë“œ ì‚­ì œ
 SELECT * FROM EMP03;
 ALTER TABLE EMP03 DROP COLUMN DEPTNO;
 
--- 3. Å×ÀÌºí »èÁ¦ (DROP TABLE Å×ÀÌºí¸í)
+-- 3. í…Œì´ë¸” ì‚­ì œ (DROP TABLE í…Œì´ë¸”ëª…)
 DROP TABLE EMP01;
 SELECT * FROM EMP01;
-DROP TABLE DEPT; -- EMPÅ×ÀÌºí¿¡¼­ DEPTÀÇ DEPTNO¸¦ ÂüÁ¶ÇÏ´Â °æ¿ì EMPÅ×ÀÌºíÀ» »èÁ¦ÇÑ ÈÄ DEPT¸¦ »èÁ¦
+DROP TABLE DEPT; -- EMPí…Œì´ë¸”ì—ì„œ DEPTì˜ DEPTNOë¥¼ ì°¸ì¡°í•˜ëŠ” ê²½ìš° EMPí…Œì´ë¸”ì„ ì‚­ì œí•œ í›„ DEPTë¥¼ ì‚­ì œ
 
--- 4. Å×ÀÌºíÀÇ ¸ðµç ÇàÀ» Á¦°Å(TRUNCATE TABLE Å×ÀÌºí¸í)
+-- 4. í…Œì´ë¸”ì˜ ëª¨ë“  í–‰ì„ ì œê±°(TRUNCATE TABLE í…Œì´ë¸”ëª…)
 SELECT * FROM EMP03;
-TRUNCATE TABLE EMP03; -- ROLLBACK ºÒ°¡
+TRUNCATE TABLE EMP03; -- ROLLBACK ë¶ˆê°€
 SELECT * FROM EMP03;
 
--- 5. Å×ÀÌºí¸íº¯°æ (RENAME Å×ÀÌºí¸í TO ¹Ù²ÜÅ×ÀÌºí¸í)
+-- 5. í…Œì´ë¸”ëª…ë³€ê²½ (RENAME í…Œì´ë¸”ëª… TO ë°”ê¿€í…Œì´ë¸”ëª…)
 SELECT * FROM EMP02;
 RENAME EMP02 TO EMP2;
 SELECT * FROM EMP2;
 
--- 6. µ¥ÀÌÅÍ µñ¼Å³Ê¸®(µ¥ÀÌÅÍº£ÀÌ½º ÀÚ¿øÀ» È¿À²ÀûÀ¸·Î °ü¸®ÇÏ±â À§ÇÑ ½Ã½ºÅÛ Å×ÀÌºí : Á¢±ÙºÒ°¡)
+-- 6. ë°ì´í„° ë”•ì…”ë„ˆë¦¬(ë°ì´í„°ë² ì´ìŠ¤ ìžì›ì„ íš¨ìœ¨ì ìœ¼ë¡œ ê´€ë¦¬í•˜ê¸° ìœ„í•œ ì‹œìŠ¤í…œ í…Œì´ë¸” : ì ‘ê·¼ë¶ˆê°€)
 --        VS
--- µ¥ÀÌÅÍ µñ¼Å³Ê¸® ºä(Á¢±Ù°¡´É)ÀÇ Á¾·ù
--- (1) USER_XXX : Çö °èÁ¤¿¡¼­ ¼ÒÀ¯ÇÏ°í ÀÖ´Â °´Ã¼(Å×ÀÌºí, Á¦¾àÁ¶°Ç, ºä, ÀÎµ¦½º)
+-- ë°ì´í„° ë”•ì…”ë„ˆë¦¬ ë·°(ì ‘ê·¼ê°€ëŠ¥)ì˜ ì¢…ë¥˜
+-- (1) USER_XXX : í˜„ ê³„ì •ì—ì„œ ì†Œìœ í•˜ê³  ìžˆëŠ” ê°ì²´(í…Œì´ë¸”, ì œì•½ì¡°ê±´, ë·°, ì¸ë±ìŠ¤)
 SELECT * FROM USER_TABLES;
 SELECT * FROM USER_CONSTRAINTS;
 SELECT * FROM USER_VIEWS;
 SELECT * FROM USER_INDEXES;
--- (2) ALL_XXX : Çö °èÁ¤¿¡¼­ Á¢±Ù°¡´ÉÇÑ °´Ã¼(Å×ÀÌºí, Á¦¾àÁ¶°Ç, ºä, ÀÎµ¦½º)
+-- (2) ALL_XXX : í˜„ ê³„ì •ì—ì„œ ì ‘ê·¼ê°€ëŠ¥í•œ ê°ì²´(í…Œì´ë¸”, ì œì•½ì¡°ê±´, ë·°, ì¸ë±ìŠ¤)
 SELECT * FROM ALL_TABLES;
 SELECT * FROM ALL_CONSTRAINTS;
 SELECT * FROM ALL_VIEWS;
 SELECT * FROM ALL_INDEXES;
--- (3) DBA_XXX : DBA±ÇÇÑ¿¡¼­¸¸ Á¢±Ù °¡´É DBMSÀÇ ¸ðµç °´Ã¼(Å×ÀÌºí, Á¦¾àÁ¶°Ç, ºä, ÀÎµ¦½º)
+-- (3) DBA_XXX : DBAê¶Œí•œì—ì„œë§Œ ì ‘ê·¼ ê°€ëŠ¥ DBMSì˜ ëª¨ë“  ê°ì²´(í…Œì´ë¸”, ì œì•½ì¡°ê±´, ë·°, ì¸ë±ìŠ¤)
 SELECT * FROM DBA_TABLES;
 SELECT * FROM DBA_CONSTRAINTS;
 SELECT * FROM DBA_VIEWS;
 SELECT * FROM DBA_INDEXES;
 
--- ¡Ú¡Ú¡ÚDML¡Ú¡Ú¡Ú
--- 1. INSERT INTO Å×ÀÌºí¸í VALUES (°ª1, °ª2, ...);
--- INSERT INTO Å×ÀÌºí¸í(ÇÊµå1, ÇÊµå2, ..) VALUES (°ª1, °ª2,...);
+-- â˜…â˜…â˜…DMLâ˜…â˜…â˜…
+-- 1. INSERT INTO í…Œì´ë¸”ëª… VALUES (ê°’1, ê°’2, ...);
+-- INSERT INTO í…Œì´ë¸”ëª…(í•„ë“œ1, í•„ë“œ2, ..) VALUES (ê°’1, ê°’2,...);
 SELECT * FROM DEPT01;
 INSERT INTO DEPT01 VALUES(50, 'ACCOUNTING', 'SEOUL');
-INSERT INTO DEPT01 VALUES(60, 'SALES', NULL); -- ¸í½ÃÀûÀ¸·Î NULL Ãß°¡
-INSERT INTO DEPT01 (DEPTNO, LOC, DNAME) VALUES(70, '¼­´ë¹®' ,'RESEARCH'); 
-INSERT INTO DEPT01 (DEPTNO, DNAME) VALUES (80, 'IT'); -- ¹¬½ÃÀûÀ¸·Î NULLÃß°¡(¸í½ÃµÇÁö ¾ÊÀº ÇÊµå°ªÀº NULL)
+INSERT INTO DEPT01 VALUES(60, 'SALES', NULL); -- ëª…ì‹œì ìœ¼ë¡œ NULL ì¶”ê°€
+INSERT INTO DEPT01 (DEPTNO, LOC, DNAME) VALUES(70, 'ì„œëŒ€ë¬¸' ,'RESEARCH'); 
+INSERT INTO DEPT01 (DEPTNO, DNAME) VALUES (80, 'IT'); -- ë¬µì‹œì ìœ¼ë¡œ NULLì¶”ê°€(ëª…ì‹œë˜ì§€ ì•Šì€ í•„ë“œê°’ì€ NULL)
 SELECT * FROM DEPT01;
-COMMIT; -- Æ®·£Á§¼Ç ¸í·É¾î(DML¸í·É¾î¸¸ Àû¿ë) : µ¥ÀÌÅÍ Ã³¸®¸¦ À§ÇÑ ÇÑ ´ÜÀ§
-        -- Æ®·£Á§¼Ç¿¡ ÀÖ´Â ¸í·É¾îµéÀ» ¿À¶óÅ¬¿¡ ¹Ý¿µ
--- ¼­ºêÄõ¸®¸¦ ÀÌ¿ëÇÑ INSERT
-    -- DEPTÅ×ÀÌºíÀÇ  10~30ºÎ¼­¸¦ DEPT01FH INSERT
+COMMIT; -- íŠ¸ëžœì ì…˜ ëª…ë ¹ì–´(DMLëª…ë ¹ì–´ë§Œ ì ìš©) : ë°ì´í„° ì²˜ë¦¬ë¥¼ ìœ„í•œ í•œ ë‹¨ìœ„
+        -- íŠ¸ëžœì ì…˜ì— ìžˆëŠ” ëª…ë ¹ì–´ë“¤ì„ ì˜¤ë¼í´ì— ë°˜ì˜
+-- ì„œë¸Œì¿¼ë¦¬ë¥¼ ì´ìš©í•œ INSERT
+    -- DEPTí…Œì´ë¸”ì˜  10~30ë¶€ì„œë¥¼ DEPT01FH INSERT
 INSERT INTO DEPT01 SELECT * FROM DEPT WHERE DEPTNO BETWEEN 10 AND 30;
 SELECT * FROM DEPT01;
 COMMIT;
-ROLLBACT; -- Çö Æ®·¢Á§¼Ç ÀÛ¾÷À» Ãë¼Ò
+ROLLBACT; -- í˜„ íŠ¸ëž™ì ì…˜ ìž‘ì—…ì„ ì·¨ì†Œ
 
--- ¡Ø¿¬½À¹®Á¦ (pdf 1ÆäÀÌÁö)
+-- â€»ì—°ìŠµë¬¸ì œ (pdf 1íŽ˜ì´ì§€)
 DROP TABLE SAM01;
 CREATE TABLE SAM01(
     EMPNO NUMBER(4) PRIMARY KEY,
@@ -150,75 +150,75 @@ INSERT INTO SAM01
 SELECT * FROM SAM01;
 COMMIT;
 
--- 2. UPDATE Å×ÀÌºí SET ÇÊµå¸í1=°ª1, ÇÊµå¸í2=°ª2,... [WHERE Á¶°Ç];
+-- 2. UPDATE í…Œì´ë¸” SET í•„ë“œëª…1=ê°’1, í•„ë“œëª…2=ê°’2,... [WHERE ì¡°ê±´];
 SELECT * FROM EMP01;
 DROP TABLE EMP01;
 CREATE TABLE EMP01 AS SELECT EMPNO, ENAME, SAL, HIREDATE, DEPTNO FROM EMP;
-    -- ºÎ¼­¹øÈ£¸¦ 30À¸·Î ¼öÁ¤
+    -- ë¶€ì„œë²ˆí˜¸ë¥¼ 30ìœ¼ë¡œ ìˆ˜ì •
     COMMIT;
     UPDATE EMP01 SET DEPTNO=30;
     SELECT * FROM EMP01;
     ROLLBACK;
-    -- ex. ¸ðµç Á÷¿ø(EMP01)ÀÇ ±Þ¿©(SAL) ¸¦ 10%ÀÎ»ê
+    -- ex. ëª¨ë“  ì§ì›(EMP01)ì˜ ê¸‰ì—¬(SAL) ë¥¼ 10%ì¸ì‚°
     UPDATE EMP01 SET SAL = SAL*1.1;
     SELECT * FROM EMP01;
-    -- ex. EMP01 : 10¹øºÎ¼­ Á÷¿øÀÇ ÀÔ»çÀÏÀ» ¿À´Ã, ºÎ¼­¹øÈ£´Â 30¹øÀ¸·Î ¼öÁ¤
+    -- ex. EMP01 : 10ë²ˆë¶€ì„œ ì§ì›ì˜ ìž…ì‚¬ì¼ì„ ì˜¤ëŠ˜, ë¶€ì„œë²ˆí˜¸ëŠ” 30ë²ˆìœ¼ë¡œ ìˆ˜ì •
     UPDATE EMP01 
         SET HIREDATE = SYSDATE, 
         DEPTNO = 30 
     WHERE DEPTNO=10;
     SELECT * FROM EMP01;
-    -- ex. ±Þ¿©°¡ 3000ÀÌ»óÀÎ »ç¿ø¸¸ ±Þ¿©¸¦ 10%ÀÎ»ó
+    -- ex. ê¸‰ì—¬ê°€ 3000ì´ìƒì¸ ì‚¬ì›ë§Œ ê¸‰ì—¬ë¥¼ 10%ì¸ìƒ
     UPDATE EMP01 
         SET SAL = SAL*1.1 WHERE SAL>=3000;
     SELECT * FROM EMP01;    
-    -- ex. EMP01Å×ÀÌºí¿¡¼­ ¡®DALLAS¡¯¿¡¼­ ±Ù¹«ÇÏ´Â Á÷¿øµéÀÇ ±Þ¿©¸¦ 1000$ÀÎ»ó
+    -- ex. EMP01í…Œì´ë¸”ì—ì„œ â€˜DALLASâ€™ì—ì„œ ê·¼ë¬´í•˜ëŠ” ì§ì›ë“¤ì˜ ê¸‰ì—¬ë¥¼ 1000$ì¸ìƒ
     UPDATE EMP01
         SET SAL = SAL+1000
         WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS');
     ROLLBACK;
-    -- ex. SCOTT»ç¿øÀÇ ºÎ¼­¹øÈ£´Â 20¹øÀ¸·Î, Á÷±ÞÀº MANAGER·Î ÇÑ²¨¹ø¿¡ ¼öÁ¤
+    -- ex. SCOTTì‚¬ì›ì˜ ë¶€ì„œë²ˆí˜¸ëŠ” 20ë²ˆìœ¼ë¡œ, ì§ê¸‰ì€ MANAGERë¡œ í•œêº¼ë²ˆì— ìˆ˜ì •
     SELECT * FROM EMP;
     SELECT * FROM EMP WHERE ENAME='SCOTT';
     UPDATE EMP 
         SET DEPTNO=20, JOB='MANAGER' WHERE ENAME='SCOTT';
     ROLLBACK;
-    -- ex. ±Þ¿©°¡ 1500ÀÌÇÏÀÎ Á÷¿øÀÇ ±Þ¿©¸¦ 1500À¸·Î ¼öÁ¤
+    -- ex. ê¸‰ì—¬ê°€ 1500ì´í•˜ì¸ ì§ì›ì˜ ê¸‰ì—¬ë¥¼ 1500ìœ¼ë¡œ ìˆ˜ì •
     SELECT * FROM EMP01;
     UPDATE EMP01
         SET SAL = 1500 WHERE SAL <= 1500;
-    -- ex. ¸ðµç »ç¿øÀÇ ±Þ¿©¿Í ÀÔ»çÀÏÀ» 'KING'ÀÇ ±Þ¿©¿Í ÀÔ»çÀÏ·Î ¼öÁ¤
+    -- ex. ëª¨ë“  ì‚¬ì›ì˜ ê¸‰ì—¬ì™€ ìž…ì‚¬ì¼ì„ 'KING'ì˜ ê¸‰ì—¬ì™€ ìž…ì‚¬ì¼ë¡œ ìˆ˜ì •
     UPDATE EMP01
         SET SAL = (SELECT SAL FROM EMP01 WHERE ENAME='KING'),
         HIREDATE = (SELECT HIREDATE FROM EMP01 WHERE ENAME='KING');
     UPDATE EMP01
         SET(SAL, HIREDATE) = (SELECT SAL, HIREDATE FROM EMP01 WHERE ENAME='KING');
 
--- 3.DELETE FROM Å×ÀÌºí¸í [WHERE Á¶°Ç];
+-- 3.DELETE FROM í…Œì´ë¸”ëª… [WHERE ì¡°ê±´];
 SELECT * FROM EMP01;
 DELETE FROM EMP01;
 ROLLBACK;
-    -- EMP01 : 30¹øºÎ¼­ Á÷¿ø¸¸ »èÁ¦
+    -- EMP01 : 30ë²ˆë¶€ì„œ ì§ì›ë§Œ ì‚­ì œ
     DELETE FROM EMP01 WHERE DEPTNO=30;
     SELECT * FROM EMP01;
     ROLLBACK;
-    -- EMP01 : ºÎ¼­¸íÀÌ SALES ºÎ¼­ÀÇ Á÷¿ø¸¸ »èÁ¦
+    -- EMP01 : ë¶€ì„œëª…ì´ SALES ë¶€ì„œì˜ ì§ì›ë§Œ ì‚­ì œ
     DELETE FROM EMP01 WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT01 WHERE DNAME='SALES');
     SELECT * FROM EMP01;
-    -- EMP01 : FORD»ç¿øÀ» »èÁ¦
+    -- EMP01 : FORDì‚¬ì›ì„ ì‚­ì œ
     DELETE FROM EMP01 WHERE ENAME='FORD';
-    -- SAM01 : JOBÀÎ NULLÀÎ »ç¿øÀ» »èÁ¦
+    -- SAM01 : JOBì¸ NULLì¸ ì‚¬ì›ì„ ì‚­ì œ
     SELECT * FROM SAM01 WHERE JOB IS NULL;
     DELETE FROM SAM01 WHERE JOB IS NULL;
-    -- SAM01 :  ENAMEÀÌ ORANGEÀÎ »ç¿øÀ» »èÁ¦
+    -- SAM01 :  ENAMEì´ ORANGEì¸ ì‚¬ì›ì„ ì‚­ì œ
     SELECT * FROM SAM01;
     DELETE FROM SAM01 WHERE ENAME = 'ORANGE';
-    -- EMP01 : ±Þ¿©°¡ 1500ÀÌÇÏÀÎ Á÷¿øÀÇ ±Þ¿©¸¦ 1500À¸·Î
+    -- EMP01 : ê¸‰ì—¬ê°€ 1500ì´í•˜ì¸ ì§ì›ì˜ ê¸‰ì—¬ë¥¼ 1500ìœ¼ë¡œ
     SELECT * FROM EMP01;
     UPDATE EMP01 SET SAL=1500 WHERE SAL <= 1500;
 
--- ¡Ø ¿¬½À¹®Á¦ (CREAT TABLE, DROP TABLE, INSERT, UPDATE, DELETE, COMMIT)
--- 1. ¾Æ·¡ÀÇ ±¸Á¶¸¦ ¸¸Á·ÇÏ´Â MY_DATA Å×ÀÌºíÀ» »ý¼ºÇÏ½Ã¿À. ´Ü ID°¡ PRIMARY KEYÀÌ´Ù.
+-- â€» ì—°ìŠµë¬¸ì œ (CREAT TABLE, DROP TABLE, INSERT, UPDATE, DELETE, COMMIT)
+-- 1. ì•„ëž˜ì˜ êµ¬ì¡°ë¥¼ ë§Œì¡±í•˜ëŠ” MY_DATA í…Œì´ë¸”ì„ ìƒì„±í•˜ì‹œì˜¤. ë‹¨ IDê°€ PRIMARY KEYì´ë‹¤.
 DROP TABLE MY_DATA;
 CREATE TABLE MY_DATA(
     ID  number(4) PRIMARY KEY,
@@ -227,7 +227,7 @@ CREATE TABLE MY_DATA(
     SALARY  number(10,2)
 );
 SELECT * FROM MY_DATA;
--- 2. »ý¼ºµÈ Å×ÀÌºí¿¡ À§ÀÇ µµÇ¥¿Í °°Àº °ªÀ» ÀÔ·ÂÇÏ´Â SQL¹®À» ÀÛ¼ºÇÏ½Ã¿À.
+-- 2. ìƒì„±ëœ í…Œì´ë¸”ì— ìœ„ì˜ ë„í‘œì™€ ê°™ì€ ê°’ì„ ìž…ë ¥í•˜ëŠ” SQLë¬¸ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 INSERT INTO MY_DATA VALUES(1, 'Scott', 'sscott', 10000.00);
 INSERT INTO MY_DATA VALUES(2, 'Ford', 'fford', 13000.00);
 INSERT INTO MY_DATA VALUES(3, 'Patel', 'ppatel', 33000.00);
@@ -235,42 +235,42 @@ INSERT INTO MY_DATA VALUES(4, 'Report', 'rreport', 23500.00);
 INSERT INTO MY_DATA VALUES(5, 'Good', 'ggood', 44450.00);
 SELECT * FROM MY_DATA;
 
--- 3. TO_CHAR ³»Àå ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ÀÔ·ÂÇÑ ÀÚ·á¸¦ À§ÀÇ µµÇ¥¿Í °°Àº Çü½ÄÀ¸·Î Ãâ·ÂÇÏ´Â SQL¹®À» ÀÛ¼ºÇÏ½Ã¿À.
+-- 3. TO_CHAR ë‚´ìž¥ í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ìž…ë ¥í•œ ìžë£Œë¥¼ ìœ„ì˜ ë„í‘œì™€ ê°™ì€ í˜•ì‹ìœ¼ë¡œ ì¶œë ¥í•˜ëŠ” SQLë¬¸ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 SELECT ID, NAME, USERID, SALARY, TO_CHAR(SALARY, '99,999.99') FROM MY_DATA;
 
--- 4. ÀÚ·á¸¦ ¿µ±¸ÀûÀ¸·Î µ¥ÀÌÅÍº£ÀÌ½º¿¡ µî·ÏÇÏ´Â ¸í·É¾î¸¦ ÀÛ¼ºÇÏ½Ã¿À.
+-- 4. ìžë£Œë¥¼ ì˜êµ¬ì ìœ¼ë¡œ ë°ì´í„°ë² ì´ìŠ¤ì— ë“±ë¡í•˜ëŠ” ëª…ë ¹ì–´ë¥¼ ìž‘ì„±í•˜ì‹œì˜¤.
 COMMIT;
 
--- 5. ID°¡ 3¹øÀÎ »ç¶÷ÀÇ ±Þ¿©¸¦ 65000.00À¸·Î °»½ÅÇÏ°í ¿µ±¸ÀûÀ¸·Î µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¹Ý¿µÇÏ¶ó.
+-- 5. IDê°€ 3ë²ˆì¸ ì‚¬ëžŒì˜ ê¸‰ì—¬ë¥¼ 65000.00ìœ¼ë¡œ ê°±ì‹ í•˜ê³  ì˜êµ¬ì ìœ¼ë¡œ ë°ì´í„°ë² ì´ìŠ¤ì— ë°˜ì˜í•˜ë¼.
 UPDATE MY_DATA
     SET SALARY = 65000.00 WHERE ID=3;
 COMMIT;
 
--- 6. NAMEÀÌ FordÀÎ »ç¶÷À» »èÁ¦ÇÏ°í ¿µ±¸ÀûÀ¸·Î µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¹Ý¿µÇÏ¶ó.
+-- 6. NAMEì´ Fordì¸ ì‚¬ëžŒì„ ì‚­ì œí•˜ê³  ì˜êµ¬ì ìœ¼ë¡œ ë°ì´í„°ë² ì´ìŠ¤ì— ë°˜ì˜í•˜ë¼.
 DELETE FROM MY_DATA WHERE NAME='Ford';
 COMMIT;
 SELECT * FROM MY_DATA;
 
--- 7. SALARY°¡ 15,000.00 ÀÌÇÏÀÎ »ç¶÷ÀÇ ±Þ¿©¸¦ 15,000.00À¸·Î º¯°æÇÏ¶ó
+-- 7. SALARYê°€ 15,000.00 ì´í•˜ì¸ ì‚¬ëžŒì˜ ê¸‰ì—¬ë¥¼ 15,000.00ìœ¼ë¡œ ë³€ê²½í•˜ë¼
 UPDATE MY_DATA
     SET SALARY = 15000.00 WHERE SALARY <= 15000.00;
 SELECT * FROM MY_DATA;
 
--- 8. À§¿¡¼­ »ý¼ºÇÑ Å×ÀÌºíÀ» »èÁ¦ÇÏ¶ó.
+-- 8. ìœ„ì—ì„œ ìƒì„±í•œ í…Œì´ë¸”ì„ ì‚­ì œí•˜ë¼.
 DELETE MY_DATA;
 
--- ¡Ú ¡Ú ¡Ú Á¦¾àÁ¶°Ç
--- (1) PRIMARY KEY : Å×ÀÌºíÀÇ °¢ ÇàÀ» À¯ÀÏÇÑ °ªÀ¸·Î ½Äº°ÇÏ±â À§ÇÑ ÇÊµå(NULL ºÒ°¡)
--- (2) FOREIGN KEY : Å×ÀÌºíÀÇ ¿­ÀÌ ´Ù¸¥ Å×ÀÌºíÀÇ ¿­À» ÂüÁ¶
--- (3) NOT NULL : NULLÀ» Æ÷ÇÔÇÏÁö ¾ÊÀ½
--- (4) UNIQUE : ¸ðµç ÇàÀÌ °ªÀÌ À¯ÀÏ. NULL°ªÀº Çã¿ë(NULLÀº ¿©·¯°³ °¡´É)
--- (5) CHECK (Á¶°Ç) : ÇØ´ç Á¶°ÇÀÌ ¸¸Á· ( NULL°ª Çã¿ë)
--- DEFAULT ±âº»°ª : ±âº»°ª ¼³Á¤(ÇØ´ç ¿­ÀÇ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¸é ¿ø·¡´Â NULLÀÌ µé¾î°¥ °ÍÀ» DEFAULT°ªÀ¸·Î ÀÔ·Â)
+-- â˜… â˜… â˜… ì œì•½ì¡°ê±´
+-- (1) PRIMARY KEY : í…Œì´ë¸”ì˜ ê° í–‰ì„ ìœ ì¼í•œ ê°’ìœ¼ë¡œ ì‹ë³„í•˜ê¸° ìœ„í•œ í•„ë“œ(NULL ë¶ˆê°€)
+-- (2) FOREIGN KEY : í…Œì´ë¸”ì˜ ì—´ì´ ë‹¤ë¥¸ í…Œì´ë¸”ì˜ ì—´ì„ ì°¸ì¡°
+-- (3) NOT NULL : NULLì„ í¬í•¨í•˜ì§€ ì•ŠìŒ
+-- (4) UNIQUE : ëª¨ë“  í–‰ì´ ê°’ì´ ìœ ì¼. NULLê°’ì€ í—ˆìš©(NULLì€ ì—¬ëŸ¬ê°œ ê°€ëŠ¥)
+-- (5) CHECK (ì¡°ê±´) : í•´ë‹¹ ì¡°ê±´ì´ ë§Œì¡± ( NULLê°’ í—ˆìš©)
+-- DEFAULT ê¸°ë³¸ê°’ : ê¸°ë³¸ê°’ ì„¤ì •(í•´ë‹¹ ì—´ì˜ ë°ì´í„°ë¥¼ ìž…ë ¥í•˜ì§€ ì•Šìœ¼ë©´ ì›ëž˜ëŠ” NULLì´ ë“¤ì–´ê°ˆ ê²ƒì„ DEFAULTê°’ìœ¼ë¡œ ìž…ë ¥)
 INSERT INTO DEPT01 (DEPTNO, DNAME) VALUES(99,'XX');
 SELECT * FROM DEPT01 WHERE DEPTNO=99;
 
 
--- DEPT1 Å×ÀÌºí »ý¼º
+-- DEPT1 í…Œì´ë¸” ìƒì„±
 CREATE TABLE DEPT1 (
     DEPTNO NUMBER(2) PRIMARY KEY,
     DNAME  VARCHAR2(14) NOT NULL UNIQUE,
@@ -280,7 +280,7 @@ SELECT * FROM DEPT1;
 SELECT * FROM USER_TABLES;
 SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME='DEPT1';
 
--- EMP1 Å×ÀÌºí »ý¼º
+-- EMP1 í…Œì´ë¸” ìƒì„±
 DROP TABLE EMP1;
 CREATE TABLE EMP1 (
     EMPNO NUMBER(4) PRIMARY KEY,
@@ -307,28 +307,28 @@ CREATE TABLE EMP1 (
     FOREIGN KEY(DEPTNO) REFERENCES DEPT1(DEPTNO)   
 );
 SELECT * FROM EMP1;
-INSERT INTO EMP1 (EMPNO, ENAME, JOB) VALUES (1000, 'È«±æµ¿', 'MANAGER');
+INSERT INTO EMP1 (EMPNO, ENAME, JOB) VALUES (1000, 'í™ê¸¸ë™', 'MANAGER');
 SELECT * FROM EMP1;
-INSERT INTO EMP1 (EMPNO, ENAME, JOB) VALUES (1001, '±è±æµ¿', 'SALESMAN', 10); -- ¿¡·¯(FK)
-INSERT INTO DEPT1 SELECT * FROM DEPT; -- 10,20,30,40 ÀÔ·Â
-INSERT INTO DEPT1 VALUES(40, 'IT', 'SEOUL'); -- ¿¡·¯(PK)
-INSERT INTO DEPT1 VALUES(50, 'SALES', 'SEOUL'); -- ¿¡·¯(UNIQUE)
-INSERT INTO DEPT1 (DEPTNO, DNAME) VALUES(50, 'IT'); -- ¿¡·¯(NOT NULL)
+INSERT INTO EMP1 (EMPNO, ENAME, JOB) VALUES (1001, 'ê¹€ê¸¸ë™', 'SALESMAN', 10); -- ì—ëŸ¬(FK)
+INSERT INTO DEPT1 SELECT * FROM DEPT; -- 10,20,30,40 ìž…ë ¥
+INSERT INTO DEPT1 VALUES(40, 'IT', 'SEOUL'); -- ì—ëŸ¬(PK)
+INSERT INTO DEPT1 VALUES(50, 'SALES', 'SEOUL'); -- ì—ëŸ¬(UNIQUE)
+INSERT INTO DEPT1 (DEPTNO, DNAME) VALUES(50, 'IT'); -- ì—ëŸ¬(NOT NULL)
 INSERT INTO DEPT1 VALUES(50, 'IT', 'SEOUL');
 SELECT * FROM DEPT1;
     
 INSERT INTO EMP1 (EMPNO, ENAME, JOB, DEPTNO)
-    VALUES(1001, '±è±æµ¿', 'MANAGER', 60); -- ¿¡·¯(FK)
+    VALUES(1001, 'ê¹€ê¸¸ë™', 'MANAGER', 60); -- ì—ëŸ¬(FK)
 INSERT INTO EMP1 (EMPNO, ENAME, JOB, SAL, DEPTNO)
-    VALUES(1001, '±è±æµ¿', 'MANAGER',0, 50); -- ¿¡·¯(CHECK)
+    VALUES(1001, 'ê¹€ê¸¸ë™', 'MANAGER',0, 50); -- ì—ëŸ¬(CHECK)
 INSERT INTO EMP1 (EMPNO, ENAME, JOB, SAL, DEPTNO)
-    VALUES(1001, '±è±æµ¿', 'MANAGER',2000, 50); -- ¿¡·¯(CHECK)
+    VALUES(1001, 'ê¹€ê¸¸ë™', 'MANAGER',2000, 50); -- ì—ëŸ¬(CHECK)
 SELECT * FROM EMP1;
 
--- BOOK & BOOKCATEGORY Å×ÀÌºí »ý¼º ¹× µ¥ÀÌÅÍ ÀÔ·Â, Ãâ·Â
+-- BOOK & BOOKCATEGORY í…Œì´ë¸” ìƒì„± ë° ë°ì´í„° ìž…ë ¥, ì¶œë ¥
 DROP TABLE BOOK;
 DROP TABLE BOOKCATEGROY;
-DROP TABLE BOOKCATEGORY CASCADE CONSTRAINTS; -- ÂüÁ¶ÇÏ´Â Å×ÀÌºí »ó°ü¾øÀÌ(ºñÃß)
+DROP TABLE BOOKCATEGORY CASCADE CONSTRAINTS; -- ì°¸ì¡°í•˜ëŠ” í…Œì´ë¸” ìƒê´€ì—†ì´(ë¹„ì¶”)
 
 CREATE TABLE BOOKCATEGORY (
     categoryCODE NUMBER(3) PRIMARY KEY,
@@ -343,28 +343,28 @@ CREATE TABLE BOOK(
     PUBYEAR      NUMBER(4)    DEFAULT EXTRACT(YEAR FROM SYSDATE)-- TO_CHAR(SYSDATE, 'YYYY')
 );
 --
-INSERT INTO BOOKCATEGORY VALUES (100, 'Ã¶ÇÐ', '3ÃþÀÎ¹®½Ç');
-INSERT INTO BOOKCATEGORY VALUES (400, 'IT', '4Ãþ°úÇÐ½Ç');
+INSERT INTO BOOKCATEGORY VALUES (100, 'ì² í•™', '3ì¸µì¸ë¬¸ì‹¤');
+INSERT INTO BOOKCATEGORY VALUES (400, 'IT', '4ì¸µê³¼í•™ì‹¤');
 INSERT INTO BOOK (BOOKNO, categoryCODE, bookNAME, PUBLISHER)
-    VALUES ('100A01', 100, 'Ã¶ÇÐÀÚÀÇ »î', 'ÀÌÁ¨ÃâÆÇ');
-INSERT INTO BOOK VALUES ('400A01', 400, 'ÀÌ°ÍÀÌ DB´Ù', '´ÙÀ½ÃâÆÇ', 2022);
+    VALUES ('100A01', 100, 'ì² í•™ìžì˜ ì‚¶', 'ì´ì  ì¶œíŒ');
+INSERT INTO BOOK VALUES ('400A01', 400, 'ì´ê²ƒì´ DBë‹¤', 'ë‹¤ìŒì¶œíŒ', 2022);
 --
 SELECT bookNO, bookNAME, PUBLISHER, PUBYEAR, categoryNAME, OFFICE_LOC
     FROM BOOK B, BOOKCATEGORY C
     WHERE B.categoryCODE = C.categoryCODE;
 
--- ¡Ú¡Ú¡ÚDCL : °èÁ¤»ý¼º, ±ÇÇÑºÎ¿©, ±ÇÇÑ¹ÚÅ», °èÁ¤»èÁ¦ ¡Ú¡Ú¡Ú
--- °èÁ¤ »ý¼º
+-- â˜…â˜…â˜…DCL : ê³„ì •ìƒì„±, ê¶Œí•œë¶€ì—¬, ê¶Œí•œë°•íƒˆ, ê³„ì •ì‚­ì œ â˜…â˜…â˜…
+-- ê³„ì • ìƒì„±
 CREATE USER scott2 IDENTIFIED BY tiger;
--- ±ÇÇÑ ºÎ¿©(¼¼¼Ç±ÇÇÑ == ·Î±×ÀÎ°¡´É)
+-- ê¶Œí•œ ë¶€ì—¬(ì„¸ì…˜ê¶Œí•œ == ë¡œê·¸ì¸ê°€ëŠ¥)
 GRANT CREATE SESSION TO scott2;
 GRANT CREATE TABLE TO scott2;
 GRANT ALL ON EMP TO scott2;
 GRANT SELECT ON DEPT TO scott2;
--- ±ÇÇÑ ¹ÚÅ»(DEPT, EMP)
+-- ê¶Œí•œ ë°•íƒˆ(DEPT, EMP)
 REVOKE ALL ON EMP FROM scott2;
 REVOKE SELECT ON DEPT FROM scott2;
--- °èÁ¤ »èÁ¦(scott2) -- Á¢¼ÓÇØÁ¦
+-- ê³„ì • ì‚­ì œ(scott2) -- ì ‘ì†í•´ì œ
 DROP USER scott2 CASCADE;
 
 

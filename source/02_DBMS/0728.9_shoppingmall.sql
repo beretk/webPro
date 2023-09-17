@@ -56,47 +56,47 @@ CREATE TABLE ORDER_DETAIL(
 );
 SELECT * FROM ORDER_DETAIL;
 
-INSERT INTO MEMBER VALUES('abc', 'È«±æµ¿', '¼­¿ï ¼­´ë¹®±¸', '010-9999-9999', 'hong@hong.com');
-INSERT INTO MEMBER VALUES('def', '±è±æµ¿', '°æ±âµµ ¼ö¿ø½Ã', '010-8888-8888', 'kim@kim.com');
+INSERT INTO MEMBER VALUES('abc', 'È« æµ¿', '        ë¹®  ', '010-9999-9999', 'hong@hong.com');
+INSERT INTO MEMBER VALUES('def', '  æµ¿', '  âµµ       ', '010-8888-8888', 'kim@kim.com');
 SELECT * FROM MEMBER;
 
-INSERT INTO PRODUCT VALUES('A1', '¸ÆÁÖ', 3000, 100);
-INSERT INTO PRODUCT VALUES('B1', '¶¥Äá', 3000, 100);
-INSERT INTO PRODUCT VALUES('C1', '¼Òµ¶¾à',7000, 100);
-INSERT INTO PRODUCT VALUES('A2', '¸¶½ºÅ©', 200, 100);
-INSERT INTO PRODUCT VALUES('B2', '¿ÀÂ¡¾î', 5000, 100);
+INSERT INTO PRODUCT VALUES('A1', '    ', 3000, 100);
+INSERT INTO PRODUCT VALUES('B1', '    ', 3000, 100);
+INSERT INTO PRODUCT VALUES('C1', ' Òµ   ',7000, 100);
+INSERT INTO PRODUCT VALUES('A2', '    Å©', 200, 100);
+INSERT INTO PRODUCT VALUES('B2', '  Â¡  ', 5000, 100);
 SELECT * FROM PRODUCT;
 
--- ÁÖ¹®¹øÈ£ »ý¼ºÇÏ±â ¿¬½À('230728' || ' 001 => '2307280001')
+--  Ö¹   È£      Ï±      ('230728' || ' 001 => '2307280001')
 SELECT TO_CHAR(SYSDATE, 'RRMMDD') || TRIM(TO_CHAR(ORDERS_SEQ.NEXTVAL, '000')) oNO FROM DUAL;
 SELECT TO_CHAR(SYSDATE, 'RRMMDD') || SUBSTR(TO_CHAR(ORDERS_SEQ.NEXTVAL, '000'), 2, 3) oNO FROM DUAL;
 
--- ¡á¡á¡á Ã¹¹øÂ° È«±æµ¿´Ô ÁÖ¹®¼­(23.07.26) ¡á¡á¡á
--- 1. È«±æµ¿(abc)´Ô Àå¹Ù±¸´Ï ¹°°Ç ´ã±â
+--      Ã¹  Â° È« æµ¿    Ö¹   (23.07.26)     
+-- 1. È« æµ¿(abc)     Ù±            
 INSERT INTO CART VALUES (CART_SEQ.NEXTVAL, 'abc', 'A1', 3, (SELECT PRICE FROM PRODUCT WHERE PCODE='A1')*3);
 INSERT INTO CART VALUES (CART_SEQ.NEXTVAL, 'abc', 'B1', 1, (SELECT PRICE FROM PRODUCT WHERE PCODE='B1')*1);
 SELECT * FROM CART;
 
--- 2. È«±æµ¿(abc)´Ô ÁÖ¹®ÇÏ±â
-    -- 2-1. ORDERS(ÁÖ¹®)Å×ÀÌºí
+-- 2. È« æµ¿(abc)    Ö¹  Ï± 
+    -- 2-1. ORDERS( Ö¹ )   Ìº 
     INSERT INTO ORDERS( ONO, MID, ONAME, OADDR, OTEL)
-        VALUES(TO_CHAR(SYSDATE, 'RRMMDD') || TRIM(TO_CHAR(ORDERS_SEQ.NEXTVAL, '000')), 'abc', 'È«±æµ¿', '¼­¿ï ¼­´ë¹®±¸',
+        VALUES(TO_CHAR(SYSDATE, 'RRMMDD') || TRIM(TO_CHAR(ORDERS_SEQ.NEXTVAL, '000')), 'abc', 'È« æµ¿', '        ë¹®  ',
             '010-9999-9999');
     SELECT * FROM ORDERS;
-    -- 2-2. ORDER_DETAIL(ÁÖ¹®»ó¼¼) Å×ÀÌºí(Àå¹Ù±¸´Ï¿¡ ´ãÀº ¹°°ÇÀ» ÇÑ¹ø¿¡ ÁÖ¹®ÇÒ °æ¿ì)
-        ÁÖ¹®»ó¼¼ Å×ÀÌºí¿¡ INSERTÇÒ ¶§ ÇÊ¿äÇÑ ¼­ºêÄõ¸® ¿¬½À
+    -- 2-2. ORDER_DETAIL( Ö¹   )    Ìº (  Ù±  Ï¿               Ñ¹     Ö¹       )
+         Ö¹       Ìº   INSERT       Ê¿                 
     SELECT 
       ORDER_DETAIL_SEQ.NEXTVAL odNO,
       TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ONO, PCODE, QTY, COST
-    FROM CART WHERE MID='abc'; -- ÁÖ¹®»ó¼¼ Å×ÀÌºí¿¡ insertÇÒ ¶§ ÇÊ¿äÇÑ ¼­ºêÄõ¸®
-  DROP SEQUENCE ORDER_DETAIL_SEQ; -- À§¿¡ ¿¬½ÀÇßÀ¸´Ï ½ÃÄö½º »õ·Î »ý¼º
+    FROM CART WHERE MID='abc'; --  Ö¹       Ìº   insert       Ê¿            
+  DROP SEQUENCE ORDER_DETAIL_SEQ; --                                 
   CREATE SEQUENCE ORDER_DETAIL_SEQ MAXVALUE 999999999 NOCYCLE NOCACHE;
   INSERT INTO ORDER_DETAIL (odNO, oNO, pCODE, QTY, COST)
     SELECT 
       ORDER_DETAIL_SEQ.NEXTVAL odNO,
       TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ONO,PCODE, QTY, COST
     FROM CART WHERE MID='abc';
-  SELECT * FROM ORDER_DETAIL; -- ORDERS Å×ÀÌºí°ú ORDER_DETAILÅ×ÀÌºí ¿Ï¼º
+  SELECT * FROM ORDER_DETAIL; -- ORDERS    Ìº   ORDER_DETAIL   Ìº   Ï¼ 
 
 
 

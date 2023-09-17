@@ -1,79 +1,79 @@
--- [V] ±×·ìÇÔ¼ö : SUM, AVG, MIN, MAX, COUNT, STDDEV(Ç¥ÁØÆíÂ÷), VARIANCE(ºÐ»ê)
-SELECT MAX(SAL) FROM EMP; -- Å×ÀÌºí ÀüÃ¼ÀÇ ÃÖ´ë°ª
-SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO; -- ±×·ìº° ÃÖ´ë°ª
--- ÃÖ´ë±Þ¿©¸¦ ¹Þ´Â »ç¶÷ÀÇ ÀÌ¸§°ú ±Þ¿© -> VI.¼­ºêÄõ¸®
+-- [V] ê·¸ë£¹í•¨ìˆ˜ : SUM, AVG, MIN, MAX, COUNT, STDDEV(í‘œì¤€íŽ¸ì°¨), VARIANCE(ë¶„ì‚°)
+SELECT MAX(SAL) FROM EMP; -- í…Œì´ë¸” ì „ì²´ì˜ ìµœëŒ€ê°’
+SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO; -- ê·¸ë£¹ë³„ ìµœëŒ€ê°’
+-- ìµœëŒ€ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ëžŒì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ -> VI.ì„œë¸Œì¿¼ë¦¬
 SELECT ENAME, SAL FROM EMP WHERE SAL = (SELECT MAX(SAL) FROM EMP);
 
--- 1. ±×·ìÇÔ¼öµé ½Ç½À / Æò±Õ - 2* Ç¥ÁØÆíÂ÷ / Æò±Õ +2 *Ç¥ÁØÆíÀÚ
+-- 1. ê·¸ë£¹í•¨ìˆ˜ë“¤ ì‹¤ìŠµ / í‰ê·  - 2* í‘œì¤€íŽ¸ì°¨ / í‰ê·  +2 *í‘œì¤€íŽ¸ìž
 SELECT ROUND(AVG(SAL),2) FROM EMP;
 SELECT AVG(SAL), SUM(SAL)/COUNT(SAL) FROM EMP;
-SELECT SUM(COMM) FROM EMP; -- Æò±Õ : 2200/14 = 157.142857~ 2200/4 = 550
-SELECT SUM(COMM), COUNT(COMM), AVG(COMM) FROM EMP; -- ¸ðµç ±×·ìÇÔ¼ö´Â NULL°ªÀ» Á¦¿ÜÇÏ°í ¿¬»ê
-SELECT COUNT(*) FROM EMP; -- EMP Å×ÀÌºíÀÇ Çà¼ö
-    -- ex. SALÀÇ Æò±Õ, ÇÕ, ÃÖ¼Ò°ª, ÃÖ´ë°ª, ºÐ»ê, Ç¥ÁØÆíÂ÷, °¹¼ö(¼Ò¼öÁ¡ ÇÑÀÚ¸®¿¡¼­ ¹Ý¿Ã¸²)
+SELECT SUM(COMM) FROM EMP; -- í‰ê·  : 2200/14 = 157.142857~ 2200/4 = 550
+SELECT SUM(COMM), COUNT(COMM), AVG(COMM) FROM EMP; -- ëª¨ë“  ê·¸ë£¹í•¨ìˆ˜ëŠ” NULLê°’ì„ ì œì™¸í•˜ê³  ì—°ì‚°
+SELECT COUNT(*) FROM EMP; -- EMP í…Œì´ë¸”ì˜ í–‰ìˆ˜
+    -- ex. SALì˜ í‰ê· , í•©, ìµœì†Œê°’, ìµœëŒ€ê°’, ë¶„ì‚°, í‘œì¤€íŽ¸ì°¨, ê°¯ìˆ˜(ì†Œìˆ˜ì  í•œìžë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼)
     SELECT ROUND(AVG(SAL),1),SUM(SAL), MIN(SAL), MAX(SAL), 
         ROUND(VARIANCE(SAL),1), ROUND(STDDEV(SAL),1)
         FROM EMP;
-    -- ±×·ìÇÔ¼ö MIN, MAX, COUNT´Â ¼ýÀÚÇü, ¹®ÀÚÇü, ³¯Â¥Çü ¸ðµÎ °¡´É
+    -- ê·¸ë£¹í•¨ìˆ˜ MIN, MAX, COUNTëŠ” ìˆ«ìží˜•, ë¬¸ìží˜•, ë‚ ì§œí˜• ëª¨ë‘ ê°€ëŠ¥
     SELECT MIN(ENAME), MIN(HIREDATE) FROM EMP;
     
-    -- ÅºÅº ´ÙÁö±â
-    -- ÅºÅºex1. ÀÔ»çÇÑÁö °¡Àå ¿À·¡µÈ »ç¿øÀÇ ÀÔ»çÀÏ°ú °¡Àå ÃÖ±Ù¿¡ ÀÔ»çÇÑ »ç¿øÀÇ ÀÔ»çÀÏÀ» Ãâ·Â. 
+    -- íƒ„íƒ„ ë‹¤ì§€ê¸°
+    -- íƒ„íƒ„ex1. ìž…ì‚¬í•œì§€ ê°€ìž¥ ì˜¤ëž˜ëœ ì‚¬ì›ì˜ ìž…ì‚¬ì¼ê³¼ ê°€ìž¥ ìµœê·¼ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ìž…ì‚¬ì¼ì„ ì¶œë ¥. 
     SELECT MIN(HIREDATE)FIRST, MAX(HIREDATE)LAST FROM EMP;  
     SELECT MIN(HIREDATE)FIRST, MAX(HIREDATE)LAST FROM EMP;
-    -- ÅºÅºex2. (°á°ú) 80/12/17:155590ÀÏÂ° 83/01/12:14803ÀÏÂ°
+    -- íƒ„íƒ„ex2. (ê²°ê³¼) 80/12/17:155590ì¼ì§¸ 83/01/12:14803ì¼ì§¸
         --  (hint : TRUNC, MIN, ||)
-        -- ex. EMP¿¡¼­ ÀÌ¸§, ÀÔ»çÀÏ, ±Ù¹«ÀÏ¼ö
-    SELECT TRUNC(SYSDATE-MIN(HIREDATE))||':ÀÏÂ°', TRUNC(SYSDATE-MAX(HIREDATE))||':ÀÏÂ°'FROM EMP;
-    SELECT MIN(HIREDATE) || ':' || TRUNC(SYSDATE-MIN(HIREDATE)) || 'ÀÏÂ°' FIRST,
-            MAX(HIREDATE) || ':' || TRUNC(SYSDATE-MAX(HIREDATE)) ||'ÀÏÂ°' LAST
+        -- ex. EMPì—ì„œ ì´ë¦„, ìž…ì‚¬ì¼, ê·¼ë¬´ì¼ìˆ˜
+    SELECT TRUNC(SYSDATE-MIN(HIREDATE))||':ì¼ì§¸', TRUNC(SYSDATE-MAX(HIREDATE))||':ì¼ì§¸'FROM EMP;
+    SELECT MIN(HIREDATE) || ':' || TRUNC(SYSDATE-MIN(HIREDATE)) || 'ì¼ì§¸' FIRST,
+            MAX(HIREDATE) || ':' || TRUNC(SYSDATE-MAX(HIREDATE)) ||'ì¼ì§¸' LAST
             FROM EMP;
      
-    -- ÅºÅºex3.  (°á°ú) 80³â12¿ù17ÀÏ ÃÖÃÊÀÔ»ç:15,558ÀÏÂ° 83³â01¿ù12ÀÏ ÃÖ±ÙÀÔ»ç :14,803ÀÏÂ°
+    -- íƒ„íƒ„ex3.  (ê²°ê³¼) 80ë…„12ì›”17ì¼ ìµœì´ˆìž…ì‚¬:15,558ì¼ì§¸ 83ë…„01ì›”12ì¼ ìµœê·¼ìž…ì‚¬ :14,803ì¼ì§¸
        --  (hint :TRUNC, MIN, ||, TO_CHAR, TRIM)
-    SELECT TO_CHAR(MIN(HIREDATE), 'RR"³â"MM"¿ù"DD" ÃÖÃÊÀÔ»ç:"') ||
-        TRIM(TO_CHAR( TRUNC(SYSDATE - MIN(HIREDATE)), '99,999')) || 'ÀÏÂ°'  FIRST,
-        TO_CHAR(MAX(HIREDATE), 'RR"³â"MM"¿ù"DD"ÀÏ ÃÖ±ÙÀÔ»ç:"') ||
-        TRIM(TO_CHAR( TRUNC(SYSDATE - MAX(HIREDATE)), '99,999')) || 'ÀÏÂ°' LAST
+    SELECT TO_CHAR(MIN(HIREDATE), 'RR"ë…„"MM"ì›”"DD" ìµœì´ˆìž…ì‚¬:"') ||
+        TRIM(TO_CHAR( TRUNC(SYSDATE - MIN(HIREDATE)), '99,999')) || 'ì¼ì§¸'  FIRST,
+        TO_CHAR(MAX(HIREDATE), 'RR"ë…„"MM"ì›”"DD"ì¼ ìµœê·¼ìž…ì‚¬:"') ||
+        TRIM(TO_CHAR( TRUNC(SYSDATE - MAX(HIREDATE)), '99,999')) || 'ì¼ì§¸' LAST
         FROM EMP;
-    SELECT TO_CHAR(MIN(HIREDATE), 'RR"³â"MM"¿ù"DD"ÀÏ ÃÖÃÊÀÔ»ç:"') ||
-        TRIM(TO_CHAR( TRUNC(SYSDATE - MIN(HIREDATE)), '99,999')) || 'ÀÏÂ°'  FIRST,
-        TO_CHAR(MAX(HIREDATE), 'RR"³â"MM"¿ù"DD"ÀÏ ÃÖ±ÙÀÔ»ç:"') ||
-        TRIM(TO_CHAR( TRUNC(SYSDATE - MAX(HIREDATE)), '99,999')) || 'ÀÏÂ°' LAST
+    SELECT TO_CHAR(MIN(HIREDATE), 'RR"ë…„"MM"ì›”"DD"ì¼ ìµœì´ˆìž…ì‚¬:"') ||
+        TRIM(TO_CHAR( TRUNC(SYSDATE - MIN(HIREDATE)), '99,999')) || 'ì¼ì§¸'  FIRST,
+        TO_CHAR(MAX(HIREDATE), 'RR"ë…„"MM"ì›”"DD"ì¼ ìµœê·¼ìž…ì‚¬:"') ||
+        TRIM(TO_CHAR( TRUNC(SYSDATE - MAX(HIREDATE)), '99,999')) || 'ì¼ì§¸' LAST
         FROM EMP;
      
-    -- ÅºÅºex4. 10¹ø ºÎ¼­ ¼Ò¼ÓÀÇ »ç¿ø Áß¿¡¼­ Ä¿¹Ì¼ÇÀ» ¹Þ´Â »ç¿øÀÇ ¼ö¸¦ ±¸ÇØ º¸½Ã¿À.
+    -- íƒ„íƒ„ex4. 10ë²ˆ ë¶€ì„œ ì†Œì†ì˜ ì‚¬ì› ì¤‘ì—ì„œ ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ì˜ ìˆ˜ë¥¼ êµ¬í•´ ë³´ì‹œì˜¤.
     SELECT COUNT(COMM) FROM EMP WHERE DEPTNO=10;
     
--- ¡Ú 2. GROUP BYÀý
-    -- ex. ºÎ¼­¹øÈ£º° ÃÖ´ë±Þ¿©, Æò±Õ±Þ¿©(ºÎ¼­¹øÈ£ ¼ø Á¤·Ä)
+-- â˜… 2. GROUP BYì ˆ
+    -- ex. ë¶€ì„œë²ˆí˜¸ë³„ ìµœëŒ€ê¸‰ì—¬, í‰ê· ê¸‰ì—¬(ë¶€ì„œë²ˆí˜¸ ìˆœ ì •ë ¬)
     SELECT DEPTNO, MAX(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO ORDER BY DEPTNO;
-        -- ¡Ø GROUP BYÀý¿¡¼­´Â ÇÊµåÀÇ º°ÄªÀ» »ç¿ë¾øÀ½ ¹Ýµå½Ã ÇÊµå ÀÌ¸§ »ç¿ë(ORDER BYÀý¿¡¼­´Â ÇÊµåÀÇ º°Äª »ç¿ë°¡´É)
-    SELECT DEPTNO ºÎ¼­, MAX(SAL) MAX, AVG(SAL) AVG
+        -- â€» GROUP BYì ˆì—ì„œëŠ” í•„ë“œì˜ ë³„ì¹­ì„ ì‚¬ìš©ì—†ìŒ ë°˜ë“œì‹œ í•„ë“œ ì´ë¦„ ì‚¬ìš©(ORDER BYì ˆì—ì„œëŠ” í•„ë“œì˜ ë³„ì¹­ ì‚¬ìš©ê°€ëŠ¥)
+    SELECT DEPTNO ë¶€ì„œ, MAX(SAL) MAX, AVG(SAL) AVG
         FROM EMP
         GROUP BY DEPTNO
-        ORDER BY MAX(SAL); --Aliasµµ »ç¿ë°¡´É
-    -- ex. ºÎ¼­¸íº° ÃÖ´ë±Þ¿©, Æò±Õ±Þ¿©( ºÎ¼­¸í¼øÀ¸·Î Á¤·Ä)
+        ORDER BY MAX(SAL); --Aliasë„ ì‚¬ìš©ê°€ëŠ¥
+    -- ex. ë¶€ì„œëª…ë³„ ìµœëŒ€ê¸‰ì—¬, í‰ê· ê¸‰ì—¬( ë¶€ì„œëª…ìˆœìœ¼ë¡œ ì •ë ¬)
     SELECT DNAME, MAX(SAL), AVG(SAL)
         FROM EMP E, DEPT D
         WHERE E.DEPTNO=D.DEPTNO 
         GROUP BY DNAME
         ORDER BY DNAME;
-    -- ex. SALÀÌ 5000¹Ì¸¸ÀÎ »ç¿ø¿¡ ´ëÇØ¼­¸¸ ºÎ¼­¹øÈ£º°, »ç¿ø¼ö, ÃÖ´ë±Þ¿©, ÃÖ¼Ò±Þ¿©, Æò±Õ±Þ¿©(ºÎ¼­¹øÈ£ ¼ø Á¤·Ä)
+    -- ex. SALì´ 5000ë¯¸ë§Œì¸ ì‚¬ì›ì— ëŒ€í•´ì„œë§Œ ë¶€ì„œë²ˆí˜¸ë³„, ì‚¬ì›ìˆ˜, ìµœëŒ€ê¸‰ì—¬, ìµœì†Œê¸‰ì—¬, í‰ê· ê¸‰ì—¬(ë¶€ì„œë²ˆí˜¸ ìˆœ ì •ë ¬)
     SELECT DEPTNO, COUNT(*), MAX(SAL),MIN(SAL), AVG(SAL)    -- (3)
         FROM EMP        -- (1)
         WHERE SAL<5000  -- (2)
         GROUP BY DEPTNO -- (3)
         ORDER BY DEPTNO; -- (4)
         
--- ¡Ú 3. HAVINGÀý : ±×·ìÇÔ¼öÀÇ °á°ú¸¦ Á¦ÇÑÇÒ ¶§(ÇÊµåÀÇ Á¶°ÇÀ» »ç¿ëÇÏ¿© °á°ú¸¦ Á¦ÇÑÇÒ ¶§´Â WHEREÀý)
-    -- ex. ºÎ¼­¹øÈ£º° Æò±Õ±Þ¿©(Æò±Õ±Þ¿©°¡ 2000 ÀÌ»óÀÎ ºÎ¼­¸¸ Ãâ·Â)
+-- â˜… 3. HAVINGì ˆ : ê·¸ë£¹í•¨ìˆ˜ì˜ ê²°ê³¼ë¥¼ ì œí•œí•  ë•Œ(í•„ë“œì˜ ì¡°ê±´ì„ ì‚¬ìš©í•˜ì—¬ ê²°ê³¼ë¥¼ ì œí•œí•  ë•ŒëŠ” WHEREì ˆ)
+    -- ex. ë¶€ì„œë²ˆí˜¸ë³„ í‰ê· ê¸‰ì—¬(í‰ê· ê¸‰ì—¬ê°€ 2000 ì´ìƒì¸ ë¶€ì„œë§Œ ì¶œë ¥)
     SELECT DEPTNO, AVG(SAL)
     FROM EMP       
     GROUP BY DEPTNO
     HAVING AVG(SAL) >= 2000;
-    -- ex. SALÀÌ 5000¹Ì¸¸ÀÎ »ç¿ø¿¡ ´ëÇØ ºÎ¼­¸íº° ÃÖ¼Ò±Þ¿©, Æò±Õ±Þ¿©(¼Ò¼öÁ¡ 2ÀÚ¸®¿¡¼­ ¹Ý¿Ã¸²), ÃÖ´ë±Þ¿©
-        --(´Ü, Æò±Õ±Þ¿©°¡ 1800ÀÌ»óÀÎ ºÎ¼­¿¡ ´ëÇØ Æò±Õ±Þ¿© ¼øÀ¸·Î Á¤·Ä)
+    -- ex. SALì´ 5000ë¯¸ë§Œì¸ ì‚¬ì›ì— ëŒ€í•´ ë¶€ì„œëª…ë³„ ìµœì†Œê¸‰ì—¬, í‰ê· ê¸‰ì—¬(ì†Œìˆ˜ì  2ìžë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼), ìµœëŒ€ê¸‰ì—¬
+        --(ë‹¨, í‰ê· ê¸‰ì—¬ê°€ 1800ì´ìƒì¸ ë¶€ì„œì— ëŒ€í•´ í‰ê· ê¸‰ì—¬ ìˆœìœ¼ë¡œ ì •ë ¬)
     SELECT DNAME, MIN(SAL), ROUND(AVG(SAL),2), MAX(SAL)
         FROM EMP E, DEPT D
         WHERE E.DEPTNO=D.DEPTNO AND SAL < 5000
@@ -81,26 +81,26 @@ SELECT COUNT(*) FROM EMP; -- EMP Å×ÀÌºíÀÇ Çà¼ö
         HAVING AVG(SAL) >= 1800
         ORDER BY AVG(SAL);
 
--- ¡Ú 4. ±×·ìÇÔ¼ö °á°úÀÇ Áý°è°ª »ý¼º : ROLLUP»ç¿ë
+-- â˜… 4. ê·¸ë£¹í•¨ìˆ˜ ê²°ê³¼ì˜ ì§‘ê³„ê°’ ìƒì„± : ROLLUPì‚¬ìš©
 SELECT DEPTNO, SUM(SAL) FROM EMP GROUP BY ROLLUP(DEPTNO);
-SELECT NVL(TO_CHAR(DEPTNO),'ÇÕ')DEPTNO, SUM(SAL)SUMSAL FROM EMP GROUP BY ROLLUP(DEPTNO);
+SELECT NVL(TO_CHAR(DEPTNO),'í•©')DEPTNO, SUM(SAL)SUMSAL FROM EMP GROUP BY ROLLUP(DEPTNO);
 SELECT DEPTNO, JOB, SUM(SAL) FROM EMP GROUP BY DEPTNO, JOB ORDER BY DEPTNO, JOB;
-SELECT DEPTNO, JOB, SUM(SAL) FROM EMP GROUP BY ROLLUP(DEPTNO, JOB); -- ROLLUPÀ» ÇÏ¸é ORDER BYµµ ÀÚµ¿À¸·Î ÇØÁÜ
+SELECT DEPTNO, JOB, SUM(SAL) FROM EMP GROUP BY ROLLUP(DEPTNO, JOB); -- ROLLUPì„ í•˜ë©´ ORDER BYë„ ìžë™ìœ¼ë¡œ í•´ì¤Œ
 
--- ¡Ú¡Ú¡Ú<ÃÑ ¿¬½À¹®Á¦>
--- 1. ÀÎ¿ø¼ö,ÃÖ´ë ±Þ¿©,ÃÖ¼Ò ±Þ¿©,±Þ¿©ÀÇ ÇÕÀ» Ãâ·Â
+-- â˜…â˜…â˜…<ì´ ì—°ìŠµë¬¸ì œ>
+-- 1. ì¸ì›ìˆ˜,ìµœëŒ€ ê¸‰ì—¬,ìµœì†Œ ê¸‰ì—¬,ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥
 SELECT COUNT(*), MAX(SAL), MIN(SAL), SUM(SAL)
     FROM EMP;
     
--- 2. ¾÷¹«º° ÀÎ¿ø¼ö¸¦ ±¸ÇÏ¿© Ãâ·Â
+-- 2. ì—…ë¬´ë³„ ì¸ì›ìˆ˜ë¥¼ êµ¬í•˜ì—¬ ì¶œë ¥
 SELECT JOB, COUNT(*)
     FROM EMP
     GROUP BY JOB;
     
---- 3. ÃÖ°í ±Þ¿©¿Í ÃÖ¼Ò ±Þ¿©ÀÇ Â÷ÀÌ´Â ¾ó¸¶ÀÎ°¡ Ãâ·Â
+--- 3. ìµœê³  ê¸‰ì—¬ì™€ ìµœì†Œ ê¸‰ì—¬ì˜ ì°¨ì´ëŠ” ì–¼ë§ˆì¸ê°€ ì¶œë ¥
 SELECT MAX(SAL)- MIN(SAL) FROM EMP;
 
--- 4. °¢ ºÎ¼­º°·Î ÀÎ¿ø¼ö, ±Þ¿© Æò±Õ, ÃÖÀú ±Þ¿©, ÃÖ°í ±Þ¿©, ±Þ¿©ÀÇ ÇÕÀ» Ãâ·Â(±Þ¿©ÀÇ ÇÕÀÌ ¸¹Àº ¼øÀ¸·Î)
+-- 4. ê° ë¶€ì„œë³„ë¡œ ì¸ì›ìˆ˜, ê¸‰ì—¬ í‰ê· , ìµœì € ê¸‰ì—¬, ìµœê³  ê¸‰ì—¬, ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥(ê¸‰ì—¬ì˜ í•©ì´ ë§Žì€ ìˆœìœ¼ë¡œ)
 SELECT DEPTNO, ROUND(AVG(SAL), 2), MIN(SAL), MAX(SAL), SUM(SAL)
     FROM EMP
     GROUP BY DEPTNO
@@ -111,55 +111,55 @@ SELECT DNAME, COUNT(*), AVG(SAL), MIN(SAL), MAX(SAL), SUM(SAL)
     GROUP BY DNAME
     ORDER BY SUM(SAL) DESC;
     
--- 5. ºÎ¼­º°, ¾÷¹«º° ±×·ìÇÏ¿© °á°ú¸¦ ºÎ¼­¹øÈ£, ¾÷¹«, ÀÎ¿ø¼ö, ±Þ¿©ÀÇ Æò±Õ, ±Þ¿©ÀÇ ÇÕÀ» Ãâ·Â(ºÎ¼­¹øÈ£, ¾÷¹«¼øÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
+-- 5. ë¶€ì„œë³„, ì—…ë¬´ë³„ ê·¸ë£¹í•˜ì—¬ ê²°ê³¼ë¥¼ ë¶€ì„œë²ˆí˜¸, ì—…ë¬´, ì¸ì›ìˆ˜, ê¸‰ì—¬ì˜ í‰ê· , ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥(ë¶€ì„œë²ˆí˜¸, ì—…ë¬´ìˆœìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
 SELECT DEPTNO, JOB, COUNT(*), ROUND(AVG(SAL), 2), SUM(SAL)
     FROM EMP
     GROUP BY DEPTNO, JOB
     ORDER BY DEPTNO, JOB;
     
--- 6. ¾÷¹«º°, ºÎ¼­º° ±×·ìÇÏ¿© °á°ú¸¦  ¾÷¹«, ºÎ¼­¹øÈ£, ÀÎ¿ø¼ö, ±Þ¿©ÀÇ Æò±Õ, ±Þ¿©ÀÇ ÇÕÀ» Ãâ·Â(Ãâ·Â°á°ú´Â ¾÷¹«¼ø, ºÎ¼­¹øÈ£ ¼ø ¿À¸§Â÷¼ø Á¤·Ä)
+-- 6. ì—…ë¬´ë³„, ë¶€ì„œë³„ ê·¸ë£¹í•˜ì—¬ ê²°ê³¼ë¥¼  ì—…ë¬´, ë¶€ì„œë²ˆí˜¸, ì¸ì›ìˆ˜, ê¸‰ì—¬ì˜ í‰ê· , ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥(ì¶œë ¥ê²°ê³¼ëŠ” ì—…ë¬´ìˆœ, ë¶€ì„œë²ˆí˜¸ ìˆœ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
 SELECT JOB, DEPTNO, COUNT(*), AVG(SAL), SUM(SAL)
     FROM EMP
     GROUP BY JOB, DEPTNO
     ORDER BY JOB, DEPTNO;
     
---7. »ç¿ø¼ö°¡ 5¸íÀÌ»ó ³Ñ´Â ºÎ¼­¹øÈ£¿Í »ç¿ø¼ö¸¦ Ãâ·Â
+--7. ì‚¬ì›ìˆ˜ê°€ 5ëª…ì´ìƒ ë„˜ëŠ” ë¶€ì„œë²ˆí˜¸ì™€ ì‚¬ì›ìˆ˜ë¥¼ ì¶œë ¥
 SELECT DEPTNO, COUNT(*)
     FROM EMP
     GROUP BY DEPTNO
     HAVING COUNT(*) >= 5;
 
--- 8. »ç¿ø¼ö°¡ 5¸íÀÌ»ó ³Ñ´Â ºÎ¼­¸í°ú »ç¿ø¼ö¸¦ Ãâ·Â
+-- 8. ì‚¬ì›ìˆ˜ê°€ 5ëª…ì´ìƒ ë„˜ëŠ” ë¶€ì„œëª…ê³¼ ì‚¬ì›ìˆ˜ë¥¼ ì¶œë ¥
 SELECT DNAME, COUNT(*)
     FROM EMP E, DEPT D
     WHERE E.DEPTNO=D.DEPTNO
     GROUP BY DNAME
     HAVING COUNT(*) >= 5;
    
---9. ¾÷¹«º° ±Þ¿©ÀÇ Æò±ÕÀÌ 3000ÀÌ»óÀÎ ¾÷¹«¿¡ ´ëÇØ¼­ ¾÷¹«¸í, Æò±Õ ±Þ¿©, ±Þ¿©ÀÇ ÇÕÀ» Ãâ·Â
+--9. ì—…ë¬´ë³„ ê¸‰ì—¬ì˜ í‰ê· ì´ 3000ì´ìƒì¸ ì—…ë¬´ì— ëŒ€í•´ì„œ ì—…ë¬´ëª…, í‰ê·  ê¸‰ì—¬, ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥
 SELECT JOB, ROUND(AVG(SAL), 2), SUM(SAL)
     FROM EMP
     GROUP BY JOB
     HAVING AVG(SAL) >= 3000;
     
---10. ±Þ¿© ÇÕÀÌ 5000À» ÃÊ°úÇÏ´Â °¢ ¾÷¹«¿¡ ´ëÇØ¼­ ¾÷¹«¿Í ±Þ¿©ÇÕÀ» Ãâ·Â(±Þ¿© ÇÕ°è¼ø ³»¸²Â÷¼ø Á¤·Ä)
+--10. ê¸‰ì—¬ í•©ì´ 5000ì„ ì´ˆê³¼í•˜ëŠ” ê° ì—…ë¬´ì— ëŒ€í•´ì„œ ì—…ë¬´ì™€ ê¸‰ì—¬í•©ì„ ì¶œë ¥(ê¸‰ì—¬ í•©ê³„ìˆœ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬)
 SELECT JOB, SUM(SAL)
     FROM EMP
     GROUP BY JOB
     HAVING SUM(SAL) >5000
     ORDER BY SUM(SAL) DESC;
     
---11. ºÎ¼­º° ±Þ¿©Æò±Õ, ºÎ¼­º° ±Þ¿©ÇÕ°è, ºÎ¼­º° ÃÖ¼Ò±Þ¿©¸¦ Ãâ·Â
+--11. ë¶€ì„œë³„ ê¸‰ì—¬í‰ê· , ë¶€ì„œë³„ ê¸‰ì—¬í•©ê³„, ë¶€ì„œë³„ ìµœì†Œê¸‰ì—¬ë¥¼ ì¶œë ¥
 SELECT DEPTNO, ROUND(AVG(SAL), 2), SUM(SAL), MIN(SAL)
     FROM EMP
     GROUP BY DEPTNO;
 
---12. À§ÀÇ 11¹øÀ» ¼öÁ¤ÇÏ¿©, ºÎ¼­º° ±Þ¿©Æò±Õ ÃÖ´ëÄ¡, ºÎ¼­º° ±Þ¿©ÇÕÀÇ ÃÖ´ëÄ¡, ºÎ¼­º° ÃÖ¼Ò±Þ¿©ÀÇ ÃÖ´ëÄ¡¸¦ Ãâ·Â
+--12. ìœ„ì˜ 11ë²ˆì„ ìˆ˜ì •í•˜ì—¬, ë¶€ì„œë³„ ê¸‰ì—¬í‰ê·  ìµœëŒ€ì¹˜, ë¶€ì„œë³„ ê¸‰ì—¬í•©ì˜ ìµœëŒ€ì¹˜, ë¶€ì„œë³„ ìµœì†Œê¸‰ì—¬ì˜ ìµœëŒ€ì¹˜ë¥¼ ì¶œë ¥
 SELECT  MAX(ROUND(AVG(SAL), 2)), MAX(SUM(SAL)), MAX(MIN(SAL))
     FROM EMP
     GROUP BY DEPTNO;
   
---13. »ç¿ø Å×ÀÌºí¿¡¼­ ¾Æ·¡ÀÇ °á°ú¸¦ Ãâ·Â
+--13. ì‚¬ì› í…Œì´ë¸”ì—ì„œ ì•„ëž˜ì˜ ê²°ê³¼ë¥¼ ì¶œë ¥
 --   H_YEAR	COUNT(*)	MIN(SAL)	MAX(SAL)	AVG(SAL)	SUM(SAL)
 --     80	  1		    800		    800		    800		    800
 --	81	 10		    950		    5000	    2282.5	  22825
@@ -174,7 +174,7 @@ SELECT TO_CHAR(HIREDATE, 'RR') YEAR, COUNT(*), MIN(SAL), MAX(SAL), AVG(SAL), SUM
     GROUP BY TO_CHAR(HIREDATE, 'RR')
     ORDER BY YEAR;    
     
--- 14.  ¾Æ·¡ÀÇ °á°ú¸¦ Ãâ·Â(ÀÔ»ç³âµµº° »ç¿ø¼ö)
+-- 14.  ì•„ëž˜ì˜ ê²°ê³¼ë¥¼ ì¶œë ¥(ìž…ì‚¬ë…„ë„ë³„ ì‚¬ì›ìˆ˜)
 --  1980     1	
 --  1981     10
 --  1982     2
@@ -184,12 +184,12 @@ SELECT NVL(TO_CHAR(HIREDATE,'YYYY'),'TOTAL'), COUNT(*)
     FROM EMP
     GROUP BY ROLLUP(TO_CHAR(HIREDATE,'YYYY')); 
 
---15. ÃÖ´ë±Þ¿©, ÃÖ¼Ò±Þ¿©, ÀüÃ¼±Þ¿©ÇÕ, Æò±ÕÀ» Ãâ·Â
+--15. ìµœëŒ€ê¸‰ì—¬, ìµœì†Œê¸‰ì—¬, ì „ì²´ê¸‰ì—¬í•©, í‰ê· ì„ ì¶œë ¥
 SELECT 
 MAX(SAL), MIN(SAL), SUM(SAL), ROUND(AVG(SAL), 2)
     FROM EMP;
     
---16. ºÎ¼­º° ÀÎ¿ø¼ö Ãâ·Â
+--16. ë¶€ì„œë³„ ì¸ì›ìˆ˜ ì¶œë ¥
 SELECT DEPTNO, COUNT(*) 
     FROM EMP
     GROUP BY DEPTNO;
@@ -198,7 +198,7 @@ SELECT DNAME, COUNT(*)
     FROM EMP E, DEPT D
     WHERE E.DEPTNO=D.DEPTNO GROUP BY DNAME;
     
---17. ºÎ¼­º° ÀÎ¿ø¼ö°¡ 6¸íÀÌ»óÀÎ ºÎ¼­¹øÈ£ Ãâ·Â
+--17. ë¶€ì„œë³„ ì¸ì›ìˆ˜ê°€ 6ëª…ì´ìƒì¸ ë¶€ì„œë²ˆí˜¸ ì¶œë ¥
 SELECT DEPTNO, COUNT(*)
     FROM EMP
     GROUP BY DEPTNO

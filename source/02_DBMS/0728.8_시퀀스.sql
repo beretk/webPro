@@ -1,48 +1,48 @@
--- [VIII] Sequence : ¼øÂ÷¹øÈ£ »ý¼º±â. ´ëºÐºÐ ÀÎÀ§ÀûÀÎ PK »ç¿ë ¿ëµµ
+-- [VIII] Sequence : ìˆœì°¨ë²ˆí˜¸ ìƒì„±ê¸°. ëŒ€ë¶„ë¶„ ì¸ìœ„ì ì¸ PK ì‚¬ìš© ìš©ë„
 DROP SEQUENCE FRIEND_SEQ;
 CREATE SEQUENCE FRIEND_SEQ
-  START WITH 1  -- 1ºÎÅÍ ½ÃÀÛ(±âº»°ª)
-  INCREMENT BY 1 -- 1¾¿ Áõ°¡(±âº»°ª)
-  MAXVALUE  9999  -- ÃÖ´ë°ª
-  MINVALUE  1     -- ÃÖ¼Ò°ª(±âº»°ª)
+  START WITH 1  -- 1ë¶€í„° ì‹œìž‘(ê¸°ë³¸ê°’)
+  INCREMENT BY 1 -- 1ì”© ì¦ê°€(ê¸°ë³¸ê°’)
+  MAXVALUE  9999  -- ìµœëŒ€ê°’
+  MINVALUE  1     -- ìµœì†Œê°’(ê¸°ë³¸ê°’)
   NOCACHE
   NOCYCLE;
-SELECT FRIEND_SEQ.NEXTVAL FROM DUAL; -- ´ÙÀ½ ¼øÂ÷¹øÈ£ »ý¼º  
-SELECT FRIEND_SEQ.CURRVAL FROM DUAL; -- ½ÃÄö½ºÀÇ ÇöÀç °ª
+SELECT FRIEND_SEQ.NEXTVAL FROM DUAL; -- ë‹¤ìŒ ìˆœì°¨ë²ˆí˜¸ ìƒì„±  
+SELECT FRIEND_SEQ.CURRVAL FROM DUAL; -- ì‹œí€€ìŠ¤ì˜ í˜„ìž¬ ê°’
 DROP SEQUENCE FRIEND_SEQ;
 CREATE SEQUENCE FRIEND_SEQ MAXVALUE 99999 NOCACHE NOCYCLE;
 DROP TABLE FRIEND;
 CREATE TABLE FRIEND (
-  NO NUMBER(5) PRIMARY KEY, -- ½ÃÄö½º¸¦ »ç¿ëÇØ¼­ °ªÀÌ µé¾î°¥ ÇÊµå
+  NO NUMBER(5) PRIMARY KEY, -- ì‹œí€€ìŠ¤ë¥¼ ì‚¬ìš©í•´ì„œ ê°’ì´ ë“¤ì–´ê°ˆ í•„ë“œ
   NAME VARCHAR2(30) NOT NULL,
-  TEL  VARCHAR2(20) UNIQUE, -- NULL Çã¿ë, NULLÀÌ ¾Æ´Ï¸é À¯ÀÏÇÑ °ª
+  TEL  VARCHAR2(20) UNIQUE, -- NULL í—ˆìš©, NULLì´ ì•„ë‹ˆë©´ ìœ ì¼í•œ ê°’
   ADDRESS VARCHAR2(255),
   LAST_MODIFY DATE DEFAULT SYSDATE
 );
 INSERT INTO FRIEND (NO, NAME, TEL, ADDRESS) 
-  VALUES (FRIEND_SEQ.NEXTVAL, 'È«±æµ¿', NULL, '¼­¿ï ¼­´ë¹®'); -- ¸î¹ø ½ÇÇà 
+  VALUES (FRIEND_SEQ.NEXTVAL, 'í™ê¸¸ë™', NULL, 'ì„œìš¸ ì„œëŒ€ë¬¸'); -- ëª‡ë²ˆ ì‹¤í–‰ 
 SELECT * FROM FRIEND;
 --INSERT INTO FRIEND (NO, NAME, TEL, ADDRESS)
---  VALUES (FRIEND_SEQ.NEXTVAL, NULL, '010-9999-9999','¼­¿ï ¸¶Æ÷'); -- ¿¡·¯(NOT NULL)
+--  VALUES (FRIEND_SEQ.NEXTVAL, NULL, '010-9999-9999','ì„œìš¸ ë§ˆí¬'); -- ì—ëŸ¬(NOT NULL)
 INSERT INTO FRIEND (NO, NAME, TEL, ADDRESS)
-  VALUES (FRIEND_SEQ.NEXTVAL, 'È«±æµ¿', '010-9999-9999','¼­¿ï ¸¶Æ÷');  
+  VALUES (FRIEND_SEQ.NEXTVAL, 'í™ê¸¸ë™', '010-9999-9999','ì„œìš¸ ë§ˆí¬');  
 INSERT INTO FRIEND (NO, NAME, TEL, ADDRESS)
-  VALUES (FRIEND_SEQ.NEXTVAL, '½Å±æµ¿', '010-9999-9999','¼­¿ï ¿µµîÆ÷'); -- ¿¡·¯(UNIQUE)
+  VALUES (FRIEND_SEQ.NEXTVAL, 'ì‹ ê¸¸ë™', '010-9999-9999','ì„œìš¸ ì˜ë“±í¬'); -- ì—ëŸ¬(UNIQUE)
 INSERT INTO FRIEND (NO, NAME, TEL, ADDRESS)
-  VALUES (FRIEND_SEQ.NEXTVAL, '½Å±æµ¿', '010-8888-9999','¼­¿ï ¿µµîÆ÷');
+  VALUES (FRIEND_SEQ.NEXTVAL, 'ì‹ ê¸¸ë™', '010-8888-9999','ì„œìš¸ ì˜ë“±í¬');
 SELECT * FROM FRIEND;
 
--- ex. ÃÊ±â°ª 101ºÎÅÍ ÃÖ´ë°ª 999,999±îÁö 1¾¿ Áõ°¡ÇÏ´Â TEST_SEQ ½ÃÄö½º¸¦ »ý¼­ÇÏ°í ½ÃÄö½º¸¦ »ç¿ëÇÏ½Ã¿À
+-- ex. ì´ˆê¸°ê°’ 101ë¶€í„° ìµœëŒ€ê°’ 999,999ê¹Œì§€ 1ì”© ì¦ê°€í•˜ëŠ” TEST_SEQ ì‹œí€€ìŠ¤ë¥¼ ìƒì„œí•˜ê³  ì‹œí€€ìŠ¤ë¥¼ ì‚¬ìš©í•˜ì‹œì˜¤
 CREATE SEQUENCE TEST_SEQ 
     START WITH 101
     MAXVALUE 999999
     NOCACHE
     NOCYCLE;
-SELECT TEST_SEQ.CURRVAL FROM DUAL; -- ½ÃÄö½º »ç¿ëÀü¿¡´Â ÇöÀç°ªÀ» Á¶È¸ÇÒ ¼ö ¾øÀ½
-SELECT TEST_SEQ.NEXTVAL FROM DUAL; --½ÃÄö½º »ç¿ë
+SELECT TEST_SEQ.CURRVAL FROM DUAL; -- ì‹œí€€ìŠ¤ ì‚¬ìš©ì „ì—ëŠ” í˜„ìž¬ê°’ì„ ì¡°íšŒí•  ìˆ˜ ì—†ìŒ
+SELECT TEST_SEQ.NEXTVAL FROM DUAL; --ì‹œí€€ìŠ¤ ì‚¬ìš©
 
--- ex. ½ÃÄö½º NO_SEQ ÃÊ±â°ª 1ºÎÅÍ 999±îÁö 1¾¿ Áõ°¡ÇÏ´Â »ç¿ë :
-    -- SYSDATEÀÇ 'RRMMDD' ÃßÃâ => '230728' || ½ÃÄö½º »ý¼º¼ö(3) -> '003'=> '230728001'
+-- ex. ì‹œí€€ìŠ¤ NO_SEQ ì´ˆê¸°ê°’ 1ë¶€í„° 999ê¹Œì§€ 1ì”© ì¦ê°€í•˜ëŠ” ì‚¬ìš© :
+    -- SYSDATEì˜ 'RRMMDD' ì¶”ì¶œ => '230728' || ì‹œí€€ìŠ¤ ìƒì„±ìˆ˜(3) -> '003'=> '230728001'
 DROP SEQUENCE NO_SEQ;
 CREATE SEQUENCE NO_SEQ MAXVALUE 999 NOCACHE NOCYCLE;
 SELECT TO_CHAR(SYSDATE, 'RRMMDD')FROM DUAL;
