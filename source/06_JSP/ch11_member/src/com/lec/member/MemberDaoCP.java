@@ -8,36 +8,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-public class MemberDao {
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+public class MemberDaoCP {
 	public static final int MEMBER_EXISTENT = 0; //ID중복체크시 존재하는 ID일경우 return 값
 	public static final int MEMBER_NONEXISTENT = 1; //사용가능한 ID일 경우 return 값
 	public static final int LOGIN_SUCCESS = 1; // 로그인 성공시 return 값
 	public static final int LOGIN_FAIL_PW = 0; //로그인시 PW오류일때 return 값
 	public static final int LOGIN_FAIL_ID = -1; //로그인시 ID오류일때 return 값
 	public static final int SUCCESS = 1; //회원가입, 회원정보수정시 성공할때 return 값
-	public static final int FAIL    = 0; //회원가입, 회원정보수정시 실패할때 return 값
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url    = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String uid    = "scott";
-	private String upw    = "tiger";
-	// 싱글톤
-	private static MemberDao instance = new MemberDao();
-	public static MemberDao getInstance() {
-//		if(instance==null) {
-//			instance = new MemberDao();
-//		}
-		return instance;
-	}
-	private MemberDao() {
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+	public static final int FAIL    = 0; //회원가입, 회원정보수정시 실패할때 return 값	
 	// connection 객체를 return
 	private Connection getConnection() throws SQLException {
-		Connection conn = DriverManager.getConnection(url, "scott", "tiger");
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			conn = ds.getConnection();
+		} catch (NamingException e) {
+			System.out.println(e.getMessage());
+		}
 		return conn;
 	}
 	//1. 회원가입시 ID 중복체크 : public int confirmID(String id)
@@ -228,25 +221,4 @@ public class MemberDao {
 		return result;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

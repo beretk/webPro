@@ -1,0 +1,22 @@
+20230918
+
+<JSP_커넥션 풀>
+
+1.커넥션 풀
+-클라이언트에서 다수의 요청이 발생할 경우 데이터베이스에 부하가 발생하게 되는데,
+ 이러한 문제를 해결 하기 위해서 커넥션 풀(DataBase Connection Pool)기법을 이용한다.
+
+※tomcat컨테이너가 데이터베이스 인증을 하도록 context.xml 파일에 아래의 코드를 추가
+ -Servers/Tomcat/context.xml에 추가
+  <Resource 
+	auth="Container"
+	driverClassName = "oracle.jdbc.driver.OracleDriver"
+	url = "jdbc:oracle:thin:@localhost:1521:xe"
+	username = "scott"
+	password = "tiger"
+	name = "jdbc/Oracle11g" 
+	type = "javax.sql.DataSource"
+	maxActive = "10"
+	maxWait = "1000"
+   />  
+ -톰캣 폴더의 파일과 동기화

@@ -13,11 +13,12 @@ public class MemberDto {
 	private String gender;
 	private String email;
 	private Date birth;
+	//private Timestamp birth;
 	private String address;
 	private Timestamp rdate;
-	public MemberDto() {}
+	public MemberDto() { }
 	public MemberDto(String id, String pw, String name, String phone1, String phone2, String phone3, String gender,
-			String email, Date birth, String address, Timestamp rdate) {
+			String email, Date birth, String address, Timestamp rdate) {	
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -103,3 +104,23 @@ public class MemberDto {
 				+ address + ", rdate=" + rdate + "]";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
