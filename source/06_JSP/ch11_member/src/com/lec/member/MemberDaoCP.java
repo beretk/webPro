@@ -43,7 +43,7 @@ public class MemberDaoCP {
 		try {
 			conn = getConnection();//(2)
 			pstmt = conn.prepareStatement(sql);//(3)
-			pstmt.setNString(1, id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();//(4)+(5)
 			if(rs.next()) {
 				//중복된 id를 검색
@@ -110,11 +110,11 @@ public class MemberDaoCP {
 		try {
 			conn = getConnection();//(2)
 			pstmt = conn.prepareStatement(sql);//(3)
-			pstmt.setNString(1, id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();//(4)+(5)
 			if(rs.next()) {
 				//맞는 ID를 입력한 경우
-				String dbPw = rs.getNString("pw");//DB에 있는 pw
+				String dbPw = rs.getString("pw");//DB에 있는 pw
 				if(dbPw.equals(pw)) {//pw가 맞는지 체크하는 if
 					result = LOGIN_SUCCESS;
 				}else {
@@ -147,7 +147,7 @@ public class MemberDaoCP {
 		try {
 			conn = getConnection();//(2)
 			pstmt = conn.prepareStatement(sql);//(3)
-			pstmt.setNString(1, id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();//(4)+(5)
 				if(rs.next()) {
 					String pw = rs.getString("pw");
