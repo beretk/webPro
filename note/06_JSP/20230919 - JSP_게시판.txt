@@ -1,0 +1,18 @@
+20230919
+
+<JSP_게시판>
+
+-페이징, 답변글 없는 게시판 작성 실습
+※게시판 작성 전 Run Configurations에서 IPv4나오도록 셋팅
+1.board.sql문 작성
+2.DTO 만들기 : BoardDto
+3.DAO 만들기 : BoardDao
+4.에러페이지 : error404
+5.글목록 : list.jsp
+6.글쓰기 폼 : writeForm.jsp
+7.글쓰기 처리 : writrPro.jsp
+8.글내용 보기 : content.jsp
+9.글수정 폼 : updateForm.jsp
+10.글수정 처리 : updatePro.jsp
+11.글삭제폼 : deleteForm.jsp
+12.글삭제 처리 : deletePro.jsp

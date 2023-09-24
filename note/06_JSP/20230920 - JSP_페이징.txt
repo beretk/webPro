@@ -1,0 +1,37 @@
+20230920
+
+<JSP_페이징>
+
+※My-Batis 참조
+※이미지 : 아카이브 참조
+
+1.임의적으로 데이터 70개 입력 3번 실행
+2.index.jsp
+	<%response.sendRedirect("board/list.jsp"); %> 
+	또는
+	<jsp:forward page="board/list.jsp"/>
+3.board.sql에 Top-N 구문 추가
+ ①. 글목록(Top-N구문)
+  SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP) A; -- 전단계
+  SELECT * 
+	FROM (SELECT ROWNUM RN, A.* 
+	FROM (SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP) A)
+  WHERE RN BETWEEN 11 AND 20; -- 최종 TOP-N 구문 ((listBoard(s , e))
+
+4.Dao의 list() 메소드를 list(starRow, endRow)로 수정
+5.list.jsp 위측에 뿌려질 startRow와 endRow 설정 (BLOCKSIZE 10, PAGESIZE 10으로 함)
+ ①pageNum(현 페이지를 받는 파라미터명)
+ ②currentPage = Integer.parse(pageNum);
+ ③startRow = (currentPage – 1 )* PAGESIZE + 1
+ ④endRow = startRow + PAGESIZE – 1
+6.list.jsp 아래측에 뿌려질 페이지 번호들 셋팅
+ ①전체 페이지 수 PageCnt = (totCnt / PageSize)의 올림
+ ②현 블럭의 시작 페이지 수 
+   startPage = ((currentPage-1)/ BlockSize)의 int)* BlockSize+1
+ ③현 블럭의 끝 페이지 수
+   endPage = startPage + BlockSize - 1
+ ④If(endPage>pageCnt)  endPage = pageCnt
+ ⑤[이전]이 나오는 경우 : srartPage > BlockSize일 때
+ ⑥페이지 번호들 for문 이용 
+   <a href=’list.jsp?pageNum=i’> [ i ] </a>
+ ⑦[다음]이 나오는 경우 : endPage < pageCnt 일 때

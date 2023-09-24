@@ -36,10 +36,9 @@ INSERT INTO BOARD (BID, BNAME, BTITLE, BCONTENT, BEMAIL, BPW, BGROUP, BSTEP, BIN
     VALUES (BOARD_SEQ.NEXTVAL, '김', '제목2', '냉무', 'K@K.COM', '111', BOARD_SEQ.CURRVAL, 0, 0, '192.168.0.252');
 -- 4. bID로 조회수 1올리기(글상세보기시 필요)
 UPDATE BOARD SET BHIT = BHIT + 1 WHERE BID=1;
--- 5. bID로 DTO가져오기(글상세보기) - 4번조회수 올리고 DTO가져오기
--- 6. bID로 DTO가져오기(글수정 FORM, 답변글쓰기 FORM) 
+-- 5. bID로 DTO가져오기(글수정 FORM, 답변글쓰기 FORM) 
 SELECT * FROM BOARD WHERE BID=1;
--- 7. 글수정(작성자, 글제목, 본문, 이메일, 비번, IP수정)
+-- 6. 글수정(작성자, 글제목, 본문, 이메일, 비번, IP수정)
 UPDATE BOARD
     SET BNAME = '홍길동',
         BTITLE = '바꾼제목',
@@ -48,9 +47,9 @@ UPDATE BOARD
         BPW    = '111',
         BIP    = '127.0.0.1'
     WHERE BID = 1;
--- 8. 글삭제(비번을 맞게 입력한 경우만 삭제)
+-- 7. 글삭제(비번을 맞게 입력한 경우만 삭제)
 COMMIT;
-DELETE FROM BOARD WHERE BID=11 AND BPW='111';
+DELETE FROM BOARD WHERE BID=14 AND BPW='111';
 ROLLBACK;
 SELECT * FROM BOARD ORDER BY BGROUP DESC;
 

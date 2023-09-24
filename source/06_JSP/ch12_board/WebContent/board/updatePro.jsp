@@ -22,8 +22,8 @@
 	%>
 		<script>
 			alert('글수정 성공');
-			location.href='<%=conPath%>/board/list.jsp'; // 글수정후 글목록 페이지
-			// location.href='<%=conPath%>/board/content.jsp?bid=<%=dto.getBid()%>'; // 상세보기페이지로
+			// location.href='<%=conPath%>/board/list.jsp'; // 글수정후 글목록 페이지
+			location.href='<%=conPath%>/board/content.jsp?bid=<%=dto.getBid()%>&after=u'; // 상세보기페이지로
 		</script>
 	<%}else{ %>
 		<script>
