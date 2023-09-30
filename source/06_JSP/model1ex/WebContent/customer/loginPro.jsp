@@ -8,16 +8,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
 		String cid = request.getParameter("cid");
 		String cpw = request.getParameter("cpw");
-		String method = request.getParameter("method");
+		String method = request.getParameter("method"); // "null" 또는 "customer/modify"
 		CustomerDao cDao = CustomerDao.getInstance();
 		int result = cDao.loginCheck(cid, cpw);
+		// DB에 id와 pw 확인 작업 : SELECT * FROM MEMBER WHERE ID=? and pw=?
 		if(result==CustomerDao.LOGIN_FAIL){
 			response.sendRedirect(conPath+"/customer/loginForm.jsp?msg=");
 		}else{
@@ -32,3 +32,5 @@
 	%>
 </body>
 </html>
+
+

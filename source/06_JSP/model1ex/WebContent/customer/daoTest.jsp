@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.lec.dto.CustomerDto"%>
 <%@page import="com.lec.dao.CustomerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,28 +10,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
+	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<h1>테스트 페이지</h1>
 	<%
 		CustomerDao cDao = CustomerDao.getInstance();
-		String cid = "ccc";
-		int result = cDao.confirmID(cid);
-		if(result==CustomerDao.CUSTOMER_EXISTENT){
-			out.print("<h3>1. confirmID결과:" + cid + "는 중복된 아이디로 회원가입 불가 합니다 </h3>");
+		String cid = "bbb";
+		int result = cDao.confirmId(cid);
+		if(result == CustomerDao.CUSTOMER_EXISTENT){
+			out.println("<h3>1. confirmId결과 : " + cid+"는 있는 아이디입니다. 회원가입 불가합니다</h3>");
 		}else{
-			out.print("<h3>1. confirmID결과:" + cid + "는 가입 가능한 아이디 입니다 </h3>");
-			CustomerDto dto = new CustomerDto(cid,"111","홍길동",null,"hong@hong.com",null,null,null,null);
+			out.println("<h3>1. confirmId결과 : " + cid + "는 없는 아이디입니다. 회원가입 가능합니다</h3>");
+			CustomerDto dto = new CustomerDto(cid, "111", "김길동", "010-9999-9999",
+					"k@k.com", "서울", null, "f", null);
 			result = cDao.joinCustomer(dto);
-			if(result== CustomerDao.SUCCESS){
-				out.print("<h3>2. join 결과:" + cid + "로 회원가입 성공 </h3>");
+			if(result == CustomerDao.SUCCESS){
+				out.println("<h3>2. join 결과 : 회원가입 성공:" + dto+ "</h3>");
 			}else{
-				out.print("<h3>2. join 결과:" + cid + "로 회원가입 실패 </h3>");
+				out.println("<h3>2. join 결과 : 회원가입 실패 : " + dto+ "</h3>");
 			}
 		}
 		out.println("<h3>3. 로그인 결과 </h3>");
-		cid = "aaa"; String cpw = "111";
+		cid = "bbb"; String cpw = "111";
 		result = cDao.loginCheck(cid, cpw);
 		if(result == CustomerDao.LOGIN_SUCCESS){
 			out.print("id는 " + cid +", pw는 " + cpw + " : 로그인 성공<br>");
@@ -52,22 +55,21 @@
 		
 		
 		out.println("<h3>5. 정보 수정 </h3>");
-		dto.setCname("한재석");
-		dto.setCaddress("서울");
+		dto.setCname("김수한무");
+		dto.setCaddress("달나라");
 		result = cDao.modifyCustomer(dto);
 		if(result == CustomerDao.SUCCESS){
 			out.println("수정완료<br>");
 			out.println("db의 수정된 데이터 :" + cDao.getCustomer(dto.getCid()) +"<br>");
 		}else{
-			out.println(dto.getCid()+" 아이디는 없어서 수정 못함<br>");
+			out.println(dto.getCid()+" 아이디는 없어서 수정 못했어요<br>");
 		}
+		out.println("<h3>6. 회원리스트 </h3>");
+		ArrayList<CustomerDto> customers = cDao.listCustomer(2, 5);
+		for(CustomerDto customer : customers){
+			out.println(customer);
+		}
+		out.println("<h3>7. 가입한 회원수 "+ cDao.getCustomerTotCnt() +" </h3>");
 	%>
 </body>
 </html>
-
-
-
-
-
-
-

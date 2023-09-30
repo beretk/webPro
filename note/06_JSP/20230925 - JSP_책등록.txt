@@ -1,0 +1,30 @@
+20230925
+
+<JSP_책 등록>
+1.파일 업로드 프로그래밍
+-업로드 파일 저장 폴더 생성 webapp밑에 fileUpFolder 생성(업로드할 파일 위치)
+ 1)한 개 파일 업로드 
+  ①직접 생성한 폴더 경로
+  -source/06_jsp/ch13_fileUp/WebContent/fileFolder
+  ②실제 업로드 파일이 저장된 서버측 경로
+  -IDE/apache-tomcat/wtpwebapps/ch13_fileUp/fileFolder
+ 2)여러개 파일 업로드 
+
+2.book.dql
+ 1)drop table book;
+ 2)create table book();
+ 3)drop sequence book_seq;
+ 4)create sequence book_seq;
+ 5)insert into book();
+
+3.BookDto.java
+4.BookDao.java
+5.jsp파일 작성
+ -bookRegisterForm.jsp
+ -bookRegisterProm.jsp
+ -content.jsp
+ -list.jsp
+ -listBoard_nopaging.jsp
+ -list.jsp
+ -list.Product_nopaging.jsp
+
