@@ -1,0 +1,28 @@
+20231006
+
+<JSTL_MVC>
+※MVC 패턴의 이해
+-MVC란 Model, View, Controller를 뜻하는 용어로 개발 형태의 일종.
+-Model은 데이터베이스와의 관계를 담당합니다. 클라이언트의 요청에서 필요한 자료를 데이터베이스로부터 추출하거나, 수정하여 Controller로 전달.
+-View는 사용자한테 보여지는 UI 화면. 주로 .jsp파일로 작성 하며, Controller에서 어떤 View 컴폰넌트를 보여줄지 결정.
+-Controller는 클라이언트의 요청을 받고, 적절한 Model에 지시를 내리며, Model에서 전달된 데이터를 적절한  View에 전달.
+-작업을 분할하면, 추후 유지보수에 좋음.
+
+1.글목록
+ list.do 요청 → BFrontController(글목록로직분기) → BListService(DAO에 글목록 생성 요청) → BDao(DB작업) → BListService → BFrontController 
+ → list.jsp
+2. 글쓰기 
+ writeView.do 요청 → write.jsp에서 submit버튼 누르면 write.do 요청 → BFrontController(글쓰기로직분기) → BWriteService(DAO에 글쓰기 요청) 
+ → BDao(DB 작업) → BWriteService → BFrontController → list.do
+3.글 내용 보기
+ content.do 요청 → BFrontController(글 내용보기 분기) → BContentService(DAO에 글 내용 보기 요청) → BDao(DB작업) → BListService 
+ → BFrontController → content.jsp
+4.글 내용 수정
+ content.j네(상세보기페이지)에서 modifyView.do 요청 → BFrontController(글수정view로 분기) → BModifyViewService(DAO에 수정할 글 가져오기) 
+ → modify.jsp → 글수정할 내용으로 변경하고 modify.do 요청 → BFrontController(글수정으로 분기) → BmodifyService → BDao(DB작업) → BListService 
+ → BFrontController → list.jsp
+5.글 삭제
+ content.jsp에서 delete.do요청→ BFrontController(글삭제로 분기) → BDeleteCommand(DAO에 글 삭제 요청) → BDao(DB작업) → BListService → BFrontController → list.jsp
+6.답변글 달기
+ content.jsp에서 replyView.do요청 → BFrontController(답변글 저장으로 분기) → BReplyViewService(DAO에 원글에 대한 정보 요청) → BDao(DB작업) → BReplyViewService  → BFrontController 
+ → reply.jsp에서 reply.do요청 → → BFrontController(답변글 저장으로 분기) → BReplyService(DAO에 답변글 요청) → BDao(DB작업) → BListService → BFrontController → list.jsp
