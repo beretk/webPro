@@ -1,0 +1,11 @@
+@charset "UTF-8";
+h1, p{text-align: center;}
+p{margin-top: 30px;}
+a{text-decoration: none; color:black;}
+b{color:red;}
+body { 
+	background-color: #FFF0B5; 
+	font-size: 9pt;
+}
+table {border: 2px solid pink; width:95%; margin: 10px auto;}
+table tr { background-color: lightblue; height: 40px;}

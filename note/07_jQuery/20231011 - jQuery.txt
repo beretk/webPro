@@ -1,0 +1,20 @@
+20231011
+
+<jQuery>
+1.jQuery란?
+-자바 스크립트 라이브러리 중 가장 인기 있는 라이브러리. 
+-이벤트 대응, 애니메이션과 메뉴효과 등에서 가장 단순하고 쉽게 페이지 제작을 할 수 있도록 도와준다
+-기능 : 문서 객체 모델과 관련된 처리를 쉽게 구현
+-일관된 이벤트 연결을 쉽게 구현
+-시각적 효과를 쉽게 구현
+-aJax 애플리케이션을 쉽게 개발
+-http://www.w3schools.com : jQuery강좌와 풍부한 예제
+-http://www.jquery.com : API documentation, 버전정보, 예제들, UI제공
+-jeasyui.com : jQuery Easy UI 직관적으로 jQuery를 이용해서 쉽게 사이트를 구현할 수 있는 라이브러리 제공
+
+-사전 지식으로 HTML, CSS, JavaScript를 알아야 한다.
+-jQuery는 적게 쓰고 큰 효과를 내도록 하는 경량화된 자바스크립트 라이브러리.
+-자바 스크립트를 더욱 쉽게 가볍게 만들어준다
+-Ajax나 DOM등을 다룰 때 복잡한 일들을 jQuery 사용으로 단순화된다
+-jQuery.com(http://jquery.com/download)에서 다운로드한다
+-jQuery는 두 가지 버전을 제공하고 있다.

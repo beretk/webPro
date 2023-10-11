@@ -50,13 +50,13 @@
 			InputStream is = null;
 			OutputStream os = null;
 			try{
-				File severFile = new File(path + "/" + filename);// 서버에 업로드된 파일
+				File serverFile = new File(path + "/" + filename);// 서버에 업로드된 파일
 				//if(filename!=null){
-				if(severFile.exists()){
-					is = new FileInputStream(severFile);
+				if(serverFile.exists()){
+					is = new FileInputStream(serverFile);
 					os = new FileOutputStream("C:/webPro/source/06_JSP/ch13_fileUp/WebContent/fileUpFolder/"
 					                                             + filename);//소스폴더
-					byte[] bs = new byte[(int)severFile.length()];
+					byte[] bs = new byte[(int)serverFile.length()];
 					while(true){
 						int readByteCnt = is.read(bs);
 						if(readByteCnt==-1) break;
