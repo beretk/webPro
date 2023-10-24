@@ -14,16 +14,11 @@ public class MidConfirmService implements Service {
 		MemberDao mDao = MemberDao.getInstance();
 		int result = mDao.midConfirm(mid);
 		if(result == MemberDao.EXISTENT){
-			request.setAttribute("confirmResult","<b>중복된 ID입니다</b>");
+			request.setAttribute("confirmResult", "<b>중복된 ID입니다</b>");
 		}else{
-			request.setAttribute("confirmResult","사용 가능한 ID입니다");
+			request.setAttribute("confirmResult", "사용 가능한 ID입니다");
 		}
 
 	}
 
 }
-
-
-
-
-

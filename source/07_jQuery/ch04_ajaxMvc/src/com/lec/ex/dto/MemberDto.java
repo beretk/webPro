@@ -1,16 +1,18 @@
 package com.lec.ex.dto;
+
 import java.sql.Date;
 import java.sql.Timestamp;
+
 public class MemberDto {
 	private String mid;
 	private String mpw;
 	private String mname;
 	private String memail;
 	private String mphoto;
-	private Date   mbirth;
+	private Date mbirth;
 	private String maddress;
 	private Timestamp mrdate;
-	public MemberDto() { }
+	public MemberDto() {}
 	public MemberDto(String mid, String mpw, String mname, String memail, String mphoto, Date mbirth, String maddress,
 			Timestamp mrdate) {
 		this.mid = mid;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="conPath" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +20,18 @@
 		$(document).ready(function() {
 			$('input[name="pname"]').keyup(function(){
 				$.ajax({
-					url : '${conPath}/productStock.do',
-					type : 'post',
-					data : 'pname='+$(this).val(),
+					url : 'productStock.do', 
+					type : 'post', //'get'도 됨
+					data : 'pname=' + $('input[name="pname"]').val(),
 					dataType : 'html',
 					success : function(data){
 						$('#stockCnt').html(data);
 					},
 					error : function(code){
 						$('#stockCnt').text(code.status);
-					}
-				});
-			});		
+					},
+				});  
+			});
 		});
 	</script>
 </head>

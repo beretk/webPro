@@ -17,18 +17,18 @@
 		$(document).ready(function(){
 			$('#confirm').click(function(){
 				$.ajax({
-					url : '/ch04_ajaxMvc/productStock.do',
-					type : 'post',
-					data : 'pname='+$('input[name="pname"]').val(),
+					url : 'productStock.jsp', 
+					type : 'post', //'get'도 됨
+					data : 'pname=' + $('input[name="pname"]').val(),
 					dataType : 'html',
 					success : function(data){
 						$('#stockCnt').html(data);
 					},
 					error : function(code){
 						$('#stockCnt').text(code.status);
-					}
-				});
-			});
+					},
+				});  
+			});  
 		});
 	</script>
 </head>

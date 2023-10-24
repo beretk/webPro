@@ -9,7 +9,7 @@ public class ProductStockService implements Service {
 		// productStock.do?pname=공책
 		String pname = request.getParameter("pname");
 		ProductDao pDao = ProductDao.getInstance();
-		int pStock = pDao.getProductStock(pname);
+		int pStock = pDao.getProductStocks(pname);
 		if(pStock == -1){
 			request.setAttribute("pStock","없는 제품");
 		}else{
@@ -17,10 +17,3 @@ public class ProductStockService implements Service {
 		}
 	}
 }
-
-
-
-
-
-
-

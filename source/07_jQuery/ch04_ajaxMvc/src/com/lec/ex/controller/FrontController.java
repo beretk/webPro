@@ -31,7 +31,7 @@ public class FrontController extends HttpServlet {
 			service = new ProductStockService();
 			service.execute(request, response);
 			viewPage = "2_product/productStock.jsp";
-		}else if(command.equals("/midConfirm.do")) {
+		}else if(command.equals("/midConfirm.do")){
 			// midConfirm.do?mid=son
 			service = new MidConfirmService();
 			service.execute(request, response);

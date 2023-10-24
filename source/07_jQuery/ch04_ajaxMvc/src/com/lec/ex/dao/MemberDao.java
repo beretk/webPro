@@ -1,4 +1,5 @@
 package com.lec.ex.dao;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,34 +14,34 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.lec.ex.dto.MemberDto;
+
 public class MemberDao {
 	public static final int EXISTENT    = 0;
 	public static final int NONEXISTENT = 1;
 	public static final int SUCCESS = 1;
 	public static final int FAIL    = 0;
-	private DataSource ds;
+	private DataSource ds = null;
 	// 싱글톤
 	private static MemberDao instance = new MemberDao();
 	public static MemberDao getInstance() {
 		return instance;
 	}
 	private MemberDao() {
-		// ds에 커넥션풀에 있는 ds를 할당
+		// ds에 커넥션풀에 있은 ds를 할당
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");			
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	//(1) 회원mid 중복체크
+	//(1) 회원mid 중복체크 : 
 	public int midConfirm(String mid) {
 		int result = EXISTENT;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
-		String sql = "SELECT * FROM MVC_MEMBER WHERE mID = ?";
-//		String sql = "SELECT COUNT(*) FROM MVC_MEMBER WHERE mID = ?";
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MVC_MEMBER WHERE mID=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -51,20 +52,13 @@ public class MemberDao {
 			}else {
 				result = NONEXISTENT;
 			}
-//			rs.next();
-//			int cnt = rs.getInt(1);
-//			if(cnt==1) {
-//				result = EXISTENT;
-//			}else {
-//				result = NONEXISTENT;
-//			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(rs   !=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -74,11 +68,10 @@ public class MemberDao {
 	//(2) 회원가입
 	public int joinMember(MemberDto member) {
 		int result = FAIL;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO MVC_MEMBER "
-				+ "		(mID, mPw, mName, mEmail, mPhoto, mBirth, mAddress) "
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO MVC_MEMBER (mID, mPw, mName, mEmail, mPhoto, mBirth, mAddress) " + 
+				"    VALUES (?,?,?,?,?,?,?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -89,13 +82,13 @@ public class MemberDao {
 			pstmt.setString(5, member.getMphoto());
 			pstmt.setDate(6, member.getMbirth());
 			pstmt.setString(7, member.getMaddress());
-			result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -105,10 +98,10 @@ public class MemberDao {
 	//(3) 로그인
 	public int loginCheck(String mid, String mpw) {
 		int result = FAIL;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
-		String sql = "SELECT * FROM MVC_MEMBER WHERE mID = ? and mPW = ?";
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MVC_MEMBER WHERE mID=? and mPW=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -120,11 +113,11 @@ public class MemberDao {
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(rs   !=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -134,52 +127,52 @@ public class MemberDao {
 	//(4) mid로 dto가져오기(로그인 성공시 session에 setAttribute하기 위함)
 	public MemberDto getMember(String mid) {
 		MemberDto member = null;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
-		String sql = "SELECT * FROM MVC_MEMBER WHERE mId = ?";
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MVC_MEMBER WHERE mID=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				//String mid     = rs.getString("mid");
-				String mpw       = rs.getString("mpw");
-				String mname     = rs.getString("mname");
-				String memail    = rs.getString("memail");
-				String mphoto    = rs.getString("mphoto");;
-				Date   mbirth    = rs.getDate("mbirth");
-				String maddress  = rs.getString("maddress");
+				// String mid = rs.getString("mid");
+				String mpw = rs.getString("mpw");
+				String mname = rs.getString("mname");
+				String memail = rs.getString("memail");
+				String mphoto = rs.getString("mphoto");
+				Date mbirth = rs.getDate("mbirth");
+				String maddress = rs.getString("maddress");
 				Timestamp mrdate = rs.getTimestamp("mrdate");
-				member = new MemberDto(mid, mpw, mname, memail, mphoto, 
-								mbirth, maddress, mrdate);
+				member = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, mrdate);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(rs   !=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		return member;
 	}
-	//(5) 회원정보수정 (특정mid의 정보 수정)
+	//(5) 회원정보 수정(특정 mid의 정보 수정)
 	public int modifyMember(MemberDto member) {
 		int result = FAIL;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE MVC_MEMBER SET mPw = ?, " + 
-				"                    mName = ?, " + 
-				"                    mEmail = ?, " + 
-				"                    mPhoto = ?, " + 
-				"                    mBirth = ?, " + 
-				"                    mAddress = ? " + 
-				"        WHERE mId = ?";
+		String sql = "UPDATE MVC_MEMBER  " + 
+				"    SET mPW = ?, " + 
+				"        mNAME = ?, " + 
+				"        mEMAIL = ?, " + 
+				"        mPHOTO = ?, " + 
+				"        mBIRTH = ?, " + 
+				"        mADDRESS = ? " + 
+				"    WHERE mID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -190,13 +183,13 @@ public class MemberDao {
 			pstmt.setDate(5, member.getMbirth());
 			pstmt.setString(6, member.getMaddress());
 			pstmt.setString(7, member.getMid());
-			result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -206,13 +199,13 @@ public class MemberDao {
 	//(6) 회원리스트(top-N구문)
 	public ArrayList<MemberDto> getMemberlist(int startRow, int endRow){
 		ArrayList<MemberDto> members = new ArrayList<MemberDto>();
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
-		String sql = "SELECT * "
-				+ "		FROM (SELECT ROWNUM RN, A.* "
-				+ "				FROM (SELECT * FROM MVC_MEMBER ORDER BY mRDATE DESC) A) "
-				+ "		WHERE RN BETWEEN ? AND ?";
+		ResultSet rs = null;
+		String sql = "SELECT * " + 
+				"    FROM(SELECT ROWNUM RN, A.* " + 
+				"        FROM(SELECT * FROM MVC_MEMBER ORDER BY mRDATE DESC) A) " + 
+				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -220,38 +213,37 @@ public class MemberDao {
 			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				String mid       = rs.getString("mid");
-				String mpw       = rs.getString("mpw");
-				String mname     = rs.getString("mname");
-				String memail    = rs.getString("memail");
-				String mphoto    = rs.getString("mphoto");;
-				Date   mbirth    = rs.getDate("mbirth");
-				String maddress  = rs.getString("maddress");
+				String mid = rs.getString("mid");
+				String mpw = rs.getString("mpw");
+				String mname = rs.getString("mname");
+				String memail = rs.getString("memail");
+				String mphoto = rs.getString("mphoto");
+				Date mbirth = rs.getDate("mbirth");
+				String maddress = rs.getString("maddress");
 				Timestamp mrdate = rs.getTimestamp("mrdate");
-				MemberDto member = new MemberDto(mid, mpw, mname, memail, mphoto, 
-								mbirth, maddress, mrdate);
+				MemberDto member = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, mrdate);
 				members.add(member);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(rs   !=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		return members;
 	}
-	//(7) 회원수
+	//(7) 회원수	
 	public int getMemberTotCnt() {
 		int totCnt = 0;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
-		String sql = "SELECT COUNT(*) CNT FROM MVC_MEMBER";
+		ResultSet rs = null;
+		String sql = "SELECT COUNT (*) CNT FROM MVC_MEMBER";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -260,11 +252,11 @@ public class MemberDao {
 			totCnt = rs.getInt("cnt");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(rs   !=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -274,20 +266,20 @@ public class MemberDao {
 	//(8) 회원탈퇴
 	public int withdrawalMember(String mid) {
 		int result = FAIL;
-		Connection        conn  = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM MVC_MEMBER WHERE MID = ?";
+		String sql = "DELETE MVC_MEMBER WHERE mID=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
-			result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		} finally{
 			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -295,12 +287,6 @@ public class MemberDao {
 		return result;
 	}
 }
-
-
-
-
-
-
 
 
 
