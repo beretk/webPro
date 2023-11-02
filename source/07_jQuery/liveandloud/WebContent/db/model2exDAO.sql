@@ -10,7 +10,7 @@ SELECT COUNT(*) CNT FROM MEMBER WHERE mEMAIL='aaa@naver.com';
 
 -- (3) 회원가입
 INSERT INTO MEMBER (mID, mPw, mName, mEmail, mPhoto, mBirth, mAddress)
-    VALUES ('bae','1','배두나','bae@naver.com', 'NOIMG.JPG', '1980/12/25','서울시');
+    VALUES ('tom','1','톰크루즈','bae@naver.com', '톰크루즈.jpg', '1980/12/25','서울시');
     
 -- (4) 로그인
 SELECT * FROM MEMBER WHERE mID='aaa' and mPW='1';
@@ -41,7 +41,7 @@ SELECT COUNT (*) CNT FROM MEMBER;
 
 -- (9) 회원탈퇴
 COMMIT;
-DELETE MEMBER WHERE mID='aaa';
+DELETE MEMBER WHERE mID='sean';
 ROLLBACK;
 
 SELECT * FROM MEMBER ORDER BY mRDATE DESC; 
@@ -107,7 +107,7 @@ INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME, FGROUP, FSTEP, FIN
 COMMIT;
 
 -- (10) 회원탈퇴시 탈퇴하는 회원(mid)이 쓴 글 모두 삭제하기
-DELETE FROM FILEBOARD WHERE MID='son';
+DELETE FROM FILEBOARD WHERE MID='go';
 ROLLBACK;
 
 --------------------------------------------------------------
@@ -135,9 +135,9 @@ SELECT * FROM
 SELECT COUNT(*) CNT FROM NOTICE;
 
 -- (3) 글쓰기(원글쓰기) 
-INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME, FGROUP, FSTEP, FINDENT, FIP)
-  VALUES (FILEBOARD_SEQ.NEXTVAL, 'admin','토트넘','난 공격수', 'a.docx', 
-    FILEBOARD_SEQ.CURRVAL, 0,0, '192.168.0.31');
+INSERT INTO NOTICE (NID, AID, NTITLE, NCONTENT, NFILENAME, NGROUP, NSTEP, NINDENT, NIP)
+  VALUES (NOTICE_SEQ.NEXTVAL, 'admin','토트넘','난 공격수', 'a.docx', 
+    NOTICE_SEQ.CURRVAL, 0,0, '192.168.0.31');
     
 -- (4) hit 1회 올리기
 UPDATE NOTICE SET NHIT = NHIT + 1 WHERE NID=1;
@@ -172,96 +172,66 @@ COMMIT;
 --------------------------------------------------------------
 -- (1) 글목록(startRow~endRow)
 SELECT * FROM PHOTO;
-SELECT P.*, ANAME FROM PHOTO P, ADMIN A
-  WHERE P.AID=A.AID ; -- 출력 기준
 SELECT * FROM
-  (SELECT ROWNUM RN, A.* FROM (SELECT P.*, ANAME FROM PHOTO P, ADMIN A
-        WHERE P.AID=A.AID ORDER BY PGROUP DESC, PSTEP) A)
-  WHERE RN BETWEEN 2 AND 4; -- dao에 쓸 query
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM PHOTO) A)
+  WHERE RN BETWEEN 1 AND 4; -- dao에 쓸 query
    
 -- (2) 글갯수
 SELECT COUNT(*) CNT FROM PHOTO;
 
 -- (3) 글쓰기(원글쓰기) 
-INSERT INTO PHOTO (PID, AID, PTITLE, PCONTENT, PFILENAME, PGROUP, PSTEP, PINDENT, PIP)
-  VALUES (PHOTOSEQ.NEXTVAL, 'admin','토트넘','난 공격수', 'a.docx', 
-    PHOTO_SEQ.CURRVAL, 0,0, '192.168.0.31');
-    
--- (4) hit 1회 올리기
-UPDATE PHOTO SET PHIT = PHIT + 1 WHERE PID=1;
+INSERT INTO PHOTO (PID, AID, PTITLE, PCONTENT, PFILENAME)
+  VALUES (PHOTO_SEQ.NEXTVAL, 'admin','콘솔시스템','음향최고', 'pa2.jpg');
 
--- (5) 글번호(nid)로 글전체 내용(PhotoDto) 가져오기
+-- (4) 글번호(nid)로 글전체 내용(PhotoDto) 가져오기
 SELECT P.*, ANAME
   FROM PHOTO P, ADMIN A WHERE P.AID=A.AID AND PID=1;  
   
--- (6) 글 수정하기(pid, ptitle, pcontent, pfilename, prdate(SYSDATE), pip 수정)
+-- (5) 글 수정하기(pid, ptitle, pcontent, pfilename수정)
 UPDATE PHOTO SET PTITLE = '바뀐제목',
-                    PCONTENT = '바뀐본문',
-                    PFILENAME = NULL,
-                    PIP = '192.168.151.10',
-                    PRDATE = SYSDATE
-            WHERE PID = 2;
+                    PCONTENT = '바뀐',
+                    PFILENAME = '헤르츠.jpg'
+            WHERE PID = 12;
             
--- (7) 글 삭제하기
+-- (6) 글 삭제하기
 COMMIT;
 DELETE FROM PHOTO WHERE PID=5;
 ROLLBACK;
--- 글 삭제시 답변글까지 삭제하는 로직(지우려는 3번글의 삭제하려는 글의 PGROUP=1, PSTEP=1, PINDENT=1 필요)
-SELECT * FROM PHOTO ORDER BY PGROUP DESC, PSTEP;
-DELETE FROM PHOTO WHERE PGROUP = 1 AND (PSTEP>=1 AND 
-    PSTEP<(SELECT NVL(MIN(PSTEP),9999) 
-          FROM PHOTO WHERE PGROUP=1 AND PSTEP>1 AND PINDENT<=1));
-ROLLBACK;
-UPDATE PHOTO SET PSTEP = PSTEP-2 WHERE PGROUP=1 AND PSTEP>2;-- 생략 가능(2은 위의 DELETE문 수행결과) : Pstep 재조정
 
+SELECT * FROM PHOTO;
 COMMIT;
 --------------------------------------------------------------
 -----------------  EquipmentDao에 들어갈 query ----------------
 --------------------------------------------------------------
 -- (1) 글목록(startRow~endRow)
 SELECT * FROM EQUIPMENT;
-SELECT E.*, ANAME FROM EQUIPMENT E, ADMIN A
-  WHERE E.AID=A.AID ; -- 출력 기준
 SELECT * FROM
-  (SELECT ROWNUM RN, A.* FROM (SELECT E.*, ANAME FROM EQUIPMENT E, ADMIN A
-        WHERE E.AID=A.AID ORDER BY EGROUP DESC, ESTEP) A)
-  WHERE RN BETWEEN 2 AND 4; -- dao에 쓸 query
-   
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM EQUIPMENT) A)
+  WHERE RN BETWEEN 1 AND 4   ;
+
 -- (2) 글갯수
 SELECT COUNT(*) CNT FROM EQUIPMENT;
 
--- (3) 글쓰기(원글쓰기) 
-INSERT INTO EQUIPMENT (EID, AID, ETITLE, ECONTENT, EFILENAME, EGROUP, ESTEP, EINDENT, EIP)
-  VALUES (EQUIPMENT_SEQ.NEXTVAL, 'admin','토트넘','난 공격수', 'a.docx', 
-    EQUIPMENT_SEQ.CURRVAL, 0,0, '192.168.0.31');
-    
--- (4) hit 1회 올리기
-UPDATE EQUIPMENT SET eHIT = eHIT + 1 WHERE eID=1;
+--(3) 글쓰기(원글쓰기) 
+INSERT INTO EQUIPMENT (EID, AID, ETITLE, ECONTENT, EFILENAME)
+  VALUES (EQUIPMENT_SEQ.NEXTVAL, 'admin','콘솔','최고의 음질', 'pa2.jpg');
 
--- (5) 글번호(nid)로 글전체 내용(EquipmentDto) 가져오기
+-- (4) 글번호(nid)로 글전체 내용(EquipmentDto) 가져오기
 SELECT E.*, ANAME
   FROM EQUIPMENT E, ADMIN A WHERE E.AID=A.AID AND EID=1;  
   
--- (6) 글 수정하기(eid, etitle, econtent, efilename, erdate(SYSDATE), eip 수정)
+-- (5) 글 수정하기(eid, etitle, econtent, efilename 수정)
 UPDATE EQUIPMENT SET ETITLE = '바뀐제목',
                     ECONTENT = '바뀐본문',
-                    EFILENAME = NULL,
-                    EIP = '192.168.151.10',
-                    ERDATE = SYSDATE
+                    EFILENAME = NULL
             WHERE EID = 2;
             
--- (7) 글 삭제하기
+-- (6) 글 삭제하기
 COMMIT;
 DELETE FROM EQUIPMENT WHERE EID=5;
 ROLLBACK;
--- 글 삭제시 답변글까지 삭제하는 로직(지우려는 3번글의 삭제하려는 글의 eGROUP=1, eSTEP=1, eINDENT=1 필요)
-SELECT * FROM EQUIPMENT ORDER BY EGROUP DESC, ESTEP;
-DELETE FROM EQUIPMENT WHERE EGROUP = 1 AND (ESTEP>=1 AND 
-    ESTEP<(SELECT NVL(MIN(ESTEP),9999) 
-          FROM EQUIPMENT WHERE EGROUP=1 AND ESTEP>1 AND EINDENT<=1));
-ROLLBACK;
-UPDATE EQUIPMENT SET ESTEP = ESTEP-2 WHERE EGROUP=1 AND ESTEP>2;-- 생략 가능(2은 위의 DELETE문 수행결과) : Estep 재조정
 
+SELECT * FROM EQUIPMENT;
 COMMIT;
 
 

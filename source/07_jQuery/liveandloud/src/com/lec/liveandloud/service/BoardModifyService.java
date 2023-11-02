@@ -61,7 +61,7 @@ public class BoardModifyService implements Service {
 			try {
 				File serverFile = new File(path+"/"+ffileName);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:/webPro/source/08_1stProject/LiveandLoud/WebContent/fileBoardUp/"+ffileName);
+				os = new FileOutputStream("C:/webPro/source/07_jQuery/LiveandLoud/WebContent/fileBoardUp/"+ffileName);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int nByteCnt = is.read(bs);

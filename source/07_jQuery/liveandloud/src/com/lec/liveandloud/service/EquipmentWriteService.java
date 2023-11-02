@@ -42,20 +42,19 @@ public class EquipmentWriteService implements Service {
 				String econtent = mRequest.getParameter("econtent");
 				String eip = request.getRemoteAddr();
 				EquipmentDao equipmentDao = EquipmentDao.getInstance();
-				EquipmentDto equipmentDto = new EquipmentDto(0, aId, null, etitle, econtent, efileName,
-											null, maxSize, 0, 0, 0, eip);
+				EquipmentDto equipmentDto = new EquipmentDto(0, aId, etitle, econtent, efileName);
 				result = equipmentDao.writeEquipment(equipmentDto);
 				if(result == EquipmentDao.SUCCESS) {  
-					request.setAttribute("equipmentResult", "글쓰기 성공");
+					request.setAttribute("equipmentResult", "장비등록 성공");
 				}else {
-					request.setAttribute("equipmentResult", "글쓰기 실패");
+					request.setAttribute("equipmentResult", "장비등록 실패");
 				}
 			}else {
 				request.setAttribute("equipmentResult", "관리자만 글쓸 수 있어요");
 			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			request.setAttribute("equipmentResult", "글쓰기 실패");
+			request.setAttribute("equipmentResult", "장비등록 실패");
 		}
 		if(efileName!=null && result==AdminDao.SUCCESS) {
 			InputStream  is = null;
@@ -63,7 +62,7 @@ public class EquipmentWriteService implements Service {
 			try {
 				File serverFile = new File(path+"/" + efileName);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:/webPro/source/08_1stProject/LiveandLoud/WebContent/equipmentUp/" + efileName);
+				os = new FileOutputStream("C:/webPro/source/07_jQuery/liveandloud/WebContent/equipmentUp/" + efileName);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int nByteCnt = is.read(bs);

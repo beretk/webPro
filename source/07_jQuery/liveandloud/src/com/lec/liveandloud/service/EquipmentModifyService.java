@@ -38,21 +38,19 @@ public class EquipmentModifyService implements Service {
 			int eid = Integer.parseInt(mRequest.getParameter("eid"));
 			String etitle = mRequest.getParameter("etitle");
 			String econtent = mRequest.getParameter("econtent");
-			String eip = request.getRemoteAddr();
 			EquipmentDao equipmentDao = EquipmentDao.getInstance();
-			EquipmentDto equipmentDto = new EquipmentDto(eid, null, null, etitle, econtent, 
-											efileName, null, 0, 0, 0, 0, eip);
+			EquipmentDto equipmentDto = new EquipmentDto(eid, null, etitle, econtent, efileName);
 			result = equipmentDao.modifyEquipment(equipmentDto);
 			if(result == EquipmentDao.SUCCESS) { 
-				request.setAttribute("equipmentResult", "글수정 성공");
+				request.setAttribute("equipmentResult", "장비등록 수정 성공");
 			}else {
-				request.setAttribute("equipmentResult", "글수정 실패");
+				request.setAttribute("equipmentResult", "장비등록 수정 실패");
 			}
 			//★mRequest에서 넘어온 pageNum(mRequest를 사용하면 request의 파라미터들이 다 null이 됨)을 request에 set : modify,reply★
 			request.setAttribute("pageNum", mRequest.getParameter("pageNum"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			request.setAttribute("equipmentResult", "글수정 실패");
+			request.setAttribute("equipmentResult", "장비등록 수정 실패");
 		}
 		if(dbFileName!=null && !efileName.equals(dbFileName) && result==AdminDao.SUCCESS) { 
 			InputStream  is = null;
@@ -60,7 +58,7 @@ public class EquipmentModifyService implements Service {
 			try {
 				File serverFile = new File(path+"/" + efileName);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:/webPro/source/08_1stProject/LiveandLoud/WebContent/equipmentUp/" + efileName);
+				os = new FileOutputStream("C:/webPro/source/07_jQuery/liveandloud/WebContent/equipmentUp/" + efileName);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int nByteCnt = is.read(bs);

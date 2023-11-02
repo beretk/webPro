@@ -49,16 +49,16 @@ public class NoticeWriteService implements Service {
 				result = noticeDao.writeNotice(noticeDto);
 				// joinAdmin결과에 따라 적절히 request.setAttribute
 				if(result == NoticeDao.SUCCESS) {  
-					request.setAttribute("noticeResult", "글쓰기 성공");
+					request.setAttribute("noticeResult", "공지사항 쓰기 성공");
 				}else {
-					request.setAttribute("noticeResult", "글쓰기 실패");
+					request.setAttribute("noticeResult", "공지사항 쓰기 실패");
 				}
 			}else {
 				request.setAttribute("noticeResult", "관리자만 글쓸 수 있어요");
 			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			request.setAttribute("noticeResult", "글쓰기 실패");
+			request.setAttribute("noticeResult", "공지사항 쓰기 실패");
 		}
 		// 서버에 올라간 noticeUp 파일을 소스폴더에 filecopy
 		if(nfileName!=null && result==AdminDao.SUCCESS) {
@@ -67,7 +67,7 @@ public class NoticeWriteService implements Service {
 			try {
 				File serverFile = new File(path+"/" + nfileName);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:/webPro/source/08_1stProject/LiveandLoud/WebContent/noticeUp/" + nfileName);
+				os = new FileOutputStream("C:/webPro/source/07_jQuery/LiveandLoud/WebContent/noticeUp/" + nfileName);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int nByteCnt = is.read(bs);

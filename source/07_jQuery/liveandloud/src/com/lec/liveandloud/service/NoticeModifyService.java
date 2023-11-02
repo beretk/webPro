@@ -61,7 +61,7 @@ public class NoticeModifyService implements Service {
 			try {
 				File serverFile = new File(path+"/"+nfileName);
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:/webPro/source/08_1stProject/LiveandLoud/WebContent/noticeUp/"+nfileName);
+				os = new FileOutputStream("C:/webPro/source/07_jQuery/LiveandLoud/WebContent/noticeUp/"+nfileName);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int nByteCnt = is.read(bs);
