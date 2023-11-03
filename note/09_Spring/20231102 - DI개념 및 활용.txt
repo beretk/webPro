@@ -1,0 +1,23 @@
+20231102
+
+<Spring_DI 개념 및 활용>
+1.스프링을 이용한 객체 생성과 조립(스프링은 객체 생성과 조립을 하는 컨테이너라 볼 수 있다)
+2.스프링 설정 파일의 이해 ; 필드에 대한 setter함수들이 있어서 property의 value값을 줄 수 있다.
+3.스프링 프로퍼티 설정 ; 기초데이터, list타입, 다른 빈 객체 참조 방법 등을 살펴본다
+4.스프링 컨테이너의 이해
+5.의존 관계
+-DI는 Dependency Injection의 약자로 우리말로 하면 ‘의존하는 객체를 주입하는 것‘ 입니다.
+-의존주입은 setter를 통한 주입과 생성자를 통한 주입이 있습니다. 
+-xml파일을 이용한 의존주입(아래의 예제는 studentInfo객체는 student객체에 의존하고 있다)
+-java파일을 이용한 의존주입
+
+<Spring_DIconfigMethod>
+1.XML 파일을 이용한 DI 설정방법 ; XML파일을 이용한 DI설정 방법은 그 동안 우리가 살펴본 방식 이다. 
+
+2.Java(어노테이션)를 이용한 DI 설정방법
+-예전(xml이용시)에는 AbstractApplicationContext를 통해서 GenericXmlApplicationContext를 이용해서 썼는데, 자바파일에서는 어노테이션을 이용하고 있다. 
+ 그래서 AnnotationConfigApplicationContext라는 클래스를 이용한다. 
+
+3.XML과 Java(어노테이션)를 같이 사용하여 스프링을 설정하고 컨테이너를 만들고 컴포넌트를 생성한다
+ (1)xml 파일에 Java파일을 포함시켜 사용하는 방법
+ (2)Java파일에 xml 파일을 포함시켜 사용하는 방법
