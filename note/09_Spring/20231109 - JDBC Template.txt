@@ -1,0 +1,19 @@
+20231109
+
+<JDBC Template>
+1.JDBC template를 이용한 반복코드 줄이기 : JDBC를 이용하는 가장 큰 이유
+-DAO객체를 이용해서 DataBase의 데이터를 이용.
+-이때 매번 같은 동작을 반복하는 부분이 있음.(드라이버 로드, 커넥션 생성 및 DB연결, SQL실행, 자원해제)
+-이런 반복적인 작업을 스프링에서는 간단하게 처리 할 수 있음.
+①JDBC 드라이버 로드 – DriverManager
+②데이터 베이스 연결 – Connection 한방에해결
+③SQL문 실행 – PreparedStatement, ResultSet
+④DB 연결 해제 - *.close()
+
+2.Spring 빈을 이용한 코드 간소화
+-Spring빈을 이용하여 DataBase관련 클래스를 간소화한다.
+-스프링 설정파일에서 JdbcTeplate 빈을 생성하여 사용한다
+
+3.JDBC를 이용한 list, Insert, update, delete 처리하기
+
+

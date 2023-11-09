@@ -1,0 +1,15 @@
+20231109
+
+<fileup>
+1.pom.xml:lombok(첫번째,두번째는 반드시 소문자)
+
+2.web.xml:"/" -> *.do로 변경, 한글처리 
+
+3.servlet-context.xml:(웹과 관련된 설정부분 여기다) cf.웹이외의 설정부분은 root-context.xml에
+-multipartResolver Bean생성
+-<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxUploadSize" value="1048576"/><!-- 최대 업로드 용량:1M -->
+ </beans:bean>
+-<resources mapping="/upload/**" location="/upload/" />
+-<resources mapping="/css/**" location="/css/" />등등 추가
