@@ -1,0 +1,45 @@
+20231110
+
+<Mybatis >
+처음 JSP&Servlet을 이용할 때는 많은 코드양으로 DB에 접근하다가, Spring에서는 JDBC Template을 이용해서 코드양을 많이 줄일 수 있었다. 
+Mybatis를 이용하면 코드를 더 줄일 수 있고, 자바 코드가 아닌 xml 파일로 DB에 엑세스한다. 
+MyBatis는 DB접근을 자바가 아닌 xml로 대체하도록 하는 라이브러리이다. SQL 코드를 자바코드와 분리시키는데 목적이 있다.
+※db관련 빈은 :root-context.xml에
+※웹관련 빈은 :servlet-context.xml
+
+추가<mybatis-spring:scan base-package="com.lec.ch13.dao"/>
+진행순서
+- pom.xml:필요라이브러리 의존추가
+- web.xml :한글처리. *.do
+- db.properties : DB환경설정정보 // team 프로젝트시에는(username 와 password 수정 하기)
+- root-context.xml에 dataSource 빈생성
+- DTO
+- xml 생성 :mapper(empList,deptList) + config
+- root-context.xml에 SqlSessionfactoryBean, sessionTemplate(SqlSessionTemplate) 빈생성
+- 실행 첫화면 : css 추가해서 테스트
+- DAO
+- Service
+- Controller
+- emp.jsp
+
+Dao를 interface로 대체하는 방법
+아래의 방법은 반드시 pom.xml에서 버전을 상위버전으로
+
+1.Servlet-context.xml에 아래의 부분 추가
+<mybatis-spring:scan base-package="com.lec.ch14.dao"/>
+
+2.Mapper xml파일에 namespace를 DAO interface로 수정 (xml파일의 id와 DAO의 method이름은 일치)
+(1)Dept.xml 수정사항
+<mapper namespace="Dept">를 아래와 같이 수정
+<mapper namespace="com.lec.ch14.dao.DeptDao">
+
+(2)Emp.xml 수정사항
+<mapper namespace="Emp">를 아래와 같이 수정
+<mapper namespace="com.lec.ch14.dao.EmpDao">
+
+3.DeptDaoImpl.java와 EmpDaoImpl.java를 삭제하고 DeptDao와 EmpDao interface 선언 위에 @Mapper를 붙이자
+
+*수정에 등록 기능 추가
+
+
+
