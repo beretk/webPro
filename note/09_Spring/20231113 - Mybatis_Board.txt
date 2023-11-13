@@ -1,0 +1,16 @@
+20231113
+
+<Mybatis_Board>
+1.Query
+2.Pom.xml에 depency 추가
+3.Web.xml 에  한글 필터링, *.do 추가
+4.Dto
+5.board.xml (1번에 제작된 query를 이용하여 mapper xml)
+6.DAO 인터페이스 제작 (@mapper)
+7.mybatis-config.xml
+8.dataSource 빈 -> sqlSessionFactoryBean 빈 -> sqlSessionTemplate빈 (root-context.xml)
+9.servlet-context.xml 에 <mybatis-spring:scan base-package="com.lec.ch16.dao"/> 및 resource 추가
+10.Service 인터페이스와 클래스(@service) & Paging
+11.컨토롤러와 view
+
+
