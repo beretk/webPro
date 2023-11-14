@@ -1,0 +1,29 @@
+20231114
+
+<Mybatis_회원가입>
+1.Query
+
+2.Pom.xml에 dependency추가
+
+3.Web.xml에 한글 필터링 및 *.do
+
+4.Servlet-context.xml 
+ A.<resources mapping>지정 :css, bookImgFileUpload, js, img
+ B.<mybatis-spring:scan base-package=" "/>
+ C.mailSender빈 생성, multipartResolver 빈 생성
+
+5.Dto
+
+6.Mapper xml 과 Mapper dao interface
+
+7.Mybatis-config.xml
+<settings>
+	<setting name="jdbcTypeForNull" value="NULL"/> <!-- date에 널 허용 -->
+</settings>
+
+8.Root-contxt.xml(DataSource빈 – sqlSessionFactoryBean – SqlSessionTemplate빈 생성)
+
+9.Service 인터페이스와 클래스, Paging
+
+10.컨트롤러와 View
+
