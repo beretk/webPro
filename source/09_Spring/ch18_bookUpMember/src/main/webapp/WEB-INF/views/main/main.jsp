@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
-<title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 <style>
 	#content {
 		width: 800px; height:350px;
@@ -34,11 +34,12 @@
 			<tr>
 			<c:forEach var="book" items="${mainList }" begin="0" end="4">
 				<td>
-				   ${book.btitle }<br>
-				   <a href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=1">
-				   <img src="${conPath }/bookImgFileUpload/${book.bimg1}"></a><br>
-				   ${book.bwriter } 著 <br>
-				   출판일 : ${book.brdate }
+					${book.btitle }<br>
+					<a href="${conPath }/book/detail.do?bnum=${book.bnum}&pageNum=1">
+						<img src="${conPath }/bookImgFileUpload/${book.bimg1}"><br>
+				  </a>
+					${book.bwriter } 著 <br>
+					출판일 : ${book.brdate }
 				</td>
 			</c:forEach>
 			</tr>

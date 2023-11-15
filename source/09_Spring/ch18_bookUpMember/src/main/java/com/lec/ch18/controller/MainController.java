@@ -13,7 +13,7 @@ public class MainController {
 	private BookService bookService;
 	@RequestMapping(value = "main")
 	public String main(Model model) {
-		model.addAttribute("main", bookService.mainList());
+		model.addAttribute("mainList", bookService.mainList());
 		return "main/main";
 	}
 }

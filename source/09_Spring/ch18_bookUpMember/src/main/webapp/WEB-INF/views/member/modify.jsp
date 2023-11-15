@@ -23,8 +23,7 @@
 	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
-	<form action="${conPath }/member.do" method="post">
-		<input type="hidden" name="method" value="modify">
+	<form action="${conPath }/member/modify.do" method="post">
 		<input type="hidden" name="mid" value="${member.mid }">
 		<table>
 			<tr><td>아이디</td><td>${member.mid }</td></tr>

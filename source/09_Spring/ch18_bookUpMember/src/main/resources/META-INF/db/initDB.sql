@@ -29,10 +29,12 @@ INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
     VALUES (BOOK_SQ.NEXTVAL, 'ORACLE','홍작가',SYSDATE, 'noImg.png','스프링개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JAVA','이자바',SYSDATE, '스프링개념서');
+    VALUES (BOOK_SQ.NEXTVAL, 'JAVA','이자바',SYSDATE, '스프링개념서');                   
 commit;
  
 select * from member;
 select * from book;
+DELETE FROM MEMBER WHERE MID='sss';
+
     
     

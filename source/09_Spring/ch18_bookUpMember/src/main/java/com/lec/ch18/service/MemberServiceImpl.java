@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService{
 					// 받을 메일
 					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getMmail()));
 					// 보낼 메일
-					mimeMessage.setFrom(new InternetAddress("beretk@gmail.com"));
+					mimeMessage.setFrom(new InternetAddress("comlec0703@gmail.com"));
 					// 메일 제목
 					mimeMessage.setSubject(member.getMname() + "님 회원가입 감사합니다");
 					// 메일 본문

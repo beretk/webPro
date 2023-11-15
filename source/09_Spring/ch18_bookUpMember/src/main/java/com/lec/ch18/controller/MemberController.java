@@ -54,4 +54,23 @@ public class MemberController {
 		httpSession.invalidate();
 		return "redirect:../main.do";
 	}
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
+	public String modify() {
+		return "member/modify";
+	}
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute("mDto")Member member, HttpSession httpSession, Model model) {
+		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession));
+		return "forward:../main.do";
+	}
 }
+
+
+
+
+
+
+
+
+
+

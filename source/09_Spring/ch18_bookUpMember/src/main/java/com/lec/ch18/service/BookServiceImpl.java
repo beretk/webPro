@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
 	}
 	@Override
 	public List<Book> bookList(String pageNum) {
-		Paging paging = new Paging(bookRepository.totCntBook(), pageNum, 3, 3);
+		Paging paging = new Paging(bookRepository.totCntBook(), pageNum, 4, 4);
 		Book   book = new Book();
 		book.setStartRow(paging.getStartRow());
 		book.setEndRow(paging.getEndRow());
